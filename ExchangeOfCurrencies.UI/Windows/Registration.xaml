@@ -1,0 +1,54 @@
+﻿<Window x:Class="ExchangeOfCurrencies.UI.Windows.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExchangeOfCurrencies.UI.Windows"
+        mc:Ignorable="d"
+        Height="476" 
+        Width="494" 
+        WindowStartupLocation="CenterScreen" 
+        Style="{StaticResource BlueWindow}">
+    <Grid>
+        <Rectangle 
+            Style="{StaticResource Header}" 
+            x:Name="Header" 
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+
+        <Label 
+            Content="Введите регистрационные данные" 
+            HorizontalAlignment="Left" 
+            Margin="4,-2,0,0" 
+            VerticalAlignment="Top" 
+            MouseLeftButtonDown="Header_MouseLeftButtonDown" 
+            Foreground="#FF1D8FD1" 
+            FontSize="14"/>
+
+        <Image 
+            x:Name="CloseBox" 
+            Style="{StaticResource CloseBox}"
+            MouseDown="CloseBox_MouseDown"/>
+
+        <Grid>
+            <Label 
+                x:Name="CancelL"
+                Style="{StaticResource MouseEvents}" 
+                Content="Отмена"
+                HorizontalAlignment="Left" 
+                Margin="68,419,0,0" 
+                VerticalAlignment="Top"
+                FontSize="16"
+                MouseDown="CancelL_MouseDown"/>
+
+            <Label 
+                x:Name="RegL"
+                Style="{StaticResource MouseEvents}" 
+                Content="Зарегистрироваться"
+                HorizontalAlignment="Left"
+                Margin="247,419,0,0" 
+                VerticalAlignment="Top"
+                FontSize="16"
+                MouseDown="RegL_MouseDown"/>
+        </Grid>
+    </Grid>
+</Window>

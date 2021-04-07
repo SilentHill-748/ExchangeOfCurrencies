@@ -8,7 +8,7 @@
         Height="368" 
         Width="546" 
         WindowStartupLocation="CenterScreen" 
-        Style="{StaticResource BlueWindow}">
+        Style="{StaticResource DarkWindow}">
     <Grid>
         <Rectangle 
             Style="{StaticResource Header}"
@@ -30,8 +30,14 @@
             MouseDown="CloseBox_MouseDown" />
 
         <Grid Margin="0,25,0,0">
-
-            <DataGrid x:Name="dataGrid" Width="458"/>
+            <DataGrid 
+                x:Name="dataGrid" 
+                Width="458" 
+                Margin="44,0,44,127" 
+                Style="{StaticResource CustomDataGrid}"
+                ColumnHeaderStyle="{StaticResource DarkDataGridHeader}"
+                RowHeaderStyle="{StaticResource HeadenRowHeader}"
+                />
         </Grid>
     </Grid>
 </Window>

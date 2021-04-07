@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI.Windows"
         mc:Ignorable="d"
-        Height="476" 
-        Width="494" 
+        Height="410" 
+        Width="420" 
         WindowStartupLocation="CenterScreen" 
         Style="{StaticResource BlueWindow}">
     <Grid>
@@ -35,20 +35,174 @@
                 Style="{StaticResource MouseEvents}" 
                 Content="Отмена"
                 HorizontalAlignment="Left" 
-                Margin="68,419,0,0" 
+                Margin="57,363,0,0" 
                 VerticalAlignment="Top"
                 FontSize="16"
-                MouseDown="CancelL_MouseDown"/>
+                MouseDown="CancelL_MouseDown" Foreground="#FF5AC3FF"/>
 
             <Label 
                 x:Name="RegL"
                 Style="{StaticResource MouseEvents}" 
                 Content="Зарегистрироваться"
                 HorizontalAlignment="Left"
-                Margin="247,419,0,0" 
+                Margin="230,363,0,0" 
                 VerticalAlignment="Top"
                 FontSize="16"
-                MouseDown="RegL_MouseDown"/>
+                MouseDown="RegL_MouseDown" Foreground="#FF5AC3FF"/>
+
+            <Label 
+                Content="Введите имя:" 
+                HorizontalAlignment="Left" 
+                Margin="15,165,0,0" 
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0" 
+                FontSize="18" 
+                Foreground="#FF00DCFF"/>
+
+            <Label 
+                Content="Введите фамилию:" 
+                HorizontalAlignment="Left" 
+                Margin="16,196,0,0" 
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0" 
+                FontSize="18" 
+                Foreground="#FF00DCFF"/>
+
+            <Label 
+                Content="Введите отчество:" 
+                HorizontalAlignment="Left" 
+                Margin="15,227,0,0" 
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0" 
+                FontSize="18" 
+                Foreground="#FF00DCFF"/>
+
+            <Label 
+                Content="Введите логин:" 
+                HorizontalAlignment="Left" 
+                Margin="16,38,0,0" 
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0" 
+                FontSize="18" 
+                Foreground="#FF00DCFF"/>
+
+            <Label 
+                Content="Введите пароль:" 
+                HorizontalAlignment="Left" 
+                Margin="15,69,0,0" 
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0" 
+                FontSize="18"
+                Foreground="#FF00DCFF"/>
+
+            <Label 
+                Content="Повторите пароль:" 
+                HorizontalAlignment="Left" 
+                Margin="15,100,0,0" 
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0" 
+                FontSize="18" 
+                Foreground="#FF00DCFF"/>
+
+            <Label 
+                Content="Введите телефона:" 
+                HorizontalAlignment="Left" 
+                Margin="15,258,0,0" 
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0" 
+                FontSize="18" 
+                Foreground="#FF00DCFF"/>
+
+            <Label 
+                Content="Введите e-mail:" 
+                HorizontalAlignment="Left" 
+                Margin="16,301,0,0" 
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0" 
+                FontSize="18" 
+                Foreground="#FF00DCFF"/>
+
+            <TextBox 
+                HorizontalAlignment="Left" 
+                Margin="213,37,0,0"
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top"
+                Width="192"
+                FontSize="18"/>
+
+            <TextBox 
+                HorizontalAlignment="Left" 
+                Margin="213,68,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="192" 
+                FontSize="18"/>
+
+            <TextBox 
+                HorizontalAlignment="Left"
+                Margin="213,99,0,0"
+                TextWrapping="Wrap"
+                VerticalAlignment="Top"
+                Width="192"
+                FontSize="18"/>
+
+            <TextBox 
+                HorizontalAlignment="Left"
+                Margin="213,164,0,0" 
+                TextWrapping="Wrap"
+                VerticalAlignment="Top"
+                Width="192" 
+                FontSize="18"/>
+
+            <TextBox
+                HorizontalAlignment="Left" 
+                Margin="213,195,0,0"
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="192" 
+                FontSize="18"/>
+
+            <TextBox 
+                HorizontalAlignment="Left"
+                Margin="213,257,0,0" 
+                TextWrapping="Wrap"
+                VerticalAlignment="Top" 
+                Width="192" 
+                FontSize="18"/>
+
+            <TextBox 
+                HorizontalAlignment="Left" 
+                Margin="213,226,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top"
+                Width="192" 
+                FontSize="18"/>
+
+            <TextBox 
+                HorizontalAlignment="Left" 
+                Margin="213,300,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="192" 
+                FontSize="18"/>
+
+            <Label 
+                Content="Например: example@mail.ru" 
+                HorizontalAlignment="Left" 
+                Margin="273,326,0,0" 
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0"
+                FontSize="10" 
+                Foreground="#FF40E4E4"/>
+
+            <Label 
+                Content="Например: +7 123 4567890" 
+                HorizontalAlignment="Left" 
+                Margin="278,282,0,0" 
+                VerticalAlignment="Top" 
+                Padding="0,0,0,0" 
+                FontSize="10" 
+                Foreground="#FF40E4E4"/>
         </Grid>
     </Grid>
 </Window>

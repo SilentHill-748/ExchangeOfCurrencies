@@ -18,7 +18,7 @@
         <Label 
             Content="Введите регистрационные данные" 
             HorizontalAlignment="Left" 
-            Margin="4,-2,0,0" 
+            Margin="0,-2,0,0" 
             VerticalAlignment="Top" 
             MouseLeftButtonDown="Header_MouseLeftButtonDown" 
             FontSize="14"/>

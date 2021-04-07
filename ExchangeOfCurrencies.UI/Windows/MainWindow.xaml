@@ -35,9 +35,8 @@
                 Width="458" 
                 Margin="44,0,44,127" 
                 Style="{StaticResource CustomDataGrid}"
-                ColumnHeaderStyle="{StaticResource DarkDataGridHeader}"
-                RowHeaderStyle="{StaticResource HeadenRowHeader}"
-                />
+                ColumnHeaderStyle="{StaticResource DarkDataGridColumnHeader}">
+            </DataGrid>
         </Grid>
     </Grid>
 </Window>

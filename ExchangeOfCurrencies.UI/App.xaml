@@ -58,15 +58,12 @@
             <Setter Property="CanUserResizeRows" Value="False"/>
             <Setter Property="Background" Value="#FF545454"/>
             <Setter Property="Foreground" Value="White"/>
-        </Style>
-        
-        <Style x:Key="DarkDataGridHeader" TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#3B3B3B"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
         </Style>
 
-        <Style x:Key="HeadenRowHeader" TargetType="DataGridRowHeader">
-            <Setter Property="Visibility" Value="Hidden"/>
+        <Style x:Key="DarkDataGridColumnHeader" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#3B3B3B"/>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
     </Application.Resources>
 </Application>

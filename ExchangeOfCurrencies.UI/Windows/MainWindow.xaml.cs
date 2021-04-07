@@ -18,9 +18,6 @@ using ExchangeOfCurrencies.DbClient;
 
 namespace ExchangeOfCurrencies.UI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private readonly string loadData = "SELECT * FROM currencies";

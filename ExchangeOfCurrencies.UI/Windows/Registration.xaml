@@ -8,7 +8,7 @@
         Height="410" 
         Width="420" 
         WindowStartupLocation="CenterScreen" 
-        Style="{StaticResource BlueWindow}">
+        Style="{StaticResource DarkWindow}">
     <Grid>
         <Rectangle 
             Style="{StaticResource Header}" 
@@ -21,13 +21,14 @@
             Margin="4,-2,0,0" 
             VerticalAlignment="Top" 
             MouseLeftButtonDown="Header_MouseLeftButtonDown" 
-            Foreground="#FF1D8FD1" 
             FontSize="14"/>
 
         <Image 
             x:Name="CloseBox" 
             Style="{StaticResource CloseBox}"
-            MouseDown="CloseBox_MouseDown"/>
+            MouseDown="CloseBox_MouseDown" 
+            Source="/Close.png" 
+            Cursor="Hand"/>
 
         <Grid>
             <Label 
@@ -38,7 +39,7 @@
                 Margin="57,363,0,0" 
                 VerticalAlignment="Top"
                 FontSize="16"
-                MouseDown="CancelL_MouseDown" Foreground="#FF5AC3FF"/>
+                MouseDown="CancelL_MouseDown"/>
 
             <Label 
                 x:Name="RegL"
@@ -48,7 +49,7 @@
                 Margin="230,363,0,0" 
                 VerticalAlignment="Top"
                 FontSize="16"
-                MouseDown="RegL_MouseDown" Foreground="#FF5AC3FF"/>
+                MouseDown="RegL_MouseDown"/>
 
             <Label 
                 Content="Введите имя:" 
@@ -56,8 +57,7 @@
                 Margin="15,165,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
-                FontSize="18" 
-                Foreground="#FF40E4E4"/>
+                FontSize="18"/>
 
             <Label 
                 Content="Введите фамилию:" 
@@ -65,8 +65,7 @@
                 Margin="16,196,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
-                FontSize="18" 
-                Foreground="#FF40E4E4"/>
+                FontSize="18"/>
 
             <Label 
                 Content="Введите отчество:" 
@@ -75,16 +74,16 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF40E4E4"/>
+                Foreground="White"/>
 
             <Label 
-                Content="Введите логин:" 
+                Content="Логин:" 
                 HorizontalAlignment="Left" 
                 Margin="16,38,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF40E4E4"/>
+                Foreground="White"/>
 
             <Label 
                 Content="Введите пароль:" 
@@ -93,7 +92,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18"
-                Foreground="#FF40E4E4"/>
+                Foreground="White"/>
 
             <Label 
                 Content="Повторите пароль:" 
@@ -102,16 +101,16 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF40E4E4"/>
+                Foreground="White"/>
 
             <Label 
-                Content="Введите телефона:" 
+                Content="Введите телефон:" 
                 HorizontalAlignment="Left" 
                 Margin="15,258,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF40E4E4"/>
+                Foreground="White"/>
 
             <Label 
                 Content="Введите e-mail:" 
@@ -120,7 +119,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF40E4E4"/>
+                Foreground="White"/>
 
             <TextBox 
                 HorizontalAlignment="Left" 
@@ -193,7 +192,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0"
                 FontSize="10" 
-                Foreground="#FF40E4E4"/>
+                Foreground="White"/>
 
             <Label 
                 Content="Например: +7 123 4567890" 
@@ -202,7 +201,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="10" 
-                Foreground="#FF40E4E4"/>
+                Foreground="White"/>
         </Grid>
     </Grid>
 </Window>

@@ -4,16 +4,16 @@
              xmlns:local="clr-namespace:ExchangeOfCurrencies.UI"
              StartupUri="AutorizationWindow.xaml">
     <Application.Resources>
-        <Style x:Key="BlueWindow" TargetType="Window">
-            <Setter Property="Background" Value="#FF062F57"/>
+        <Style x:Key="DarkWindow" TargetType="Window">
+            <Setter Property="Background" Value="#333336"/>
             <Setter Property="ResizeMode" Value="NoResize"/>
             <Setter Property="WindowStyle" Value="None"/>
             <Setter Property="Content" Value=""/>
         </Style>
 
         <Style x:Key="Header" TargetType="Rectangle">
-            <Setter Property="Fill" Value="#FF07203A"/>
-            <Setter Property="Stroke" Value="#FF072A4D"/>
+            <Setter Property="Fill" Value="#222226"/>
+            <Setter Property="Stroke" Value="#222226"/>
             <Setter Property="Margin" Value="-1,-1,-1,0"/>
             <Setter Property="Height" Value="26"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
@@ -41,15 +41,15 @@
         </Style>
 
         <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#FF0F4A85"/>
+            <Setter Property="Background" Value="#444446"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#FF072A4D"/>
+            <Setter Property="BorderBrush" Value="#444446"/>
         </Style>
 
         <Style TargetType="PasswordBox">
-            <Setter Property="Background" Value="#FF0F4A85"/>
+            <Setter Property="Background" Value="#444446"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#FF072A4D"/>
+            <Setter Property="BorderBrush" Value="#444446"/>
         </Style>
     </Application.Resources>
 </Application>

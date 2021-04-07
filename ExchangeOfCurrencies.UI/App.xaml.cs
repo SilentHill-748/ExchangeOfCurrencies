@@ -19,7 +19,7 @@ namespace ExchangeOfCurrencies.UI
     {
         private void Label_MouseEnter(object sender, MouseEventArgs e)
         {
-            Color peekColor = Color.FromRgb(12, 168, 132);
+            Color peekColor = (Color)ColorConverter.ConvertFromString("#EABA3E");
             if (sender is Label lab)
                 lab.Foreground = new SolidColorBrush(peekColor);
         }

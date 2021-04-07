@@ -52,7 +52,7 @@
                 MouseDown="RegL_MouseDown"/>
 
             <Label 
-                Content="Введите имя:" 
+                Content="Имя:" 
                 HorizontalAlignment="Left" 
                 Margin="15,165,0,0" 
                 VerticalAlignment="Top" 
@@ -60,7 +60,7 @@
                 FontSize="18"/>
 
             <Label 
-                Content="Введите фамилию:" 
+                Content="Фамилия:" 
                 HorizontalAlignment="Left" 
                 Margin="16,196,0,0" 
                 VerticalAlignment="Top" 
@@ -68,7 +68,7 @@
                 FontSize="18"/>
 
             <Label 
-                Content="Введите отчество:" 
+                Content="Отчество:" 
                 HorizontalAlignment="Left" 
                 Margin="15,227,0,0" 
                 VerticalAlignment="Top" 
@@ -86,7 +86,7 @@
                 Foreground="White"/>
 
             <Label 
-                Content="Введите пароль:" 
+                Content="Пароль:" 
                 HorizontalAlignment="Left" 
                 Margin="15,69,0,0" 
                 VerticalAlignment="Top" 
@@ -104,7 +104,7 @@
                 Foreground="White"/>
 
             <Label 
-                Content="Введите телефон:" 
+                Content="Личный телефон:" 
                 HorizontalAlignment="Left" 
                 Margin="15,258,0,0" 
                 VerticalAlignment="Top" 
@@ -113,7 +113,7 @@
                 Foreground="White"/>
 
             <Label 
-                Content="Введите e-mail:" 
+                Content="E-mail адрес:" 
                 HorizontalAlignment="Left" 
                 Margin="16,301,0,0" 
                 VerticalAlignment="Top" 
@@ -188,7 +188,7 @@
             <Label 
                 Content="Например: example@mail.ru" 
                 HorizontalAlignment="Left" 
-                Margin="273,326,0,0" 
+                Margin="273,327,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0"
                 FontSize="10" 
@@ -197,11 +197,20 @@
             <Label 
                 Content="Например: +7 123 4567890" 
                 HorizontalAlignment="Left" 
-                Margin="278,282,0,0" 
+                Margin="278,283,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="10" 
                 Foreground="White"/>
+
+            <GridSplitter 
+                HorizontalAlignment="Center" 
+                Height="12" 
+                Width="420" 
+                Margin="0,139,0,0" 
+                VerticalAlignment="Top" 
+                RenderTransformOrigin="0.5,0.5" 
+                Background="#FF222226"/>
         </Grid>
     </Grid>
 </Window>

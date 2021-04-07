@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
+
 using ExchangeOfCurrencies.DbClient;
 
 namespace ExchangeOfCurrencies.UI
@@ -22,7 +23,7 @@ namespace ExchangeOfCurrencies.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly string loadData = "SELECT currencies.numCode, charCode, name, course, sale, count FROM currencies";
+        private readonly string loadData = "SELECT * FROM currencies";
         private string login;
 
         public MainWindow()
@@ -33,8 +34,8 @@ namespace ExchangeOfCurrencies.UI
         private void Init()
         {
             Request getData = new (loadData);
-            dataGrid.ItemsSource = FillTable(getData.DataSet);
-            dataGrid.RowHeight = 20;
+            currienciesTable.ItemsSource = FillTable(getData.DataSet);
+            currienciesTable.RowHeight = 20;
         }
 
         public MainWindow(string login)
@@ -56,15 +57,20 @@ namespace ExchangeOfCurrencies.UI
 
         private List<Currency> FillTable(DataSet selectedTable)
         {
-            List<Currency> currencies = new List<Currency>();
+            List<Currency> currencies = new();
             var table = selectedTable.Tables[0];
 
             for (int i = 0; i < table.Rows.Count; i++)
             {
-                Currency currency = new Currency(table.Rows[i].ItemArray);
+                Currency currency = new(table.Rows[i].ItemArray);
                 currencies.Add(currency);
             }
             return currencies;
+        }
+
+        private void InitTable()
+        {
+            currienciesTable.HorizontalContentAlignment = HorizontalAlignment.Stretch;
         }
 
         // todolist
@@ -73,22 +79,5 @@ namespace ExchangeOfCurrencies.UI
         // TODO: Реализовать систему логирования действий юзера и алгоритм составления отчета.
         // TODO: Написать модуль авторизации и регистрации по БД.
         // TODO: Связать все системы в одно целое приложение, сохраняя составленный дизайн.
-    }
-
-    // TODO: Решить вопрос с классом Currency!
-    public class Currency
-    {
-        private readonly object[] items;
-        public int NumCode => (int)items[0];
-        public string CharCode => (string)items[1];
-        public string Name => (string)items[2];
-        public double Course => (double)items[3];
-        public double Sale => (double)items[4];
-        public int Count => (int)items[5];
-
-        public Currency(object[] items)
-        {
-            this.items = items;
-        }
     }
 }

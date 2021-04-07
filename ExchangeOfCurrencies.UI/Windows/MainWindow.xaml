@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI"
         mc:Ignorable="d"
         Height="368" 
-        Width="546" 
+        Width="437.4" 
         WindowStartupLocation="CenterScreen" 
         Style="{StaticResource DarkWindow}">
     <Grid>
@@ -19,8 +19,7 @@
             Content="Биржа валюты" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Foreground="#FF1D8FD1" 
-            Margin="4,-2,0,0"
+            Margin="0,-2,0,0"
             FontSize="14"
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
@@ -31,12 +30,13 @@
 
         <Grid Margin="0,25,0,0">
             <DataGrid 
-                x:Name="dataGrid" 
-                Width="458" 
-                Margin="44,0,44,127" 
+                x:Name="currienciesTable" 
                 Style="{StaticResource CustomDataGrid}"
-                ColumnHeaderStyle="{StaticResource DarkDataGridColumnHeader}">
-            </DataGrid>
+                ColumnHeaderStyle="{StaticResource DarkDataGridColumnHeader}"
+                RowStyle="{StaticResource DarkDataGridRow}" Margin="-1,184,-1,-4"/>
+            <!--Style="{StaticResource CustomDataGrid}"
+                ColumnHeaderStyle="{StaticResource DarkDataGridColumnHeader}"
+                RowStyle="{StaticResource DarkDataGridRow}"/>-->
         </Grid>
     </Grid>
 </Window>

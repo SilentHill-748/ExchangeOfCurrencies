@@ -57,7 +57,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF00DCFF"/>
+                Foreground="#FF40E4E4"/>
 
             <Label 
                 Content="Введите фамилию:" 
@@ -66,7 +66,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF00DCFF"/>
+                Foreground="#FF40E4E4"/>
 
             <Label 
                 Content="Введите отчество:" 
@@ -75,7 +75,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF00DCFF"/>
+                Foreground="#FF40E4E4"/>
 
             <Label 
                 Content="Введите логин:" 
@@ -84,7 +84,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF00DCFF"/>
+                Foreground="#FF40E4E4"/>
 
             <Label 
                 Content="Введите пароль:" 
@@ -93,7 +93,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18"
-                Foreground="#FF00DCFF"/>
+                Foreground="#FF40E4E4"/>
 
             <Label 
                 Content="Повторите пароль:" 
@@ -102,7 +102,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF00DCFF"/>
+                Foreground="#FF40E4E4"/>
 
             <Label 
                 Content="Введите телефона:" 
@@ -111,7 +111,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF00DCFF"/>
+                Foreground="#FF40E4E4"/>
 
             <Label 
                 Content="Введите e-mail:" 
@@ -120,7 +120,7 @@
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18" 
-                Foreground="#FF00DCFF"/>
+                Foreground="#FF40E4E4"/>
 
             <TextBox 
                 HorizontalAlignment="Left" 

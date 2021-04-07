@@ -8,25 +8,19 @@
         Height="185" 
         Width="365"
         WindowStartupLocation="CenterScreen" 
-        Style="{StaticResource BlueWindow}">
+        Style="{StaticResource DarkWindow}">
     <Grid>
         <Rectangle 
             x:Name="Head"
-            HorizontalAlignment="Center" 
-            Height="26" 
-            Stroke="#FF072A4D" 
-            VerticalAlignment="Top" 
-            Width="380" 
-            Fill="#FF07203A"
-            MouseLeftButtonDown="Head_MouseLeftButtonDown" 
-            Margin="-8,-2,-7,0"/>
+            Style="{StaticResource Header}"
+            MouseLeftButtonDown="Head_MouseLeftButtonDown"/>
 
         <Label 
             x:Name="HeaderLabel"
             Content="Авторизация" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Foreground="#FF1D8FD1"
+            Foreground="White"
             MouseLeftButtonDown="Head_MouseLeftButtonDown" 
             FontSize="14" 
             Height="28" 

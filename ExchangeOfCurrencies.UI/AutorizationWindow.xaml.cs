@@ -12,15 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using ExchangeOfCurrencies.ClientModel.Validation;
+using ExchangeOfCurrencies.UI.Windows.MessageWindows;
 using ExchangeOfCurrencies.DbClient;
 using ExchangeOfCurrencies.UI.Windows;
 
 namespace ExchangeOfCurrencies.UI
 {
-    /// <summary>
-    /// Логика взаимодействия для Autorization.xaml
-    /// </summary>
     public partial class AutorizationWindow : Window
     {
         private MainWindow mainWindow;    // Главное окно, ИМХО.
@@ -32,10 +29,7 @@ namespace ExchangeOfCurrencies.UI
         public AutorizationWindow()
         {
             InitializeComponent();
-            ControlValidation validation = new();
-
-            CurrencyUpdater updater = new();
-            updater.Update();
+            Init();
         }
 
         #region Events
@@ -43,11 +37,11 @@ namespace ExchangeOfCurrencies.UI
         {
             regWindow = new Registration();
             regWindow.Show();
-            this.Close();
+            Close();
         }
 
         // Главная логика авторизации.
-        private void AutorizationL_MouseUp(object sender, MouseButtonEventArgs e)
+        private void AutorizationL_MouseDown(object sender, MouseButtonEventArgs e)
         {
             AutorizationClient();
         }
@@ -64,19 +58,19 @@ namespace ExchangeOfCurrencies.UI
 
         private void Head_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void ForgotPassL_MouseUp(object sender, MouseButtonEventArgs e)
         {
             string message = "Если Вы забыли свои входные данные, то обратитесь к своему системному администратору за помощью!";
-            MessageBox.Show(message, "Справка",
-                MessageBoxButton.OK, MessageBoxImage.Information);
+            Message error = new(message, "Забыл пароль!");
+            error.ShowDialog();
         }
 
         private void CloseBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void PassBox_KeyUp(object sender, KeyEventArgs e)
@@ -84,6 +78,20 @@ namespace ExchangeOfCurrencies.UI
             if (e.Key == Key.Enter) AutorizationClient();
         }
         #endregion
+
+        private void Init()
+        {
+            BeginUpdateRowsToDb();
+        }
+
+        private void BeginUpdateRowsToDb()
+        {
+            Task.Run(() =>
+            {
+                CurrencyUpdater updater = new();
+                updater.Update();
+            });
+        }
 
         private async void AutorizationClient()
         {
@@ -99,8 +107,8 @@ namespace ExchangeOfCurrencies.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Внимание!",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                Message error = new(ex.Message, "Внимание!");
+                error.ShowDialog();
             }
             finally
             {

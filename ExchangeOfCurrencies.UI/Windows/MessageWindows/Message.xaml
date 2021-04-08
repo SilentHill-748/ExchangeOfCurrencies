@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI.Windows.MessageWindows"
         mc:Ignorable="d"
-        Height="202"
+        Height="171"
         Width="398"
+        WindowStartupLocation="CenterScreen"
         Style="{StaticResource DarkWindow}">
     <Grid>
         <Rectangle 
@@ -17,12 +18,11 @@
         <Label 
             x:Name="HeaderLabel" 
             Content="Внимание!" 
-            Margin="0,0,0,0"
+            Margin="0,-4,0,0"
             VerticalAlignment="Top" 
             HorizontalAlignment="Left"
-            FontFamily="Times New Roman" 
-            FontStyle="Italic"
-            MouseLeftButtonDown="HeaderLabel_MouseLeftButtonDown"/>
+            FontFamily="Segoe UI" 
+            FontSize="16"/>
 
         <Image 
             Style="{StaticResource CloseBox}" 
@@ -33,14 +33,15 @@
                 x:Name="MessageBlock"
                 TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
-                Margin="30,30,30,0" 
+                Margin="30,20,30,0" 
                 Height="80" 
                 Width="338"
                 Foreground="White"
-                FontSize="20" 
+                FontSize="15" 
                 TextAlignment="Justify"
-                FontFamily="Times New Roman" 
-                FontStyle="Italic"/>
+                FontFamily="Segoe UI" 
+                FontStyle="Normal"
+                Block.IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"/>
 
             <Label 
                 x:Name="OkLabel"
@@ -48,11 +49,10 @@
                 Style="{StaticResource MouseEvents}"
                 FontSize="20"
                 HorizontalAlignment="Left"
-                Margin="265,122,0,0" 
+                Margin="298,105,0,0" 
                 VerticalAlignment="Top"
-                FontFamily="Times New Roman" 
-                FontStyle="Italic"
-                MouseDown="OkLabel_MouseDown"/>
+                FontFamily="Segoe UI" 
+                FontStyle="Normal"/>
         </Grid>
     </Grid>
 </Window>

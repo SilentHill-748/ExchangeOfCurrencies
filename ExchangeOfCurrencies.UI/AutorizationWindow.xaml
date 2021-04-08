@@ -22,10 +22,9 @@
             VerticalAlignment="Top" 
             Foreground="White"
             MouseLeftButtonDown="Head_MouseLeftButtonDown" 
-            FontSize="14" 
-            Height="28" 
-            Margin="0,-2,0,0"
-            Width="94"/>
+            FontSize="16" 
+            Height="29" 
+            Margin="0,-4,0,0" FontFamily="Segoe UI"/>
 
         <Image 
             x:Name="CloseBox"
@@ -46,7 +45,7 @@
                 VerticalAlignment="Top" 
                 Margin="145,119,0,0"
                 MouseDown="RegistrationL_MouseDown" 
-                FontSize="14"/>
+                FontSize="14" FontFamily="Segoe UI"/>
 
             <!--Лэйбл, который выполняет авторизацию по БД.-->
             <Label 
@@ -56,8 +55,8 @@
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="257,119,0,0" 
-                MouseUp="AutorizationL_MouseUp" 
-                FontSize="14"/>
+                MouseDown="AutorizationL_MouseDown" 
+                FontSize="14" FontFamily="Segoe UI"/>
 
             <!--Лэйбл справки.-->
             <Label 
@@ -68,7 +67,7 @@
                 VerticalAlignment="Top"
                 Margin="14,119,0,0"
                 MouseUp="ForgotPassL_MouseUp" 
-                FontSize="14"/>
+                FontSize="14" FontFamily="Segoe UI"/>
 
             <!--Поле ввода пароля.-->
             <PasswordBox 
@@ -81,7 +80,7 @@
                 PasswordChar="•"
                 MaxLength="20"
                 KeyUp="PassBox_KeyUp"
-                PasswordChanged="PassBox_PasswordChanged"/>
+                PasswordChanged="PassBox_PasswordChanged" FontFamily="Times New Roman"/>
 
             <!--Поле ввода логина-->
             <TextBox 
@@ -92,7 +91,7 @@
                 Width="157" 
                 FontSize="16"
                 MaxLength="16"
-                TextChanged="LoginBox_TextChanged"/>
+                TextChanged="LoginBox_TextChanged" FontFamily="Times New Roman"/>
 
             <!--Информативные лэйблы.-->
             <Label 
@@ -100,21 +99,21 @@
                 HorizontalAlignment="Left"
                 Margin="62,53,0,0"
                 VerticalAlignment="Top" 
-                FontSize="15"/>
+                FontSize="15" FontFamily="Segoe UI"/>
 
             <Label 
                 Content="Пароль" 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="53,79,0,0" 
-                FontSize="15"/>
+                FontSize="15" FontFamily="Segoe UI"/>
 
             <Label 
                 Content="Добро пожаловать!" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Top"
                 Margin="0,3,0,0" 
-                FontSize="26"/>
+                FontSize="26" FontFamily="Segoe UI"/>
         </Grid>
     </Grid>
 </Window>

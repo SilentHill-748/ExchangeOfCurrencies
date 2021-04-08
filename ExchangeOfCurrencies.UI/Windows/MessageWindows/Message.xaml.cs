@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace ExchangeOfCurrencies.UI.Windows.MessageWindows
 {
     public partial class Message : Window
-    { 
+    {
         public Message(string message, string header)
         {
             InitializeComponent();

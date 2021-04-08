@@ -11,8 +11,9 @@
     <Grid>
         <Rectangle 
             x:Name="Header" 
-            Style="{StaticResource Header}"/>
-        
+            Style="{StaticResource Header}"
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+
         <Label 
             x:Name="HeaderLabel" 
             Content="Внимание!" 
@@ -29,37 +30,29 @@
 
         <Grid Margin="0,26,0,0">
             <TextBlock 
+                x:Name="MessageBlock"
                 TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
                 Margin="30,30,30,0" 
                 Height="80" 
                 Width="338"
                 Foreground="White"
-                Text="Этот текст будет появляться в случае обработки какой-либо ошибки в вашей программе!"
                 FontSize="20" 
                 TextAlignment="Justify"
                 FontFamily="Times New Roman" 
                 FontStyle="Italic"/>
 
             <Label 
-                Content="Отмена" 
-                Style="{StaticResource MouseEvents}"
-                FontSize="20"
-                HorizontalAlignment="Left" 
-                Margin="57,122,0,0" 
-                VerticalAlignment="Top"
-                FontFamily="Times New Roman" 
-                FontStyle="Italic"/>
-
-            <Label 
+                x:Name="OkLabel"
                 Content="Ок" 
                 Style="{StaticResource MouseEvents}"
                 FontSize="20"
                 HorizontalAlignment="Left"
-                Margin="294,122,0,0" 
+                Margin="265,122,0,0" 
                 VerticalAlignment="Top"
                 FontFamily="Times New Roman" 
-                FontStyle="Italic"/>
+                FontStyle="Italic"
+                MouseDown="OkLabel_MouseDown"/>
         </Grid>
     </Grid>
 </Window>

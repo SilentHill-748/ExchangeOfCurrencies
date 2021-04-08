@@ -1,32 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ExchangeOfCurrencies.UI.Windows.MessageWindows
 {
-    /// <summary>
-    /// Логика взаимодействия для Message.xaml
-    /// </summary>
     public partial class Message : Window
-    {
-        public Message()
+    { 
+        public Message(string message, string header)
         {
             InitializeComponent();
+            Init(message, header);
         }
 
-        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            DragMove();
+        }
 
+        private void CloseBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
+
+        private void Init(string message, string header)
+        {
+            OkLabel.MouseDown += CloseBox_MouseLeftButtonDown;
+            HeaderLabel.MouseLeftButtonDown += Header_MouseLeftButtonDown;
+            HeaderLabel.Content = header;
+            MessageBlock.Text = message;
         }
     }
 }

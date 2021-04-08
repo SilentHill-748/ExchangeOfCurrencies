@@ -1,0 +1,65 @@
+﻿<Window x:Class="ExchangeOfCurrencies.UI.Windows.MessageWindows.Message"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExchangeOfCurrencies.UI.Windows.MessageWindows"
+        mc:Ignorable="d"
+        Height="202"
+        Width="398"
+        Style="{StaticResource DarkWindow}">
+    <Grid>
+        <Rectangle 
+            x:Name="Header" 
+            Style="{StaticResource Header}"/>
+        
+        <Label 
+            x:Name="HeaderLabel" 
+            Content="Внимание!" 
+            Margin="0,0,0,0"
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Left"
+            FontFamily="Times New Roman" 
+            FontStyle="Italic"
+            MouseLeftButtonDown="HeaderLabel_MouseLeftButtonDown"/>
+
+        <Image 
+            Style="{StaticResource CloseBox}" 
+            MouseLeftButtonDown="CloseBox_MouseLeftButtonDown"/>
+
+        <Grid Margin="0,26,0,0">
+            <TextBlock 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Margin="30,30,30,0" 
+                Height="80" 
+                Width="338"
+                Foreground="White"
+                Text="Этот текст будет появляться в случае обработки какой-либо ошибки в вашей программе!"
+                FontSize="20" 
+                TextAlignment="Justify"
+                FontFamily="Times New Roman" 
+                FontStyle="Italic"/>
+
+            <Label 
+                Content="Отмена" 
+                Style="{StaticResource MouseEvents}"
+                FontSize="20"
+                HorizontalAlignment="Left" 
+                Margin="57,122,0,0" 
+                VerticalAlignment="Top"
+                FontFamily="Times New Roman" 
+                FontStyle="Italic"/>
+
+            <Label 
+                Content="Ок" 
+                Style="{StaticResource MouseEvents}"
+                FontSize="20"
+                HorizontalAlignment="Left"
+                Margin="294,122,0,0" 
+                VerticalAlignment="Top"
+                FontFamily="Times New Roman" 
+                FontStyle="Italic"/>
+        </Grid>
+    </Grid>
+</Window>

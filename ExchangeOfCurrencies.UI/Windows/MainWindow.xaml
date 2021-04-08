@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI"
         mc:Ignorable="d"
-        Height="368" 
-        Width="437.4" 
+        Height="220" 
+        Width="781" 
         WindowStartupLocation="CenterScreen" 
         Style="{StaticResource DarkWindow}">
     <Grid>
@@ -31,12 +31,20 @@
         <Grid Margin="0,25,0,0">
             <DataGrid 
                 x:Name="currienciesTable" 
+                Margin="0,33,-8,-3"
                 Style="{StaticResource CustomDataGrid}"
                 ColumnHeaderStyle="{StaticResource DarkDataGridColumnHeader}"
-                RowStyle="{StaticResource DarkDataGridRow}" Margin="-1,184,-1,-4"/>
-            <!--Style="{StaticResource CustomDataGrid}"
-                ColumnHeaderStyle="{StaticResource DarkDataGridColumnHeader}"
-                RowStyle="{StaticResource DarkDataGridRow}"/>-->
+                RowStyle="{StaticResource DarkDataGridRow}"/>
+
+            <Menu 
+                Background="#333336"
+                VerticalAlignment="Top"
+                FontSize="18">
+                <MenuItem x:Name="BuyCurrency" Header="Купить валюту" Foreground="White" Click="BuyCurrency_Click"/>
+                <MenuItem x:Name="SellCurrency" Header="Продать валюту" Foreground="White" Click="SellCurrency_Click"/>
+                <MenuItem x:Name="Report" Header="Отчет по работате" Foreground="White" Click="Report_Click"/>
+                <MenuItem x:Name="Help" Header="Справка" Foreground="White" Click="Help_Click"/>
+            </Menu>
         </Grid>
     </Grid>
 </Window>

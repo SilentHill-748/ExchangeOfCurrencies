@@ -70,6 +70,26 @@ namespace ExchangeOfCurrencies.UI
             currienciesTable.HorizontalContentAlignment = HorizontalAlignment.Stretch;
         }
 
+        private void BuyCurrency_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SellCurrency_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Report_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         // todolist
         // TODO: Реализовать систему обновления БД новыми курсами валют из бд.
         // TODO: Реализовать систему запросов в бд для покупки и продажи валют.

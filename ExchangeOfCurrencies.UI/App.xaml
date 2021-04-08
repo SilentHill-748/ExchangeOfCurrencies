@@ -60,19 +60,21 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="HeadersVisibility" Value="Column"/>
             <Setter Property="BorderBrush" Value="#333336"/>
+            <Setter Property="ColumnWidth" Value="130"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
 
         <Style x:Key="DarkDataGridColumnHeader" TargetType="DataGridColumnHeader">
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Background" Value="#3B3B3B"/>
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="DataGridColumnHeader">
                         <Border 
-                            BorderThickness="1" 
-                            CornerRadius="2" 
                             Background="#3B3B3B"
+                            BorderBrush="Black"
                             >
                             <Grid>
                                 <TextBlock Text="{TemplateBinding  Content}" 
@@ -87,7 +89,7 @@
 
         <Style x:Key="DarkDataGridRow" TargetType="DataGridRow">
             <Setter Property="Background" Value="#FF545454"/>
-            <Setter Property="FontSize" Value="14"/>
+            <!--<Setter Property="FontSize" Value="14"/>-->
         </Style>
     </Application.Resources>
 </Application>

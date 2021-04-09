@@ -11,15 +11,15 @@
         Style="{StaticResource DarkWindow}">
     <Grid>
         <Rectangle 
-            x:Name="Head"
+            x:Name="Header"
             Style="{StaticResource Header}"
-            MouseLeftButtonDown="Head_MouseLeftButtonDown"/>
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Label 
             x:Name="HeaderLabel"
             Content="Авторизация" 
             Style="{StaticResource HeaderLabel}"
-            MouseLeftButtonDown="Head_MouseLeftButtonDown"/>
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Image 
             Style="{StaticResource Icon}"

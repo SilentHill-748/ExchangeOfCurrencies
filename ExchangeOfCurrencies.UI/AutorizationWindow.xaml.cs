@@ -56,7 +56,7 @@ namespace ExchangeOfCurrencies.UI
             password = PassBox.Password;
         }
 
-        private void Head_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }

@@ -6,10 +6,12 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>Биржа валют</AssemblyName>
     <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Close.png" />
+    <None Remove="icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +20,7 @@
 
   <ItemGroup>
     <Resource Include="Close.png" />
+    <Resource Include="icon.ico" />
   </ItemGroup>
 
 </Project>

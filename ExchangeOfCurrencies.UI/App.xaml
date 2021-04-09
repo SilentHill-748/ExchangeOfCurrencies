@@ -19,6 +19,23 @@
             <Setter Property="VerticalAlignment" Value="Top"/>
         </Style>
 
+        <Style x:Key="HeaderLabel" TargetType="{x:Type Label}">
+            <Setter Property="Margin" Value="25,-2,0,0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style x:Key="Icon" TargetType="{x:Type Image}">
+            <Setter Property="Margin" Value="3.2, 2.5, 0, 0"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Source" Value="icon.ico"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="20"/>
+        </Style>
+
         <Style x:Key="CloseBox" TargetType="Image">
             <Setter Property="Margin" Value="0,4,4,0"/>
             <Setter Property="Height" Value="17"/>

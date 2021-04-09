@@ -38,7 +38,7 @@
                 RowStyle="{StaticResource DarkDataGridRow}"/>
 
             <Menu 
-                Background="#333336"
+                Background="#4A4A4A"
                 VerticalAlignment="Top"
                 FontSize="18">
                 <MenuItem x:Name="BuyCurrency" Header="Купить валюту" Foreground="White" Click="BuyCurrency_Click"/>

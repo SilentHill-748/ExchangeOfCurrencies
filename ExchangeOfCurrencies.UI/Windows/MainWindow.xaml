@@ -17,10 +17,11 @@
 
         <Label 
             Content="Биржа валюты" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Top" 
-            Margin="0,-2,0,0"
-            FontSize="14"
+            Style="{StaticResource HeaderLabel}"
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+
+        <Image 
+            Style="{StaticResource Icon}"
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Image 

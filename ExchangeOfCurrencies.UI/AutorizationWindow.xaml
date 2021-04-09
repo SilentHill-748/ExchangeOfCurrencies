@@ -18,13 +18,12 @@
         <Label 
             x:Name="HeaderLabel"
             Content="Авторизация" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Top" 
-            Foreground="White"
-            MouseLeftButtonDown="Head_MouseLeftButtonDown" 
-            FontSize="16" 
-            Height="29" 
-            Margin="0,-4,0,0" FontFamily="Segoe UI"/>
+            Style="{StaticResource HeaderLabel}"
+            MouseLeftButtonDown="Head_MouseLeftButtonDown"/>
+
+        <Image 
+            Style="{StaticResource Icon}"
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Image 
             x:Name="CloseBox"

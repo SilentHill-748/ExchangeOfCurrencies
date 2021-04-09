@@ -5,7 +5,7 @@
              StartupUri="AutorizationWindow.xaml">
     <Application.Resources>
         <Style x:Key="DarkWindow" TargetType="Window">
-            <Setter Property="Background" Value="#333336"/>
+            <Setter Property="Background" Value="#4A4A4A"/>
             <Setter Property="ResizeMode" Value="NoResize"/>
             <Setter Property="WindowStyle" Value="None"/>
             <Setter Property="Content" Value=""/>
@@ -58,15 +58,15 @@
         </Style>
 
         <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#444446"/>
+            <Setter Property="Background" Value="#363535"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#444446"/>
+            <Setter Property="BorderBrush" Value="#4A4A4A"/>
         </Style>
 
         <Style TargetType="PasswordBox">
-            <Setter Property="Background" Value="#444446"/>
+            <Setter Property="Background" Value="#363535"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#444446"/>
+            <Setter Property="BorderBrush" Value="#4A4A4A"/>
         </Style>
 
         <Style x:Key="CustomDataGrid" TargetType="DataGrid">

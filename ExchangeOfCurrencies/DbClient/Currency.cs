@@ -16,6 +16,16 @@ namespace ExchangeOfCurrencies.DbClient
         public double Sale => (double)items[4];
         public int Count => (int)items[5];
 
+        public object this[int index]
+        {
+            get
+            {
+                if (index >= items.Length || index < 0)
+                    throw new Exception();
+                return items[index];
+            }
+        }
+
         public Currency(object[] items)
         {
             this.items = items;

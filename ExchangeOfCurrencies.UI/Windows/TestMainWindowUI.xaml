@@ -19,9 +19,11 @@
             x:Name="CloseBox"
             Style="{StaticResource CloseBox}"
             MouseDown="CloseBox_MouseDown"/>
+
         <Image 
             Style="{StaticResource Icon}"
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+
         <Label
             Content="Test window"
             Style="{StaticResource HeaderLabel}"/>
@@ -30,29 +32,46 @@
             <GroupBox 
                 Header="Информация о пользователе" 
                 FontSize="15"
-                Margin="10,10,520,172" 
+                Margin="10,10,498,172" 
                 BorderBrush="#FF020202" 
                 Foreground="White">
+
                 <Grid>
-                    <Label x:Name="BalanceInfo" Content="На Вашем балансе: 0 руб." Padding="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5"/>
-                    <TextBlock x:Name="PurchasedCurrencies" Text="Купленные валюты: -" Margin="5,25,5,5"/>
+                    <Label 
+                        x:Name="BalanceInfo" 
+                        Content="На Вашем балансе:  руб." 
+                        Padding="0,0,0,0" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" 
+                        Margin="5"/>
+
+                    <TextBlock 
+                        x:Name="PurchasedCurrencies" 
+                        Text="Купленные валюты: " 
+                        Margin="5,25,5,5"/>
                 </Grid>
             </GroupBox>
             <GroupBox 
                 Header="Информация о выбранной валюте" 
-                Margin="10,233,520,10"
+                Margin="10,233,498,10"
                 BorderBrush="#FF020202" 
                 Foreground="White"
                 FontSize="15">
+
                 <Grid>
-                    <TextBlock x:Name="InfoCurrentCurrency" TextWrapping="Wrap" Margin="5" FontFamily="Consolas"/>
+                    <TextBlock
+                        x:Name="InfoCurrentCurrency" 
+                        TextWrapping="Wrap" 
+                        Margin="5" 
+                        FontFamily="Consolas"/>
                 </Grid>
             </GroupBox>
             <GroupBox 
-                Header="Пользовательское окно" Margin="296,10,10,10"
+                Header="Пользовательское окно" Margin="307,10,10,10"
                 Foreground="White"
                 FontSize="15"
                 BorderBrush="#FF020202">
+
                 <Grid>
                     <Label 
                         Content="Выберите валюту: " 
@@ -60,22 +79,58 @@
                         Margin="10,10,0,0" 
                         Padding="0"
                         VerticalAlignment="Top"/>
-                    <ComboBox Margin="167,11,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Height="20" Background="{x:Null}"/>
-                    <Label Content="Выберите операцию:" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top"/>
+
+                    <ComboBox 
+                        Style="{DynamicResource DarkComboBox}" 
+                        x:Name="ListOfCurrencies"
+                        Foreground="White"
+                        Margin="167,11,0,0" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Left" 
+                        Width="200" Height="20"
+                        SelectionChanged="ListOfCurrencies_SelectionChanged">
+                        <ComboBox.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#363535"/>
+                        </ComboBox.Resources>
+                    </ComboBox>
+
                     <Label 
                         Content="Укажите количество: " 
                         HorizontalAlignment="Left" 
                         Margin="10,37,0,0" 
                         Padding="0"
                         VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Margin="167,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
-                    <Label Content="Купить валюту" HorizontalAlignment="Left" Margin="56,119,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Продать валюту" HorizontalAlignment="Left" Margin="45,154,0,0" VerticalAlignment="Top"/>
+
+                    <TextBox 
+                        HorizontalAlignment="Left" 
+                        Margin="167,36,0,0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Top"
+                        Width="87"/>
+
+                    <Label 
+                        x:Name="PurchaseLabel"
+                        Content="Купить валюту" 
+                        Style="{StaticResource MouseEvents}" 
+                        HorizontalAlignment="Left" 
+                        Margin="29,73,0,0" 
+                        VerticalAlignment="Top" 
+                        Cursor="Hand"
+                        MouseLeftButtonDown="PurchaseLabel_MouseLeftButtonDown"/>
+
+                    <Label 
+                        x:Name="SaleLabel"
+                        Content="Продать валюту" 
+                        Style="{StaticResource MouseEvents}" 
+                        HorizontalAlignment="Left" 
+                        Margin="146,73,0,0" 
+                        VerticalAlignment="Top"
+                        MouseLeftButtonDown="SaleLabel_MouseLeftButtonDown"/>
 
                 </Grid>
             </GroupBox>
 
         </Grid>
-        <Label Content="Привет, друг :)!" HorizontalAlignment="Right" Margin="0,-3,26,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Привет, !" HorizontalAlignment="Right" Margin="0,-3,26,0" VerticalAlignment="Top" FontSize="14"/>
     </Grid>
 </Window>

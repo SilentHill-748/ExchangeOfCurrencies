@@ -70,7 +70,7 @@ namespace ExchangeOfCurrencies.UI
 
         private void CloseBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            Environment.Exit(Environment.ExitCode);
         }
 
         private void PassBox_KeyUp(object sender, KeyEventArgs e)
@@ -101,10 +101,8 @@ namespace ExchangeOfCurrencies.UI
                 //Autorization autorization = new(login, password);
                 //await Task.Run(() => autorization.BeginAutorization());                         // Начал проверку данных по БД.
 
-                //mainWindow = new MainWindow("Никита");
-                //mainWindow.Show();                                                  // Если ошибок нет - открываю основное окно и закрываю текущее.
-                TestMainWindowUI test = new TestMainWindowUI();
-                test.Show();
+                mainWindow = new MainWindow();
+                mainWindow.Show();                                                  // Если ошибок нет - открываю основное окно и закрываю текущее.
                 this.Close();
             }
             catch (Exception ex)

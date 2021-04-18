@@ -5,47 +5,132 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI"
         mc:Ignorable="d"
-        Height="220" 
-        Width="781" 
-        WindowStartupLocation="CenterScreen" 
+        Height="426" 
+        Width="800"
+        WindowStartupLocation="CenterScreen"
         Style="{StaticResource DarkWindow}">
     <Grid>
         <Rectangle 
-            Style="{StaticResource Header}"
             x:Name="Header"
-            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
-
-        <Label 
-            Content="Биржа валюты" 
-            Style="{StaticResource HeaderLabel}"
-            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
-
-        <Image 
-            Style="{StaticResource Icon}"
+            Style="{StaticResource Header}"
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Image 
             x:Name="CloseBox"
             Style="{StaticResource CloseBox}"
-            MouseDown="CloseBox_MouseDown" />
+            MouseDown="CloseBox_MouseDown"/>
 
-        <Grid Margin="0,25,0,0">
-            <DataGrid 
-                x:Name="currienciesTable" 
-                Margin="0,33,-8,-3"
-                Style="{StaticResource CustomDataGrid}"
-                ColumnHeaderStyle="{StaticResource DarkDataGridColumnHeader}"
-                RowStyle="{StaticResource DarkDataGridRow}"/>
+        <Image 
+            Style="{StaticResource Icon}"
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
-            <Menu 
-                Background="#4A4A4A"
-                VerticalAlignment="Top"
-                FontSize="18">
-                <MenuItem x:Name="BuyCurrency" Header="Купить валюту" Foreground="White" Click="BuyCurrency_Click"/>
-                <MenuItem x:Name="SellCurrency" Header="Продать валюту" Foreground="White" Click="SellCurrency_Click"/>
-                <MenuItem x:Name="Report" Header="Отчет по работате" Foreground="White" Click="Report_Click"/>
-                <MenuItem x:Name="Help" Header="Справка" Foreground="White" Click="Help_Click"/>
-            </Menu>
+        <Label
+            Content="Test window"
+            Style="{StaticResource HeaderLabel}"/>
+
+        <Grid Margin="0,26,0,0">
+            <GroupBox 
+                Header="Информация о пользователе" 
+                FontSize="15"
+                Margin="10,10,498,172" 
+                BorderBrush="#FF020202" 
+                Foreground="White">
+
+                <Grid>
+                    <Label 
+                        x:Name="BalanceInfo" 
+                        Content="На Вашем балансе:  руб." 
+                        Padding="0,0,0,0" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" 
+                        Margin="5"/>
+
+                    <TextBlock 
+                        x:Name="PurchasedCurrencies" 
+                        Text="Купленные валюты: " 
+                        Margin="5,25,5,5"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox 
+                Header="Информация о выбранной валюте" 
+                Margin="10,233,498,10"
+                BorderBrush="#FF020202" 
+                Foreground="White"
+                FontSize="15">
+
+                <Grid>
+                    <TextBlock
+                        x:Name="InfoCurrentCurrency" 
+                        TextWrapping="Wrap" 
+                        Margin="5" 
+                        FontFamily="Consolas"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox 
+                Header="Пользовательское окно" Margin="307,10,10,10"
+                Foreground="White"
+                FontSize="15"
+                BorderBrush="#FF020202">
+
+                <Grid>
+                    <Label 
+                        Content="Выберите валюту: " 
+                        HorizontalAlignment="Left" 
+                        Margin="10,10,0,0" 
+                        Padding="0"
+                        VerticalAlignment="Top"/>
+
+                    <ComboBox 
+                        Style="{DynamicResource DarkComboBox}" 
+                        x:Name="ListOfCurrencies"
+                        Foreground="White"
+                        Margin="167,11,0,0" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Left" 
+                        Width="200" Height="20"
+                        SelectionChanged="ListOfCurrencies_SelectionChanged">
+                        <ComboBox.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#363535"/>
+                        </ComboBox.Resources>
+                    </ComboBox>
+
+                    <Label 
+                        Content="Укажите количество: " 
+                        HorizontalAlignment="Left" 
+                        Margin="10,37,0,0" 
+                        Padding="0"
+                        VerticalAlignment="Top"/>
+
+                    <TextBox 
+                        HorizontalAlignment="Left" 
+                        Margin="167,36,0,0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Top"
+                        Width="87"/>
+
+                    <Label 
+                        x:Name="PurchaseLabel"
+                        Content="Купить валюту" 
+                        Style="{StaticResource MouseEvents}" 
+                        HorizontalAlignment="Left" 
+                        Margin="29,73,0,0" 
+                        VerticalAlignment="Top" 
+                        Cursor="Hand"
+                        MouseLeftButtonDown="PurchaseLabel_MouseLeftButtonDown"/>
+
+                    <Label 
+                        x:Name="SaleLabel"
+                        Content="Продать валюту" 
+                        Style="{StaticResource MouseEvents}" 
+                        HorizontalAlignment="Left" 
+                        Margin="146,73,0,0" 
+                        VerticalAlignment="Top"
+                        MouseLeftButtonDown="SaleLabel_MouseLeftButtonDown"/>
+
+                </Grid>
+            </GroupBox>
+
         </Grid>
+        <Label Content="Привет, !" HorizontalAlignment="Right" Margin="0,-3,26,0" VerticalAlignment="Top" FontSize="14"/>
     </Grid>
 </Window>

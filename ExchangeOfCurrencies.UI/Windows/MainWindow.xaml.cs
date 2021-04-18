@@ -20,74 +20,73 @@ namespace ExchangeOfCurrencies.UI
 {
     public partial class MainWindow : Window
     {
-        private readonly string loadData = "SELECT * FROM currencies";
-        private string login;
+        private List<Currency> allCurrencies;
 
         public MainWindow()
         {
             InitializeComponent();
+            Init();
+        }
+
+        private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();
+
+        private void CloseBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+        }
+
+        private void ListOfCurrencies_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListOfCurrencies.SelectedIndex == -1) return;
+
+            InfoCurrentCurrency.Text = "";
+            string currencyName = ListOfCurrencies.SelectedItem.ToString();
+
+            Currency currency = allCurrencies.Find(m => m.Name.Equals(currencyName));
+            LoadInfoAboutChosenCurrency(currency);
+        }
+
+        private void PurchaseLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void SaleLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
 
         private void Init()
         {
-            Request getData = new (loadData);
-            currienciesTable.ItemsSource = FillTable(getData.DataSet);
-            currienciesTable.RowHeight = 20;
+            ListOfCurrencies.Background = Brushes.Black;
+            allCurrencies = new List<Currency>();
+            GetAllCurrencies();
+            FillListOfCurrencies();
         }
 
-        public MainWindow(string login)
+        private void GetAllCurrencies()
         {
-            InitializeComponent();
-            this.login = login;
-            Init();
+            DataTable tableOfCurrencies = Request.Send("SELECT * FROM currencies;").Tables[0];
+            for (int i = 0; i < tableOfCurrencies.Rows.Count; i++)
+                allCurrencies.Add(new Currency(tableOfCurrencies.Rows[i].ItemArray));
         }
 
-        private void CloseBox_MouseDown(object sender, MouseButtonEventArgs e)
+        private void FillListOfCurrencies()
         {
-            Close();
+            foreach (Currency currency in allCurrencies)
+                ListOfCurrencies.Items.Add(currency.Name);
         }
 
-        private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void LoadInfoAboutChosenCurrency(Currency currency)
         {
-            DragMove();
-        }
-
-        private List<Currency> FillTable(DataSet selectedTable)
-        {
-            List<Currency> currencies = new();
-            var table = selectedTable.Tables[0];
-
-            for (int i = 0; i < table.Rows.Count; i++)
+            string[] currencyFields = { "Код", "Сим. код", "Название", "Курс", "Продажа", "Количество" };
+            for (int i = 0; i < currencyFields.Length; i++)
             {
-                Currency currency = new(table.Rows[i].ItemArray);
-                currencies.Add(currency);
+                if (currencyFields[i].Length < 10)
+                    InfoCurrentCurrency.Text += $"{currencyFields[i] + ":",-11} {currency[i]}\n";
+                else
+                    InfoCurrentCurrency.Text += $"{currencyFields[i]}: {currency[i]}\n";
             }
-            return currencies;
-        }
-
-        private void InitTable()
-        {
-            currienciesTable.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-        }
-
-        private void BuyCurrency_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void SellCurrency_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Report_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Help_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         // todolist

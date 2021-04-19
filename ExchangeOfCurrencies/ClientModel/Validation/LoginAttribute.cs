@@ -19,7 +19,7 @@ namespace ExchangeOfCurrencies.ClientModel.Validation
         private bool CheckLoginToList(string login, string xmlData)
         {
             string pattern = $@"<login>{login}</login>";
-            return Regex.IsMatch(xmlData, pattern);
+            return !Regex.IsMatch(xmlData, pattern);
         }
 
         // Вытаскиваю логины из БД. Метод вернет xml-документ.

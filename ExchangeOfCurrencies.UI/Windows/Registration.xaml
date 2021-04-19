@@ -40,7 +40,7 @@
                 Margin="57,363,0,0" 
                 VerticalAlignment="Top"
                 FontSize="16"
-                MouseDown="CancelL_MouseDown"/>
+                MouseDown="CloseBox_MouseDown"/>
 
             <Label 
                 x:Name="RegL"
@@ -74,8 +74,7 @@
                 Margin="15,227,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
-                FontSize="18" 
-                Foreground="White"/>
+                FontSize="18"/>
 
             <Label 
                 Content="Логин:" 
@@ -83,8 +82,7 @@
                 Margin="16,38,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
-                FontSize="18" 
-                Foreground="White"/>
+                FontSize="18"/>
 
             <Label 
                 Content="Пароль:" 
@@ -92,8 +90,7 @@
                 Margin="15,69,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
-                FontSize="18"
-                Foreground="White"/>
+                FontSize="18"/>
 
             <Label 
                 Content="Повторите пароль:" 
@@ -101,8 +98,7 @@
                 Margin="15,100,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
-                FontSize="18" 
-                Foreground="White"/>
+                FontSize="18"/>
 
             <Label 
                 Content="Личный телефон:" 
@@ -110,8 +106,7 @@
                 Margin="15,258,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
-                FontSize="18" 
-                Foreground="White"/>
+                FontSize="18"/>
 
             <Label 
                 Content="E-mail адрес:" 
@@ -119,69 +114,68 @@
                 Margin="16,301,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
-                FontSize="18" 
-                Foreground="White"/>
+                FontSize="18"/>
 
             <TextBox 
+                x:Name="LoginText"
                 HorizontalAlignment="Left" 
                 Margin="213,37,0,0"
-                TextWrapping="Wrap" 
                 VerticalAlignment="Top"
                 Width="192"
                 FontSize="18"/>
 
-            <TextBox 
+            <PasswordBox 
+                x:Name="PassBox"
                 HorizontalAlignment="Left" 
                 Margin="213,68,0,0" 
-                TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
                 Width="192" 
                 FontSize="18"/>
 
-            <TextBox 
+            <PasswordBox 
+                x:Name="ConfPassBox"
                 HorizontalAlignment="Left"
                 Margin="213,99,0,0"
-                TextWrapping="Wrap"
                 VerticalAlignment="Top"
                 Width="192"
                 FontSize="18"/>
 
             <TextBox 
+                x:Name="FirstNameText"
                 HorizontalAlignment="Left"
                 Margin="213,164,0,0" 
-                TextWrapping="Wrap"
                 VerticalAlignment="Top"
                 Width="192" 
                 FontSize="18"/>
 
             <TextBox
+                x:Name="MiddleNameText"
                 HorizontalAlignment="Left" 
                 Margin="213,195,0,0"
-                TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
                 Width="192" 
                 FontSize="18"/>
 
             <TextBox 
+                x:Name="PhoneText"
                 HorizontalAlignment="Left"
                 Margin="213,257,0,0" 
-                TextWrapping="Wrap"
                 VerticalAlignment="Top" 
                 Width="192" 
                 FontSize="18"/>
 
             <TextBox 
+                x:Name="LastNameText"
                 HorizontalAlignment="Left" 
                 Margin="213,226,0,0" 
-                TextWrapping="Wrap" 
                 VerticalAlignment="Top"
                 Width="192" 
                 FontSize="18"/>
 
             <TextBox 
+                x:Name="EmailText"
                 HorizontalAlignment="Left" 
                 Margin="213,300,0,0" 
-                TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
                 Width="192" 
                 FontSize="18"/>
@@ -192,8 +186,7 @@
                 Margin="273,327,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0"
-                FontSize="10" 
-                Foreground="White"/>
+                FontSize="10"/>
 
             <Label 
                 Content="Например: +7 123 4567890" 
@@ -201,8 +194,7 @@
                 Margin="278,283,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
-                FontSize="10" 
-                Foreground="White"/>
+                FontSize="10"/>
 
             <GridSplitter 
                 HorizontalAlignment="Center" 

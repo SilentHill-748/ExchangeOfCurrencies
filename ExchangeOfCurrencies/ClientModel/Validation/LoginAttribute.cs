@@ -6,7 +6,7 @@ namespace ExchangeOfCurrencies.ClientModel.Validation
 {
     public class LoginAttribute : ValidationAttribute
     {
-        private const string loginsQuary = "SELECT login FROM employees";
+        private const string loginsQuary = "SELECT login FROM clients";
 
         public override bool IsValid(object value)
         {

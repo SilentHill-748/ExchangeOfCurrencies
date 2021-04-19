@@ -11,7 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Reflection;
+using DataAnnotations = System.ComponentModel.DataAnnotations;
 
+using ExchangeOfCurrencies.UI.Windows.MessageWindows;
 using ExchangeOfCurrencies.ClientModel;
 using ExchangeOfCurrencies.DbClient;
 
@@ -22,8 +25,6 @@ namespace ExchangeOfCurrencies.UI.Windows
     /// </summary>
     public partial class Registration : Window
     {
-        User regData;
-
         public Registration()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace ExchangeOfCurrencies.UI.Windows
 
         private void Init()
         {
-            regData = new User();
+            
         }
 
         private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -42,51 +43,59 @@ namespace ExchangeOfCurrencies.UI.Windows
 
         private void CloseBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            AutorizationWindow loginWin = new();
+            AutorizationWindow loginWin = new ();
             loginWin.Show();
             this.Close();
         }
 
-        private void CancelL_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            CloseBox_MouseDown(sender, e);
-        }
-
         private void RegL_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            Validation();
         }
 
-        private void ShowErrors(string[] errors)
+        private void FillPersonalDataCollection(Dictionary<string, object> personalData)
         {
-            string message = string.Join("\n", errors);
-            MessageBox.Show(message, "Внимание!", 
-                MessageBoxButton.OK, MessageBoxImage.Error);
+            Control[] inputBoxes =
+            { LoginText, PassBox, ConfPassBox, FirstNameText, MiddleNameText, LastNameText, PhoneText, EmailText };
+            string[] keys =
+            { "Login", "Password", "ConfirmPassword", "FirstName", "MiddleName", "LastName", "Phone", "Email" };
+
+            string value = "";
+            for (int i = 0; i < inputBoxes.Length; i++)
+            {
+                if (inputBoxes[i] is TextBox tb)
+                    value = tb.Text;
+                else if (inputBoxes[i] is PasswordBox pb)
+                    value = pb.Password;
+                personalData.Add(keys[i], value);
+            }
         }
 
-        //TODO: ВЫНЕСТИ НА УРОВЕНЬ КЛАССА Client.cs!
-        // Проверка ввода данных.
-        //private void Validate(Client client)
-        //{
-        //    var context = new Validation.ValidationContext(client);
-        //    var errors = new List<Validation.ValidationResult>();
-        //    bool isValidated = Validation.Validator.TryValidateObject(client, context, errors, true);
+        private void Validation()
+        {
+            var errors = new List<DataAnnotations.ValidationResult>();
+            try
+            {
+                Dictionary<string, object> personalData = new();
+                FillPersonalDataCollection(personalData);
+                User currentUser = new(personalData);
+                errors = currentUser.Validate(new DataAnnotations.ValidationContext(currentUser)).ToList();
+                if (errors.Count > 0) 
+                    throw new Exception("Некорректный ввод данных!");
+            }
+            catch (Exception ex)
+            {
+                errors = errors.Prepend(new DataAnnotations.ValidationResult(ex.Message)).ToList();
+                ShowErrors(errors);
+            }
+        }
 
-        //    if (!isValidated)
-        //    {
-        //        string errorMessage = ShowValidateErrors(errors);
-        //        throw new Validation.ValidationException(errorMessage);
-        //    }
-        //}
-
-        //private string ShowValidateErrors(List<Validation.ValidationResult> errors)
-        //{
-        //    string errorMessage = "";
-        //    foreach (Validation.ValidationResult error in errors)
-        //    {
-        //        errorMessage += error.ErrorMessage + "\n";
-        //    }
-        //    return errorMessage;
-        //}
+        private void ShowErrors(IEnumerable<DataAnnotations.ValidationResult> errors)
+        {
+            string message = string.Join("\n", errors.Select(e => e.ErrorMessage));
+            MessageBox.Show(message, "Внимание");
+            Message error = new (message, "Внимание!");
+            error.ShowDialog();
+        }
     }
 }

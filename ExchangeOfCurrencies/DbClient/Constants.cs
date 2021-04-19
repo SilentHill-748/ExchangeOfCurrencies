@@ -12,7 +12,5 @@
                                                "Database=exchenge_rates; " +
                                                "user=root; " +
                                                "password=K20PQR3256qsh1";
-
-        public const string SelectLoginAndPass = "SELECT login, password FROM employees";
     }
 }

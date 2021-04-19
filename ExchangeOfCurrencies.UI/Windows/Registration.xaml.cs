@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Reflection;
 using DataAnnotations = System.ComponentModel.DataAnnotations;
 
 using ExchangeOfCurrencies.UI.Windows.MessageWindows;
@@ -20,25 +12,17 @@ using ExchangeOfCurrencies.DbClient;
 
 namespace ExchangeOfCurrencies.UI.Windows
 {
-    /// <summary>
-    /// Логика взаимодействия для Registration.xaml
-    /// </summary>
     public partial class Registration : Window
     {
+        private User currentUser;
         public Registration()
         {
             InitializeComponent();
-            Init();
-        }
-
-        private void Init()
-        {
-            
         }
 
         private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void CloseBox_MouseDown(object sender, MouseButtonEventArgs e)
@@ -50,7 +34,18 @@ namespace ExchangeOfCurrencies.UI.Windows
 
         private void RegL_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Validation();
+            try
+            {
+                if (!Validation()) return;
+                string quary = BuildQuaryString();
+                Request.Send(quary);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                Message mes = new (ex.Message, "Внимание!");
+                mes.ShowDialog();
+            }
         }
 
         private void FillPersonalDataCollection(Dictionary<string, object> personalData)
@@ -71,31 +66,56 @@ namespace ExchangeOfCurrencies.UI.Windows
             }
         }
 
-        private void Validation()
+        private bool Validation()
         {
             var errors = new List<DataAnnotations.ValidationResult>();
             try
             {
                 Dictionary<string, object> personalData = new();
                 FillPersonalDataCollection(personalData);
-                User currentUser = new(personalData);
-                errors = currentUser.Validate(new DataAnnotations.ValidationContext(currentUser)).ToList();
-                if (errors.Count > 0) 
-                    throw new Exception("Некорректный ввод данных!");
+                currentUser = new(personalData);
+
+                DataAnnotations.ValidationContext context = new (currentUser);
+                if (!DataAnnotations.Validator.TryValidateObject(currentUser, context, errors, true))
+                    throw new Exception("Регистрационные данные введены некорректно!");
+                return true;
             }
             catch (Exception ex)
             {
                 errors = errors.Prepend(new DataAnnotations.ValidationResult(ex.Message)).ToList();
                 ShowErrors(errors);
+                return false;
             }
         }
 
         private void ShowErrors(IEnumerable<DataAnnotations.ValidationResult> errors)
         {
             string message = string.Join("\n", errors.Select(e => e.ErrorMessage));
-            //MessageBox.Show(message, "Внимание");
             Message error = new (message, "Внимание!");
             error.ShowDialog();
+        }
+
+        private string BuildQuaryString()
+        {
+            string quary = "INSERT INTO users(firstname, secondname, lastname, email, phone, login, password) ";
+            var propertyValuesOfCurrentUser = currentUser.GetType().GetProperties().
+                Select(p => p.GetValue(currentUser)).ToArray();
+
+            string values = GetValuesFromProperties(propertyValuesOfCurrentUser);
+            return quary + $"VALUES ({values});";
+        }
+
+        private string GetValuesFromProperties(object[] propertyValues)
+        {
+            string result = "";
+            for (int i = 0; i < propertyValues.Length - 1; i++)
+            {
+                if (i < propertyValues.Length - 2)
+                    result += $"\'{propertyValues[i]}\', ";
+                else
+                    result += $"\'{propertyValues[i]}\'";
+            }
+            return result;
         }
     }
 }

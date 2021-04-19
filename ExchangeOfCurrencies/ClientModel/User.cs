@@ -15,6 +15,7 @@ namespace ExchangeOfCurrencies.ClientModel
         public User(Dictionary<string, object> personalData)
         {
             this.personalData = personalData;
+            Init();
         }
 
         public void BuyCurrency()
@@ -27,13 +28,9 @@ namespace ExchangeOfCurrencies.ClientModel
 
         }
 
-        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        private void Init()
         {
-            // TODO: сделать самовалидацию.
             SetPropertyValues();
-            var errors = new List<ValidationResult>();
-            Validator.TryValidateObject(this, validationContext, errors, true);
-            return errors;
         }
 
         private void SetPropertyValues()

@@ -5,7 +5,7 @@ using ExchangeOfCurrencies.ClientModel.Validation;
 namespace ExchangeOfCurrencies.ClientModel
 {
     // Абстрактный класс для персонала или клиентов.
-    public abstract class Person : IValidatableObject
+    public abstract class Person
     {
         [Required(ErrorMessage ="Поле ввода имени обязательно!")]
         [Name(ErrorMessage = "Имя указано некорректно!")]
@@ -19,16 +19,16 @@ namespace ExchangeOfCurrencies.ClientModel
         [Name(ErrorMessage = "Отчество указано некорректно!")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Не указан номер телефона!")]
-        [CustomPhone(ErrorMessage = "Указан неверный формат телефона!")]
-        public string Phone { get; set; }
-
         [Required(ErrorMessage = "Не указан Email-адрес!")]
         [Email(ErrorMessage = "Указан некорректный e-mail!")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Не указан номер телефона!")]
+        [CustomPhone(ErrorMessage = "Указан неверный формат телефона!")]
+        public string Phone { get; set; }
+
         [Required(ErrorMessage = "Необходимо указать логин!")]
-        [Login(ErrorMessage = "Данный логин уже занят!")]
+        [Login]
         public string Login { get; set; }
 
         [Required(ErrorMessage = "Не указан пароль!")]
@@ -38,7 +38,5 @@ namespace ExchangeOfCurrencies.ClientModel
         public string ConfirmPassword { get; set; }
 
         public Person() { }
-
-        public abstract IEnumerable<ValidationResult> Validate(ValidationContext validationContext);
     }
 }

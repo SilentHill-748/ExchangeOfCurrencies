@@ -122,7 +122,8 @@
                 Margin="213,37,0,0"
                 VerticalAlignment="Top"
                 Width="192"
-                FontSize="18"/>
+                FontSize="18"
+                MaxLength="15"/>
 
             <PasswordBox 
                 x:Name="PassBox"
@@ -130,7 +131,8 @@
                 Margin="213,68,0,0" 
                 VerticalAlignment="Top" 
                 Width="192" 
-                FontSize="18"/>
+                FontSize="18"
+                MaxLength="20"/>
 
             <PasswordBox 
                 x:Name="ConfPassBox"
@@ -138,7 +140,8 @@
                 Margin="213,99,0,0"
                 VerticalAlignment="Top"
                 Width="192"
-                FontSize="18"/>
+                FontSize="18"
+                MaxLength="20"/>
 
             <TextBox 
                 x:Name="FirstNameText"
@@ -146,7 +149,8 @@
                 Margin="213,164,0,0" 
                 VerticalAlignment="Top"
                 Width="192" 
-                FontSize="18"/>
+                FontSize="18"
+                MaxLength="100"/>
 
             <TextBox
                 x:Name="MiddleNameText"
@@ -154,23 +158,26 @@
                 Margin="213,195,0,0"
                 VerticalAlignment="Top" 
                 Width="192" 
-                FontSize="18"/>
-
-            <TextBox 
-                x:Name="PhoneText"
-                HorizontalAlignment="Left"
-                Margin="213,257,0,0" 
-                VerticalAlignment="Top" 
-                Width="192" 
-                FontSize="18"/>
+                FontSize="18"
+                MaxLength="150"/>
 
             <TextBox 
                 x:Name="LastNameText"
+                HorizontalAlignment="Left"
+                Margin="213,227,0,0" 
+                VerticalAlignment="Top" 
+                Width="192" 
+                FontSize="18"
+                MaxLength="150"/>
+
+            <TextBox 
+                x:Name="PhoneText"
                 HorizontalAlignment="Left" 
-                Margin="213,226,0,0" 
+                Margin="213,258,0,0" 
                 VerticalAlignment="Top"
                 Width="192" 
-                FontSize="18"/>
+                FontSize="18"
+                MaxLength="14"/>
 
             <TextBox 
                 x:Name="EmailText"
@@ -178,7 +185,8 @@
                 Margin="213,300,0,0" 
                 VerticalAlignment="Top" 
                 Width="192" 
-                FontSize="18"/>
+                FontSize="18"
+                MaxLength="75"/>
 
             <Label 
                 Content="Например: example@mail.ru" 
@@ -191,7 +199,7 @@
             <Label 
                 Content="Например: +7 123 4567890" 
                 HorizontalAlignment="Left" 
-                Margin="278,283,0,0" 
+                Margin="278,284,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="10"/>

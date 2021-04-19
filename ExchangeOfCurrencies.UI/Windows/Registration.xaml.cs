@@ -93,7 +93,7 @@ namespace ExchangeOfCurrencies.UI.Windows
         private void ShowErrors(IEnumerable<DataAnnotations.ValidationResult> errors)
         {
             string message = string.Join("\n", errors.Select(e => e.ErrorMessage));
-            MessageBox.Show(message, "Внимание");
+            //MessageBox.Show(message, "Внимание");
             Message error = new (message, "Внимание!");
             error.ShowDialog();
         }

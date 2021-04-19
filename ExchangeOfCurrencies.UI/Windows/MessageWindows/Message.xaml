@@ -29,19 +29,19 @@
             MouseLeftButtonDown="CloseBox_MouseLeftButtonDown"/>
 
         <Grid Margin="0,26,0,0">
-            <TextBlock 
+            <ScrollViewer Margin="20,20,10,33" >
+                <TextBlock 
                 x:Name="MessageBlock"
                 TextWrapping="Wrap" 
-                VerticalAlignment="Top" 
-                Margin="30,20,30,0" 
-                Height="80" 
-                Width="338"
+                Height="Auto" 
+                Width="Auto"
                 Foreground="White"
                 FontSize="15" 
                 TextAlignment="Justify"
                 FontFamily="Segoe UI" 
                 FontStyle="Normal"
                 Block.IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"/>
+            </ScrollViewer>
 
             <Label 
                 x:Name="OkLabel"

@@ -28,7 +28,7 @@ namespace ExchangeOfCurrencies.ClientModel
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Не указан Email-адрес!")]
-        [EmailAddress(ErrorMessage = "Указан некорректный e-mail!")]
+        [Email(ErrorMessage = "Указан некорректный e-mail!")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать логин!")]

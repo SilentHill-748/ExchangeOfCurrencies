@@ -14,18 +14,28 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 
+using ExchangeOfCurrencies.ClientModel;
 using ExchangeOfCurrencies.DbClient;
 
 namespace ExchangeOfCurrencies.UI
 {
     public partial class MainWindow : Window
     {
+        private User currentUser;
         private List<Currency> allCurrencies;
 
         public MainWindow()
         {
             InitializeComponent();
             Init();
+        }
+
+        public MainWindow(User currentUser)
+        {
+            InitializeComponent();
+            Init();
+            this.currentUser = currentUser;
+
         }
 
         private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();
@@ -41,23 +51,28 @@ namespace ExchangeOfCurrencies.UI
 
             InfoCurrentCurrency.Text = "";
             string currencyName = ListOfCurrencies.SelectedItem.ToString();
-
             Currency currency = allCurrencies.Find(m => m.Name.Equals(currencyName));
             LoadInfoAboutChosenCurrency(currency);
         }
 
         private void PurchaseLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            UpdateListOfCurrencies();
         }
 
         private void SaleLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            UpdateListOfCurrencies();
+        }
+
+        private void GetReportLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
         }
 
         private void Init()
         {
+            WelcomMessage.Content = $"Привет, {currentUser.FirstName}! :)";
             ListOfCurrencies.Background = Brushes.Black;
             allCurrencies = new List<Currency>();
             GetAllCurrencies();
@@ -87,6 +102,17 @@ namespace ExchangeOfCurrencies.UI
                 else
                     InfoCurrentCurrency.Text += $"{currencyFields[i]}: {currency[i]}\n";
             }
+        }
+
+        private async void UpdateListOfCurrencies()
+        {
+            allCurrencies.Clear();
+            ListOfCurrencies.Items.Clear();
+            await Task.Run(() =>
+            {
+                GetAllCurrencies();
+                FillListOfCurrencies();
+            });
         }
 
         // todolist

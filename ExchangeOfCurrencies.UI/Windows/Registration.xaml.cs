@@ -22,7 +22,7 @@ namespace ExchangeOfCurrencies.UI.Windows
     /// </summary>
     public partial class Registration : Window
     {
-        Client regData;
+        User regData;
 
         public Registration()
         {
@@ -32,7 +32,7 @@ namespace ExchangeOfCurrencies.UI.Windows
 
         private void Init()
         {
-            regData = new Client();
+            regData = new User();
         }
 
         private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

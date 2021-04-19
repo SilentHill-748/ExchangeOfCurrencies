@@ -123,14 +123,28 @@
                         Content="Продать валюту" 
                         Style="{StaticResource MouseEvents}" 
                         HorizontalAlignment="Left" 
-                        Margin="146,73,0,0" 
+                        Margin="144,73,0,0" 
                         VerticalAlignment="Top"
                         MouseLeftButtonDown="SaleLabel_MouseLeftButtonDown"/>
+                    
+                    <Label 
+                        x:Name="GetReportLabel"
+                        Content="Отчёт" 
+                        Style="{StaticResource MouseEvents}" 
+                        HorizontalAlignment="Left" 
+                        Margin="270,73,0,0" 
+                        VerticalAlignment="Top"
+                        MouseLeftButtonDown="GetReportLabel_MouseLeftButtonDown"/>
 
                 </Grid>
             </GroupBox>
 
         </Grid>
-        <Label Content="Привет, !" HorizontalAlignment="Right" Margin="0,-3,26,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label 
+            x:Name="WelcomMessage" 
+            HorizontalAlignment="Right" 
+            Margin="0,-3,26,0"
+            VerticalAlignment="Top" 
+            FontSize="14"/>
     </Grid>
 </Window>

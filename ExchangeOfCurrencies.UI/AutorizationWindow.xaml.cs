@@ -99,7 +99,7 @@ namespace ExchangeOfCurrencies.UI
             {
                 //HeaderLabel.Content += " | загрузка..";
                 //Autorization autorization = new(login, password);
-                //await Task.Run(() => autorization.BeginAutorization());                         // Начал проверку данных по БД.
+                //User currentUser = await Task.Run(() => autorization.BeginAutorization()); // Начал проверку данных по БД.
 
                 mainWindow = new MainWindow();
                 mainWindow.Show();                                                  // Если ошибок нет - открываю основное окно и закрываю текущее.

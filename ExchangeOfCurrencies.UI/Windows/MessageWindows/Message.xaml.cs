@@ -23,8 +23,6 @@ namespace ExchangeOfCurrencies.UI.Windows.MessageWindows
 
         private void Init(string message, string header)
         {
-            OkLabel.MouseDown += CloseBox_MouseLeftButtonDown;
-            HeaderLabel.MouseLeftButtonDown += Header_MouseLeftButtonDown;
             HeaderLabel.Content = header;
             MessageBlock.Text = message;
         }

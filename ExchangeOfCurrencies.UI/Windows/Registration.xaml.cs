@@ -7,17 +7,19 @@ using System.Windows.Input;
 using DataAnnotations = System.ComponentModel.DataAnnotations;
 
 using ExchangeOfCurrencies.UI.Windows.MessageWindows;
-using ExchangeOfCurrencies.ClientModel;
+using ExchangeOfCurrencies.ClientModel.Validation;
 using ExchangeOfCurrencies.DbClient;
 
 namespace ExchangeOfCurrencies.UI.Windows
 {
     public partial class Registration : Window
     {
-        private User currentUser;
+        private readonly List<Control> inputFieldsOfPersonalData;
+
         public Registration()
         {
             InitializeComponent();
+            inputFieldsOfPersonalData = new List<Control>();
         }
 
         private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -32,12 +34,20 @@ namespace ExchangeOfCurrencies.UI.Windows
             this.Close();
         }
 
+        private void PersonalDataBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            object eventSource = e.Source;
+            if (!inputFieldsOfPersonalData.Contains(eventSource))
+                inputFieldsOfPersonalData.Add(eventSource as Control);
+        }
+
         private void RegL_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            List<string> personalData = GetValuesFromInputFields();
             try
             {
-                if (!Validation()) return;
-                string quary = BuildQuaryString();
+                if (!Validation(personalData)) return;
+                string quary = BuildQuaryString(personalData);
                 Request.Send(quary);
                 this.Close();
             }
@@ -48,42 +58,18 @@ namespace ExchangeOfCurrencies.UI.Windows
             }
         }
 
-        private void FillPersonalDataCollection(Dictionary<string, object> personalData)
+        private bool Validation(List<string> personalData)
         {
-            Control[] inputBoxes =
-            { LoginText, PassBox, ConfPassBox, FirstNameText, MiddleNameText, LastNameText, PhoneText, EmailText };
-            string[] keys =
-            { "Login", "Password", "ConfirmPassword", "FirstName", "MiddleName", "LastName", "Phone", "Email" };
-
-            string value = "";
-            for (int i = 0; i < inputBoxes.Length; i++)
-            {
-                if (inputBoxes[i] is TextBox tb)
-                    value = tb.Text;
-                else if (inputBoxes[i] is PasswordBox pb)
-                    value = pb.Password;
-                personalData.Add(keys[i], value);
-            }
-        }
-
-        private bool Validation()
-        {
-            var errors = new List<DataAnnotations.ValidationResult>();
+            UserValidationContext validation = new (personalData);
             try
             {
-                Dictionary<string, object> personalData = new();
-                FillPersonalDataCollection(personalData);
-                currentUser = new(personalData);
-
-                DataAnnotations.ValidationContext context = new (currentUser);
-                if (!DataAnnotations.Validator.TryValidateObject(currentUser, context, errors, true))
-                    throw new Exception("Регистрационные данные введены некорректно!");
+                if (!validation.Validate())
+                    throw new Exception();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                errors = errors.Prepend(new DataAnnotations.ValidationResult(ex.Message)).ToList();
-                ShowErrors(errors);
+                ShowErrors(validation.Errors);
                 return false;
             }
         }
@@ -95,27 +81,32 @@ namespace ExchangeOfCurrencies.UI.Windows
             error.ShowDialog();
         }
 
-        private string BuildQuaryString()
+        private List<string> GetValuesFromInputFields()
         {
-            string quary = "INSERT INTO users(firstname, secondname, lastname, email, phone, login, password) ";
-            var propertyValuesOfCurrentUser = currentUser.GetType().GetProperties().
-                Select(p => p.GetValue(currentUser)).ToArray();
+            List<string> result = new ();
+            foreach (Control control in inputFieldsOfPersonalData)
+            {
+                if (control is TextBox tb)
+                    result.Add(tb.Text);
+                else
+                    result.Add((control as PasswordBox).Password);
+            }
+            return result;
+        }
 
-            string values = GetValuesFromProperties(propertyValuesOfCurrentUser);
+        private string BuildQuaryString(List<string> personalData)
+        {
+            string quary = "INSERT INTO users (firstname, secondname, lastname, phone, email, login, password) ";
+            var insertValues = personalData.Take(personalData.Count - 1).ToList();
+            string values = GetValuesFromProperties(insertValues);
             return quary + $"VALUES ({values});";
         }
 
-        private string GetValuesFromProperties(object[] propertyValues)
+        // Приводит каждую строку данных к нужному формату и записывает всё в 1 строку.
+        private string GetValuesFromProperties(List<string> insertValues)
         {
-            string result = "";
-            for (int i = 0; i < propertyValues.Length - 1; i++)
-            {
-                if (i < propertyValues.Length - 2)
-                    result += $"\'{propertyValues[i]}\', ";
-                else
-                    result += $"\'{propertyValues[i]}\'";
-            }
-            return result;
+            var setFormat = insertValues.Select(value => $"\'{value}\'").ToArray();
+            return string.Join(",", setFormat);
         }
     }
 }

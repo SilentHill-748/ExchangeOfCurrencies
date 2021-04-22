@@ -19,13 +19,13 @@ namespace ExchangeOfCurrencies.ClientModel
         [Name(ErrorMessage = "Отчество указано некорректно!")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Не указан Email-адрес!")]
-        [Email(ErrorMessage = "Указан некорректный e-mail!")]
-        public string Email { get; set; }
-
         [Required(ErrorMessage = "Не указан номер телефона!")]
         [CustomPhone(ErrorMessage = "Указан неверный формат телефона!")]
         public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Не указан Email-адрес!")]
+        [Email(ErrorMessage = "Указан некорректный e-mail!")]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать логин!")]
         [Login]

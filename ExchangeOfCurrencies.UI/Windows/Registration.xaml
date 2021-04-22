@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI.Windows"
         mc:Ignorable="d"
-        Height="410" 
+        Height="380" 
         Width="420" 
         WindowStartupLocation="CenterScreen" 
         Style="{StaticResource DarkWindow}">
@@ -37,7 +37,7 @@
                 Style="{StaticResource MouseEvents}" 
                 Content="Отмена"
                 HorizontalAlignment="Left" 
-                Margin="57,363,0,0" 
+                Margin="57,340,0,0" 
                 VerticalAlignment="Top"
                 FontSize="16"
                 MouseDown="CloseBox_MouseDown"/>
@@ -47,7 +47,7 @@
                 Style="{StaticResource MouseEvents}" 
                 Content="Зарегистрироваться"
                 HorizontalAlignment="Left"
-                Margin="230,363,0,0" 
+                Margin="230,340,0,0" 
                 VerticalAlignment="Top"
                 FontSize="16"
                 MouseDown="RegL_MouseDown"/>
@@ -55,7 +55,7 @@
             <Label 
                 Content="Имя:" 
                 HorizontalAlignment="Left" 
-                Margin="15,165,0,0" 
+                Margin="15,34,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18"/>
@@ -63,7 +63,7 @@
             <Label 
                 Content="Фамилия:" 
                 HorizontalAlignment="Left" 
-                Margin="16,196,0,0" 
+                Margin="15,65,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18"/>
@@ -71,7 +71,7 @@
             <Label 
                 Content="Отчество:" 
                 HorizontalAlignment="Left" 
-                Margin="15,227,0,0" 
+                Margin="15,96,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18"/>
@@ -79,7 +79,7 @@
             <Label 
                 Content="Логин:" 
                 HorizontalAlignment="Left" 
-                Margin="16,38,0,0" 
+                Margin="15,246,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18"/>
@@ -87,7 +87,7 @@
             <Label 
                 Content="Пароль:" 
                 HorizontalAlignment="Left" 
-                Margin="15,69,0,0" 
+                Margin="15,277,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18"/>
@@ -95,7 +95,7 @@
             <Label 
                 Content="Повторите пароль:" 
                 HorizontalAlignment="Left" 
-                Margin="15,100,0,0" 
+                Margin="15,308,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18"/>
@@ -103,7 +103,7 @@
             <Label 
                 Content="Личный телефон:" 
                 HorizontalAlignment="Left" 
-                Margin="15,258,0,0" 
+                Margin="15,127,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18"/>
@@ -111,87 +111,95 @@
             <Label 
                 Content="E-mail адрес:" 
                 HorizontalAlignment="Left" 
-                Margin="16,301,0,0" 
+                Margin="15,170,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="18"/>
 
             <TextBox 
-                x:Name="LoginText"
+                x:Name="Login"
                 HorizontalAlignment="Left" 
-                Margin="213,37,0,0"
+                Margin="213,245,0,0"
                 VerticalAlignment="Top"
                 Width="192"
                 FontSize="18"
-                MaxLength="15"/>
+                MaxLength="15"
+                GotFocus="PersonalDataBox_GotFocus"/>
 
             <PasswordBox 
-                x:Name="PassBox"
+                x:Name="Password"
                 HorizontalAlignment="Left" 
-                Margin="213,68,0,0" 
+                Margin="213,276,0,0" 
                 VerticalAlignment="Top" 
                 Width="192" 
                 FontSize="18"
-                MaxLength="20"/>
+                MaxLength="20"
+                GotFocus="PersonalDataBox_GotFocus"/>
 
             <PasswordBox 
-                x:Name="ConfPassBox"
+                x:Name="ConfirmPassword"
                 HorizontalAlignment="Left"
-                Margin="213,99,0,0"
+                Margin="213,307,0,0"
                 VerticalAlignment="Top"
                 Width="192"
                 FontSize="18"
-                MaxLength="20"/>
+                MaxLength="20"
+                GotFocus="PersonalDataBox_GotFocus"/>
 
             <TextBox 
-                x:Name="FirstNameText"
+                x:Name="FirstName"
                 HorizontalAlignment="Left"
-                Margin="213,164,0,0" 
+                Margin="213,33,0,0" 
                 VerticalAlignment="Top"
                 Width="192" 
                 FontSize="18"
-                MaxLength="100"/>
+                MaxLength="100"
+                GotFocus="PersonalDataBox_GotFocus"/>
 
             <TextBox
-                x:Name="MiddleNameText"
+                x:Name="MiddleName"
                 HorizontalAlignment="Left" 
-                Margin="213,195,0,0"
+                Margin="213,64,0,0"
                 VerticalAlignment="Top" 
                 Width="192" 
                 FontSize="18"
-                MaxLength="150"/>
+                MaxLength="150"
+                GotFocus="PersonalDataBox_GotFocus"/>
 
             <TextBox 
-                x:Name="LastNameText"
+                x:Name="LastName"
                 HorizontalAlignment="Left"
-                Margin="213,227,0,0" 
+                Margin="213,96,0,0" 
                 VerticalAlignment="Top" 
                 Width="192" 
                 FontSize="18"
-                MaxLength="150"/>
+                MaxLength="150"
+                GotFocus="PersonalDataBox_GotFocus"/>
 
             <TextBox 
-                x:Name="PhoneText"
+                x:Name="Phone"
                 HorizontalAlignment="Left" 
-                Margin="213,258,0,0" 
+                Margin="213,127,0,0" 
                 VerticalAlignment="Top"
                 Width="192" 
                 FontSize="18"
-                MaxLength="14"/>
+                MaxLength="14"
+                GotFocus="PersonalDataBox_GotFocus"/>
 
             <TextBox 
-                x:Name="EmailText"
+                x:Name="Email"
                 HorizontalAlignment="Left" 
-                Margin="213,300,0,0" 
+                Margin="213,169,0,0" 
                 VerticalAlignment="Top" 
                 Width="192" 
                 FontSize="18"
-                MaxLength="75"/>
+                MaxLength="75"
+                GotFocus="PersonalDataBox_GotFocus"/>
 
             <Label 
                 Content="Например: example@mail.ru" 
                 HorizontalAlignment="Left" 
-                Margin="273,327,0,0" 
+                Margin="273,196,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0"
                 FontSize="10"/>
@@ -199,7 +207,7 @@
             <Label 
                 Content="Например: +7 123 4567890" 
                 HorizontalAlignment="Left" 
-                Margin="278,284,0,0" 
+                Margin="278,153,0,0" 
                 VerticalAlignment="Top" 
                 Padding="0,0,0,0" 
                 FontSize="10"/>
@@ -208,7 +216,7 @@
                 HorizontalAlignment="Center" 
                 Height="12" 
                 Width="420" 
-                Margin="0,139,0,0" 
+                Margin="0,226,0,0" 
                 VerticalAlignment="Top" 
                 RenderTransformOrigin="0.5,0.5" 
                 Background="#FF222226"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI.Windows.MessageWindows"
         mc:Ignorable="d"
-        Height="171"
+        Height="216"
         Width="398"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource DarkWindow}">
@@ -16,31 +16,31 @@
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Label 
+            Style="{StaticResource HeaderLabel}"
             x:Name="HeaderLabel" 
-            Content="Внимание!" 
-            Margin="0,-4,0,0"
-            VerticalAlignment="Top" 
-            HorizontalAlignment="Left"
-            FontFamily="Segoe UI" 
-            FontSize="16"/>
+            Content="Внимание!"
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Image 
             Style="{StaticResource CloseBox}" 
             MouseLeftButtonDown="CloseBox_MouseLeftButtonDown"/>
 
+        <Image 
+            Style="{StaticResource Icon}" 
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+
         <Grid Margin="0,26,0,0">
-            <ScrollViewer Margin="20,20,10,33" >
+            <ScrollViewer Margin="10,10,0,54" >
                 <TextBlock 
-                x:Name="MessageBlock"
-                TextWrapping="Wrap" 
-                Height="Auto" 
-                Width="Auto"
-                Foreground="White"
-                FontSize="15" 
-                TextAlignment="Justify"
-                FontFamily="Segoe UI" 
-                FontStyle="Normal"
-                Block.IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"/>
+                    x:Name="MessageBlock"
+                    TextWrapping="Wrap"
+                    Height="Auto"
+                    Foreground="White"
+                    FontSize="15" 
+                    TextAlignment="Justify"
+                    FontFamily="Segoe UI" 
+                    FontStyle="Normal"
+                    Block.IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"/>
             </ScrollViewer>
 
             <Label 
@@ -49,10 +49,11 @@
                 Style="{StaticResource MouseEvents}"
                 FontSize="17"
                 HorizontalAlignment="Left"
-                Margin="298,105,0,0" 
+                Margin="297,141,0,0" 
                 VerticalAlignment="Top"
                 FontFamily="Segoe UI" 
-                FontStyle="Normal"/>
+                FontStyle="Normal"
+                MouseLeftButtonDown="CloseBox_MouseLeftButtonDown"/>
         </Grid>
     </Grid>
 </Window>

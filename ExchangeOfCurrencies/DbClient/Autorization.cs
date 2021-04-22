@@ -1,51 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Data;
+
+using ExchangeOfCurrencies.ClientModel;
 
 namespace ExchangeOfCurrencies.DbClient
 {
     public class Autorization
     {
-        private const string getClientLoginAndPass = "SELECT login, password FROM clients";
-        private KeyValuePair<string, string> userLoginPassPair;
-        private Dictionary<string, string> loginPassPairs;
+        private string login;
+        private string password;
+
+        private string selectByLoginAndPass => $"SELECT firstname, secondname, lastname, email, phone, login, password" +
+            $" FROM users WHERE login = {login} AND  password = {password}";
+
+        private DataRow selectedRow;
 
         public Autorization(string login, string password)
         {
-            loginPassPairs = new();
-            userLoginPassPair = new(login, password);
-            FillLoginPassPairs();
+            this.login = login;
+            this.password = password;
         }
 
-        public bool BeginAutorization()
+        public User BeginAutorization()
         {
-            foreach (var keyValuePair in loginPassPairs)
-            {
-                if (keyValuePair.Key == userLoginPassPair.Key)
-                    if (keyValuePair.Value == userLoginPassPair.Value)
-                        return true;
-            }
-            throw new Exception("Введен неверный логин или пароль!");
+            GetSelectedRows();
+            var personalData = selectedRow.ItemArray.Select(value => value as string).ToList();
+            return new User(personalData);
         }
 
-        // Выгружает из БД все пары Логин/Пароль и возвращает XML-представление результата запроса.
-        private string LoadData()
+        private void GetSelectedRows()
         {
-            Request getData = new(getClientLoginAndPass);
-            return getData.DataSet.GetXml();
-        }
-
-        // Заполняет словарь записей логин/пароль парами из XML-кода.
-        private void FillLoginPassPairs()
-        {
-            string xmlData = LoadData();
-            var logins = Regex.Matches(xmlData, @"<login>(.*?)</login>").Select(m => m.Groups[1].Value).ToList();
-            var passwords = Regex.Matches(xmlData, @"<password>(.*?)</password>").Select(m => m.Groups[1].Value).ToList();
-
-            for (int i = 0; i < logins.Count; i++)
-                loginPassPairs.Add(logins[i], passwords[i]);
+            DataSet data = Request.Send(selectByLoginAndPass);
+            if (data.Tables.Count == 0)
+                throw new Exception("Введен неверный логин или пароль!");
+            selectedRow = data.Tables[0].Rows[0];
         }
     }
 }

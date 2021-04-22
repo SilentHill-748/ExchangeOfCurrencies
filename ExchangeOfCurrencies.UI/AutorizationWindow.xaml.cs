@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 using ExchangeOfCurrencies.UI.Windows.MessageWindows;
 using ExchangeOfCurrencies.DbClient;
@@ -23,8 +15,8 @@ namespace ExchangeOfCurrencies.UI
         private MainWindow mainWindow;    // Главное окно, ИМХО.
         private Registration regWindow;
 
-        private string login = "";
-        private string password = "";
+        private string login;
+        private string password;
 
         public AutorizationWindow()
         {
@@ -82,6 +74,8 @@ namespace ExchangeOfCurrencies.UI
         private void Init()
         {
             BeginUpdateRowsToDb();
+            login = string.Empty;
+            password = string.Empty;
         }
 
         private void BeginUpdateRowsToDb()

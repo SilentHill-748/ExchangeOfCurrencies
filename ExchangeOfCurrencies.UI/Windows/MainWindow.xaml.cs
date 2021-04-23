@@ -66,12 +66,12 @@ namespace ExchangeOfCurrencies.UI
         private void Init()
         {
             WelcomMessage.Content = $"Привет, {currentUser.FirstName}! :)";
-            ListOfCurrencies.Background = Brushes.Black;
             allCurrencies = new List<Currency>();
             GetAllCurrencies();
             FillListOfCurrencies();
         }
 
+        // Заполнение коллекции валют из БД.
         private void GetAllCurrencies()
         {
             DataTable tableOfCurrencies = Request.Send("SELECT * FROM currencies;").Tables[0];
@@ -79,12 +79,14 @@ namespace ExchangeOfCurrencies.UI
                 allCurrencies.Add(new Currency(tableOfCurrencies.Rows[i].ItemArray));
         }
 
+        // Заполнение списка доступных валют.
         private void FillListOfCurrencies()
         {
             foreach (Currency currency in allCurrencies)
                 ListOfCurrencies.Items.Add(currency.Name);
         }
 
+        // Вывод всей информации по выбранной валюте.
         private void LoadInfoAboutChosenCurrency(Currency currency)
         {
             string[] currencyFields = { "Код", "Сим. код", "Название", "Курс", "Продажа", "Количество" };
@@ -97,6 +99,7 @@ namespace ExchangeOfCurrencies.UI
             }
         }
 
+        // Асинхронное обновление списка доступных валют.
         private async void UpdateListOfCurrencies()
         {
             allCurrencies.Clear();
@@ -104,15 +107,11 @@ namespace ExchangeOfCurrencies.UI
             await Task.Run(() =>
             {
                 GetAllCurrencies();
-                FillListOfCurrencies();
             });
         }
 
         // todolist
-        // TODO: Реализовать систему обновления БД новыми курсами валют из бд.
         // TODO: Реализовать систему запросов в бд для покупки и продажи валют.
         // TODO: Реализовать систему логирования действий юзера и алгоритм составления отчета.
-        // TODO: Написать модуль авторизации и регистрации по БД.
-        // TODO: Связать все системы в одно целое приложение, сохраняя составленный дизайн.
     }
 }

@@ -23,6 +23,8 @@ namespace ExchangeOfCurrencies.UI
     {
         private User currentUser;
         private List<Currency> allCurrencies;
+        private string selectBalance;
+        private string selectInfoAboutCurrenciesOfUser;
 
         public MainWindow(User currentUser)
         {
@@ -68,9 +70,42 @@ namespace ExchangeOfCurrencies.UI
         private void Init()
         {
             WelcomMessage.Content = $"Привет, {currentUser.FirstName}! :)";
+            selectBalance = $"SELECT Balance FROM user_wallet WHERE userId = {currentUser.UserId};";
+            selectInfoAboutCurrenciesOfUser = $"SELECT USD, EUR, CAD, CNY, BYN, DKK, SGD " +
+                $"FROM user_wallet WHERE userId = {currentUser.UserId};";
             allCurrencies = new List<Currency>();
             GetAllCurrencies();
             FillListOfCurrencies();
+            FillInfoAbouCurrentUser();
+        }
+
+        private void FillInfoAbouCurrentUser()
+        {
+            decimal balance = GetBalance();
+            string[] userCurrencies = GetUserCurrencies();
+            BalanceInfo.Content = $"На Вашем счете: {balance:F2} руб.";
+            PurchasedCurrencies.Text = "Купленные валюты:\n" + string.Join("\n", userCurrencies);
+        }
+
+        private decimal GetBalance()
+        {
+            // По запросу гарантируется результат в виде всего 1 значения единственного поля Balance.
+            DataTable selectResult = Request.Send(selectBalance).Tables[0];
+            object balance = selectResult.Rows[0].ItemArray[0];
+            return Convert.ToDecimal(balance);
+        }
+
+        private string[] GetUserCurrencies()
+        {
+            DataTable resultTable = Request.Send(selectInfoAboutCurrenciesOfUser).Tables[0];
+            string[] infoAboutOfCurrencies = new string[resultTable.Columns.Count];
+            for (int i = 0; i < resultTable.Columns.Count; i++)
+            {
+                string columnName = resultTable.Columns[i].ColumnName;
+                string currencyInfo = $"{columnName} ({resultTable.Rows[0].ItemArray[i]})";
+                infoAboutOfCurrencies[i] = currencyInfo;
+            }
+            return infoAboutOfCurrencies;
         }
 
         // Заполнение коллекции валют из БД.

@@ -31,6 +31,7 @@ namespace ExchangeOfCurrencies.UI
             Init();
         }
 
+        #region Events
         private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();
 
         private void CloseBox_MouseDown(object sender, MouseButtonEventArgs e)
@@ -62,6 +63,7 @@ namespace ExchangeOfCurrencies.UI
         {
 
         }
+        #endregion
 
         private void Init()
         {
@@ -104,10 +106,7 @@ namespace ExchangeOfCurrencies.UI
         {
             allCurrencies.Clear();
             ListOfCurrencies.Items.Clear();
-            await Task.Run(() =>
-            {
-                GetAllCurrencies();
-            });
+            await Task.Run(() => GetAllCurrencies());
         }
 
         // todolist

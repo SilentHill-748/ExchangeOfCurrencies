@@ -11,7 +11,7 @@ namespace ExchangeOfCurrencies.DbClient
         private string login;
         private string password;
 
-        private string selectByLoginAndPass => $"SELECT firstname, secondname, lastname, email, phone, login, password" +
+        private string selectByLoginAndPass => $"SELECT firstname, secondname, lastname, phone, email" +
             $" FROM users WHERE login = \'{login}\' AND  password = \'{password}\';";
 
         private DataRow selectedRow;

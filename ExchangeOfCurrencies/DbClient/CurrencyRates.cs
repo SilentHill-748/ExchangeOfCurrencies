@@ -12,11 +12,14 @@ namespace ExchangeOfCurrencies.DbClient
     /// </summary>
     public class CurrencyRates
     {
-        private const string URL = "https://www.cbr-xml-daily.ru/daily_utf8.xml";
+        private string URL;
         private readonly List<Currency> currencies;
 
         public CurrencyRates()
         {
+            DateTime now = DateTime.Now;
+            string dateNow = $"{now:dd}/{now:MM}/{now:yyyy}";
+            URL = $"http://www.cbr.ru/scripts/XML_daily.asp?date_req={dateNow}";
             currencies = new();
             GetListOfCurrencies();
         }

@@ -83,7 +83,7 @@ namespace ExchangeOfCurrencies.UI
         {
             Task.Run(() =>
             {
-                UpdaterCurrencyRates updater = new();
+                CurrencyRates updater = new();
                 updater.Update();
             });
         }

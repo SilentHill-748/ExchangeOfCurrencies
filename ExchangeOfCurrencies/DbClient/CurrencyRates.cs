@@ -10,12 +10,12 @@ namespace ExchangeOfCurrencies.DbClient
     /// <summary>
     ///     Объект, обновляющий все валюты в БД по курсу.
     /// </summary>
-    public class UpdaterCurrencyRates
+    public class CurrencyRates
     {
         private const string URL = "https://www.cbr-xml-daily.ru/daily_utf8.xml";
         private readonly List<Currency> currencies;
 
-        public UpdaterCurrencyRates()
+        public CurrencyRates()
         {
             currencies = new();
             GetListOfCurrencies();

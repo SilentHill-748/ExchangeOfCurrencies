@@ -25,7 +25,7 @@
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Label
-            Content="Test window"
+            Content="Рынок"
             Style="{StaticResource HeaderLabel}"/>
 
         <Grid Margin="0,26,0,0">
@@ -113,9 +113,8 @@
                         Content="Купить валюту" 
                         Style="{StaticResource MouseEvents}" 
                         HorizontalAlignment="Left" 
-                        Margin="29,73,0,0" 
-                        VerticalAlignment="Top" 
-                        Cursor="Hand"
+                        Margin="10,98,0,0"  Padding="0"
+                        VerticalAlignment="Top"
                         MouseLeftButtonDown="PurchaseLabel_MouseLeftButtonDown"/>
 
                     <Label 
@@ -123,18 +122,27 @@
                         Content="Продать валюту" 
                         Style="{StaticResource MouseEvents}" 
                         HorizontalAlignment="Left" 
-                        Margin="144,73,0,0" 
+                        Margin="10,123,0,0" Padding="0"
                         VerticalAlignment="Top"
                         MouseLeftButtonDown="SaleLabel_MouseLeftButtonDown"/>
-                    
+
                     <Label 
                         x:Name="GetReportLabel"
                         Content="Отчёт" 
                         Style="{StaticResource MouseEvents}" 
                         HorizontalAlignment="Left" 
-                        Margin="270,73,0,0" 
+                        Margin="10,148,0,0" Padding="0"
                         VerticalAlignment="Top"
                         MouseLeftButtonDown="GetReportLabel_MouseLeftButtonDown"/>
+
+                    <Label 
+                        x:Name="TopUpBalanceLabel"
+                        Content="Пополнить счёт" 
+                        Style="{StaticResource MouseEvents}" 
+                        HorizontalAlignment="Left" 
+                        Margin="10,73,0,0" Padding="0"
+                        VerticalAlignment="Top" 
+                        Cursor="Hand"/>
 
                 </Grid>
             </GroupBox>

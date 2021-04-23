@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI"
         mc:Ignorable="d"
         Height="426" 
-        Width="800"
+        Width="700"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource DarkWindow}">
     <Grid>
@@ -31,10 +31,11 @@
         <Grid Margin="0,26,0,0">
             <GroupBox 
                 Header="Информация о пользователе" 
+               HorizontalAlignment="Left"
                 FontSize="15"
-                Margin="10,10,498,172" 
+                Margin="10,10,0,172" 
                 BorderBrush="#FF020202" 
-                Foreground="White">
+                Foreground="White" Width="292">
 
                 <Grid>
                     <Label 
@@ -53,10 +54,11 @@
             </GroupBox>
             <GroupBox 
                 Header="Информация о выбранной валюте" 
-                Margin="10,233,498,10"
+                HorizontalAlignment="Left"
+                Margin="10,233,0,10"
                 BorderBrush="#FF020202" 
                 Foreground="White"
-                FontSize="15">
+                FontSize="15" Width="292">
 
                 <Grid>
                     <TextBlock
@@ -67,10 +69,12 @@
                 </Grid>
             </GroupBox>
             <GroupBox 
-                Header="Пользовательское окно" Margin="307,10,10,10"
+                Header="Пользовательское окно" 
+                HorizontalAlignment="Left"
+                Margin="307,10,0,245"
                 Foreground="White"
                 FontSize="15"
-                BorderBrush="#FF020202">
+                BorderBrush="#FF020202" Width="384">
 
                 <Grid>
                     <Label 
@@ -113,7 +117,7 @@
                         Content="Купить валюту" 
                         Style="{StaticResource MouseEvents}" 
                         HorizontalAlignment="Left" 
-                        Margin="10,98,0,0"  Padding="0"
+                        Margin="154,73,0,0"  Padding="0"
                         VerticalAlignment="Top"
                         MouseLeftButtonDown="PurchaseLabel_MouseLeftButtonDown"/>
 
@@ -122,16 +126,16 @@
                         Content="Продать валюту" 
                         Style="{StaticResource MouseEvents}" 
                         HorizontalAlignment="Left" 
-                        Margin="10,123,0,0" Padding="0"
+                        Margin="154,93,0,0" Padding="0"
                         VerticalAlignment="Top"
                         MouseLeftButtonDown="SaleLabel_MouseLeftButtonDown"/>
 
                     <Label 
                         x:Name="GetReportLabel"
-                        Content="Отчёт" 
+                        Content="Получить отчёт" 
                         Style="{StaticResource MouseEvents}" 
                         HorizontalAlignment="Left" 
-                        Margin="10,148,0,0" Padding="0"
+                        Margin="10,93,0,0" Padding="0"
                         VerticalAlignment="Top"
                         MouseLeftButtonDown="GetReportLabel_MouseLeftButtonDown"/>
 
@@ -143,7 +147,6 @@
                         Margin="10,73,0,0" Padding="0"
                         VerticalAlignment="Top" 
                         Cursor="Hand"/>
-
                 </Grid>
             </GroupBox>
 
@@ -151,7 +154,7 @@
         <Label 
             x:Name="WelcomMessage" 
             HorizontalAlignment="Right" 
-            Margin="0,-3,26,0"
+            Margin="0,-3,26,0" Height="Auto" Width="Auto"
             VerticalAlignment="Top" 
             FontSize="14"/>
     </Grid>

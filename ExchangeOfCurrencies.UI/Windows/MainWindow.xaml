@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI"
         mc:Ignorable="d"
-        Height="426" 
+        Height="407" 
         Width="700"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource DarkWindow}">
@@ -31,11 +31,12 @@
         <Grid Margin="0,26,0,0">
             <GroupBox 
                 Header="Информация о пользователе" 
-               HorizontalAlignment="Left"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
                 FontSize="15"
-                Margin="10,10,0,172" 
+                Margin="10,10,0,0" 
                 BorderBrush="#FF020202" 
-                Foreground="White" Width="292">
+                Foreground="White" Width="311" Height="215">
 
                 <Grid>
                     <Label 
@@ -55,10 +56,11 @@
             <GroupBox 
                 Header="Информация о выбранной валюте" 
                 HorizontalAlignment="Left"
-                Margin="10,233,0,10"
+                VerticalAlignment="Top"
+                Margin="10,230,0,0"
                 BorderBrush="#FF020202" 
                 Foreground="White"
-                FontSize="15" Width="292">
+                FontSize="15" Width="311" Height="141">
 
                 <Grid>
                     <TextBlock
@@ -71,10 +73,11 @@
             <GroupBox 
                 Header="Пользовательское окно" 
                 HorizontalAlignment="Left"
-                Margin="307,10,0,245"
+                VerticalAlignment="Top"
+                Margin="326,10,0,0"
                 Foreground="White"
                 FontSize="15"
-                BorderBrush="#FF020202" Width="384">
+                BorderBrush="#FF020202" Width="365" Height="144">
 
                 <Grid>
                     <Label 
@@ -91,7 +94,7 @@
                         Margin="167,11,0,0" 
                         VerticalAlignment="Top" 
                         HorizontalAlignment="Left" 
-                        Width="200" Height="20"
+                        Width="176" Height="20"
                         SelectionChanged="ListOfCurrencies_SelectionChanged">
                         <ComboBox.Resources>
                             <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#363535"/>

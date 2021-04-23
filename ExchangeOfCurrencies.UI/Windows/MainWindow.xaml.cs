@@ -126,13 +126,12 @@ namespace ExchangeOfCurrencies.UI
         // Вывод всей информации по выбранной валюте.
         private void LoadInfoAboutChosenCurrency(Currency currency)
         {
-            string[] currencyFields = { "Код", "Сим. код", "Название", "Курс", "Продажа", "Количество" };
+            string[] currencyFields = { "Код:", "Символьный код:", "Название:", "Курс:", "Продажа:", "Количество:" };
+            int maxLength = currencyFields.Max(m => m.Length);
             for (int i = 0; i < currencyFields.Length; i++)
             {
-                if (currencyFields[i].Length < 10)
-                    InfoCurrentCurrency.Text += $"{currencyFields[i] + ":",-11} {currency[i]}\n";
-                else
-                    InfoCurrentCurrency.Text += $"{currencyFields[i]}: {currency[i]}\n";
+                string currentCurrencyInfo = currencyFields[i].PadRight(maxLength);
+                InfoCurrentCurrency.Text += $"{currentCurrencyInfo} {currency[i]}\n";
             }
         }
 

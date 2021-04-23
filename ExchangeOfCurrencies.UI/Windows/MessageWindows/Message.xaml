@@ -34,13 +34,14 @@
                 <TextBlock 
                     x:Name="MessageBlock"
                     TextWrapping="Wrap"
-                    Height="Auto"
+                    Height="Auto" Width="367"
+                    HorizontalAlignment="Left"
                     Foreground="White"
                     FontSize="15" 
                     TextAlignment="Justify"
                     FontFamily="Segoe UI" 
                     FontStyle="Normal"
-                    Block.IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"/>
+                    Block.IsHyphenationEnabled="True"/>
             </ScrollViewer>
 
             <Label 

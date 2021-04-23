@@ -7,6 +7,7 @@ using System.Windows.Input;
 using ExchangeOfCurrencies.UI.Windows.MessageWindows;
 using ExchangeOfCurrencies.DbClient;
 using ExchangeOfCurrencies.UI.Windows;
+using ExchangeOfCurrencies.ClientModel;
 
 namespace ExchangeOfCurrencies.UI
 {
@@ -91,11 +92,11 @@ namespace ExchangeOfCurrencies.UI
         {
             try
             {
-                //HeaderLabel.Content += " | загрузка..";
-                //Autorization autorization = new(login, password);
-                //User currentUser = await Task.Run(() => autorization.BeginAutorization()); // Начал проверку данных по БД.
+                HeaderLabel.Content += " | загрузка..";
+                Autorization autorization = new ("SilentHill", "k20pqr3256qsh1");
+                User currentUser = await Task.Run(() => autorization.BeginAutorization()); // Начал проверку данных по БД.
 
-                mainWindow = new MainWindow();
+                mainWindow = new MainWindow(currentUser);
                 mainWindow.Show();                                                  // Если ошибок нет - открываю основное окно и закрываю текущее.
                 this.Close();
             }

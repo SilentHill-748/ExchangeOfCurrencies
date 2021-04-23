@@ -24,18 +24,11 @@ namespace ExchangeOfCurrencies.UI
         private User currentUser;
         private List<Currency> allCurrencies;
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            Init();
-        }
-
         public MainWindow(User currentUser)
         {
             InitializeComponent();
-            Init();
             this.currentUser = currentUser;
-
+            Init();
         }
 
         private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();

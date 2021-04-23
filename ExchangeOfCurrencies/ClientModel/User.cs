@@ -12,13 +12,15 @@ namespace ExchangeOfCurrencies.ClientModel
 {
     public class User : Person
     {
-        private List<string> personalData;
+        private List<string> registrationData;
         private Dictionary<Currency, decimal> wallet; // TODO: Допилить модель кошелька и покупки.
 
-        public User(List<string> personalData)
+        public User() { }
+
+        public User(List<string> registrationPersonalData)
         {
-            this.personalData = personalData;
-            SetPropertyValues();
+            registrationData = registrationPersonalData;
+            SetRegistrationPropertyValues();
         }
 
         public void BuyCurrency(Currency currency, decimal count)
@@ -38,14 +40,14 @@ namespace ExchangeOfCurrencies.ClientModel
                 throw new InvalidOperationException("Данной валюта в кошельке отсутствует!");
         }
 
-        private void SetPropertyValues()
+        private void SetRegistrationPropertyValues()
         {
             PropertyInfo[] properties = this.GetType().GetProperties();
             for (int i = 0; i < properties.Length; i++)
             {
-                if (personalData.Count != properties.Length)
+                if (registrationData.Count != properties.Length)
                     throw new Exception("Указаны не все регистрационные данные!");
-                properties[i].SetValue(this, personalData[i]);
+                properties[i].SetValue(this, registrationData[i]);
             }
         }
     }

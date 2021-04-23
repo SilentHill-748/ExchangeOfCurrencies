@@ -12,7 +12,7 @@ namespace ExchangeOfCurrencies.DbClient
         private string password;
 
         private string selectByLoginAndPass => $"SELECT firstname, secondname, lastname, email, phone, login, password" +
-            $" FROM users WHERE login = {login} AND  password = {password}";
+            $" FROM users WHERE login = \'{login}\' AND  password = \'{password}\';";
 
         private DataRow selectedRow;
 
@@ -25,8 +25,17 @@ namespace ExchangeOfCurrencies.DbClient
         public User BeginAutorization()
         {
             GetSelectedRows();
-            var personalData = selectedRow.ItemArray.Select(value => value as string).ToList();
-            return new User(personalData);
+            var personalData = selectedRow.ItemArray.Select(value => value as string).ToArray();
+            return CreateCurrentUser(personalData);
+        }
+
+        private User CreateCurrentUser(string[] personalData)
+        {
+            User currentUser = new ();
+            var properties = currentUser.GetType().GetProperties();
+            for (int i = 0; i < personalData.Length; i++)
+                properties[i].SetValue(currentUser, personalData[i]);
+            return currentUser;
         }
 
         private void GetSelectedRows()

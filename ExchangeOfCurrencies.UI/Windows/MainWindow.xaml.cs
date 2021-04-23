@@ -21,7 +21,7 @@ namespace ExchangeOfCurrencies.UI
 {
     public partial class MainWindow : Window
     {
-        private User currentUser;
+        private readonly User currentUser;
         private List<Currency> allCurrencies;
         private string selectBalance;
         private string selectInfoAboutCurrenciesOfUser;

@@ -33,7 +33,6 @@ namespace ExchangeOfCurrencies.UI
             Close();
         }
 
-        // Главная логика авторизации.
         private void AutorizationL_MouseDown(object sender, MouseButtonEventArgs e)
         {
             AutorizationClient();

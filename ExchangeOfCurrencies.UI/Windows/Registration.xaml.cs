@@ -29,9 +29,7 @@ namespace ExchangeOfCurrencies.UI.Windows
 
         private void CloseBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            AutorizationWindow loginWin = new ();
-            loginWin.Show();
-            this.Close();
+            CloseWindow();
         }
 
         private void PersonalDataBox_GotFocus(object sender, RoutedEventArgs e)
@@ -49,7 +47,7 @@ namespace ExchangeOfCurrencies.UI.Windows
                 if (!Validation(personalData)) return;
                 string quary = BuildQuaryString(personalData);
                 Request.Send(quary);
-                this.Close();
+                CloseWindow();
             }
             catch (Exception ex)
             {
@@ -107,6 +105,13 @@ namespace ExchangeOfCurrencies.UI.Windows
         {
             var setFormat = insertValues.Select(value => $"\'{value}\'").ToArray();
             return string.Join(",", setFormat);
+        }
+
+        private void CloseWindow()
+        {
+            AutorizationWindow autorization = new AutorizationWindow();
+            autorization.Show();
+            Close();
         }
     }
 }

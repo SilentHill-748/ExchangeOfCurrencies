@@ -42,13 +42,13 @@ namespace ExchangeOfCurrencies.ClientModel
 
         private void SetRegistrationPropertyValues()
         {
-            PropertyInfo[] properties = this.GetType().GetProperties();
+            var properties = this.GetType().GetProperties().
+                Where(p => p.Name != "UserId").ToArray();
+            if (registrationData.Count != properties.Length)
+                throw new Exception("Указаны не все регистрационные данные!");
+
             for (int i = 0; i < properties.Length; i++)
-            {
-                if (registrationData.Count != properties.Length)
-                    throw new Exception("Указаны не все регистрационные данные!");
                 properties[i].SetValue(this, registrationData[i]);
-            }
         }
     }
 }

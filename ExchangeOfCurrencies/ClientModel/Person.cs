@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using ExchangeOfCurrencies.ClientModel.Validation;
 
 namespace ExchangeOfCurrencies.ClientModel
@@ -7,6 +6,8 @@ namespace ExchangeOfCurrencies.ClientModel
     // Абстрактный класс для персонала или клиентов.
     public abstract class Person
     {
+        public int UserId { get; set; }
+
         [Required(ErrorMessage ="Поле ввода имени обязательно!")]
         [Name(ErrorMessage = "Имя указано некорректно!")]
         public string FirstName { get; set; }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExchangeOfCurrencies.DbClient
+namespace ExchangeOfCurrencies.Currencies
 {
     public class Currency
     {

@@ -20,6 +20,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="LiveCharts">
+      <HintPath>..\..\..\Проекты, библиотеки Добрых людей\Live-Charts-master\WpfView\bin\Debug\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf">
+      <HintPath>..\..\..\Проекты, библиотеки Добрых людей\Live-Charts-master\WpfView\bin\Debug\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Close.png" />
     <Resource Include="icon.ico" />
   </ItemGroup>

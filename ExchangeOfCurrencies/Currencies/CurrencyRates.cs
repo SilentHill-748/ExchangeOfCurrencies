@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using System.Data;
 using System.Net;
 
-namespace ExchangeOfCurrencies.DbClient
+namespace ExchangeOfCurrencies.Currencies
 {
     /// <summary>
     ///     Объект, обновляющий все валюты в БД по курсу.

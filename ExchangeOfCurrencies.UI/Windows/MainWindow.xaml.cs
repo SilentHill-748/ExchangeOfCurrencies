@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data;
 
 using ExchangeOfCurrencies.ClientModel;
+using ExchangeOfCurrencies.Currencies;
 using ExchangeOfCurrencies.DbClient;
 
 namespace ExchangeOfCurrencies.UI

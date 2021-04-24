@@ -8,6 +8,7 @@ using ExchangeOfCurrencies.UI.Windows.MessageWindows;
 using ExchangeOfCurrencies.DbClient;
 using ExchangeOfCurrencies.UI.Windows;
 using ExchangeOfCurrencies.ClientModel;
+using ExchangeOfCurrencies.Currencies;
 
 namespace ExchangeOfCurrencies.UI
 {

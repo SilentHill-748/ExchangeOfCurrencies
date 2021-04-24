@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using System.Data;
 using System.Net;
 
+using ExchangeOfCurrencies.DbClient;
+
 namespace ExchangeOfCurrencies.Currencies
 {
     /// <summary>

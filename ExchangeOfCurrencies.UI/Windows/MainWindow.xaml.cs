@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 using ExchangeOfCurrencies.ClientModel;
 using ExchangeOfCurrencies.Currencies;
@@ -50,6 +53,7 @@ namespace ExchangeOfCurrencies.UI
             string currencyName = ListOfCurrencies.SelectedItem.ToString();
             Currency currency = allCurrencies.Find(m => m.Name.Equals(currencyName));
             LoadInfoAboutChosenCurrency(currency);
+            InitCartesianChartLine(currency);
         }
 
         private void PurchaseLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -140,8 +144,19 @@ namespace ExchangeOfCurrencies.UI
         private async void UpdateListOfCurrencies()
         {
             allCurrencies.Clear();
-            ListOfCurrencies.Items.Clear();
             await Task.Run(() => GetAllCurrencies());
+        }
+
+        private void InitCartesianChartLine(Currency currency)
+        {
+            CurrencyChart.Visibility = Visibility.Visible;
+            CurrencyChartLine line = new(currency, 7);
+            var lineSeries = line.GetLine();
+            CurrencyRateQuotes.Values = lineSeries.Values;
+            xAxis.Labels = line.Labels;
+            xAxis.MaxValue = line.Labels.Count - 1;
+            yAxis.MinValue = line.MinValue;
+            yAxis.MaxValue = line.MaxValue;
         }
 
         // todolist

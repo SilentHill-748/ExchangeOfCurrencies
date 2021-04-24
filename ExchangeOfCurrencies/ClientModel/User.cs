@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using ExchangeOfCurrencies.DbClient;
+using ExchangeOfCurrencies.Currencies;
 
 namespace ExchangeOfCurrencies.ClientModel
 {

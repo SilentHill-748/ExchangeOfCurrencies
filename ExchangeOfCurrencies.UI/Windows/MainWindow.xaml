@@ -1,12 +1,13 @@
-﻿<Window x:Class="ExchangeOfCurrencies.UI.MainWindow"
+<Window x:Class="ExchangeOfCurrencies.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI"
+        xmlns:c="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Height="407" 
-        Width="700"
+        Height="401" 
+        Width="732"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource DarkWindow}">
     <Grid>
@@ -34,9 +35,9 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 FontSize="15"
-                Margin="10,10,0,0" 
+                Margin="10,0,0,0" 
                 BorderBrush="#FF020202" 
-                Foreground="White" Width="311" Height="215">
+                Foreground="White" Width="298" Height="215">
 
                 <Grid>
                     <Label 
@@ -57,27 +58,28 @@
                 Header="Информация о выбранной валюте" 
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Margin="10,230,0,0"
+                Margin="10,220,0,0"
                 BorderBrush="#FF020202" 
                 Foreground="White"
-                FontSize="15" Width="311" Height="141">
+                FontSize="15" Width="298" Height="146">
 
                 <Grid>
                     <TextBlock
                         x:Name="InfoCurrentCurrency" 
                         TextWrapping="Wrap" 
-                        Margin="5" 
+                        Margin="5,5,5,5" 
                         FontFamily="Consolas"/>
+
                 </Grid>
             </GroupBox>
             <GroupBox 
-                Header="Пользовательское окно" 
+                Header="Операции" 
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Margin="326,10,0,0"
+                Margin="313,0,0,0"
                 Foreground="White"
                 FontSize="15"
-                BorderBrush="#FF020202" Width="365" Height="144">
+                BorderBrush="#FF020202" Width="409" Height="366">
 
                 <Grid>
                     <Label 
@@ -150,6 +152,26 @@
                         Margin="10,73,0,0" Padding="0"
                         VerticalAlignment="Top" 
                         Cursor="Hand"/>
+
+                    <c:CartesianChart x:Name="CurrencyChart" Margin="10,127,10,0" Foreground="Black" Visibility="Visible">
+                        <c:CartesianChart.AxisX>
+                            <c:Axis x:Name="xAxis">
+                                <c:Axis.Separator>
+                                    <c:Separator Step="1" StrokeThickness="1"/>
+                                </c:Axis.Separator>
+                            </c:Axis>
+                        </c:CartesianChart.AxisX>
+                        <c:CartesianChart.AxisY>
+                            <c:Axis x:Name="yAxis">
+                                <c:Axis.Separator>
+                                    <c:Separator StrokeThickness="1" Step="1"/>
+                                </c:Axis.Separator>
+                            </c:Axis>
+                        </c:CartesianChart.AxisY>
+                        <c:CartesianChart.Series>
+                            <c:LineSeries x:Name="CurrencyRateQuotes"/>
+                        </c:CartesianChart.Series>
+                    </c:CartesianChart>
                 </Grid>
             </GroupBox>
 

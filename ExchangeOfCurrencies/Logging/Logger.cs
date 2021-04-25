@@ -45,6 +45,7 @@ namespace ExchangeOfCurrencies.Logging
         /// <returns></returns>
         public string WriteAllText()
         {
+            memory.Seek(0, SeekOrigin.Begin);
             return encoding.GetString(memory.ToArray());
         }
 
@@ -56,12 +57,13 @@ namespace ExchangeOfCurrencies.Logging
         {
             byte[] bytesOfContent = encoding.GetBytes(content);
             lengthOfRecords.Add(bytesOfContent.Length);
-            memory.Write(bytesOfContent, 0, bytesOfContent.Length);
+            memory.Write(bytesOfContent, (int)memory.Position, bytesOfContent.Length);
         }
 
         public void Dispose()
         {
             memory.Close();
+            memory.Dispose();
             GC.SuppressFinalize(this);
         }
     }

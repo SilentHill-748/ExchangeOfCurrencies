@@ -43,7 +43,7 @@ namespace ExchangeOfCurrencies.ClientModel
         /// <param name="sum"></param>
         public void TopUpBalance(decimal sum)
         {
-            decimal balance = GetActualBalance();
+            decimal balance = GetActualValue("Balance");
             CultureInfo culture = new("en-US");
             string sumEngFormat = (balance + sum).ToString(culture);
             Request.Send($"UPDATE user_wallet SET balance = {sumEngFormat:F2} WHERE userId = {UserId};");
@@ -52,21 +52,50 @@ namespace ExchangeOfCurrencies.ClientModel
 
         public void BuyCurrency(Currency currency, uint count)
         {
-            decimal purchaiseSum = 0;
+            decimal balance = GetActualValue("Balance");
+            uint currentCount = Convert.ToUInt32(GetActualValue(currency.CharCode));
+            decimal price = (decimal)(count * currency.Course);
+
+            if (price > balance)
+            {
+                throw new Exception("На счету недостаточно средств!");
+            }
+            else
+            {
+                balance -= price;
+                currentCount += count;
+                Request.Send($"UPDATE user_wallet SET {currency.CharCode} = {currentCount}, " +
+                    $"Balance = {balance} WHERE userId = {UserId};");
+            }
             Log.Write($"{currentTime}: Пользователь \'{FirstName}\' купил валюту {currency.CharCode}" +
-                $" в количестве {count} ед. Сумма покупки составила {purchaiseSum} руб.");
+                $" в количестве {count} ед. Сумма покупки составила {price} руб.");
         }
 
         public void SellCurrency(Currency currency, uint count)
         {
-            decimal sellSum = 0;
+            decimal balance = GetActualValue("Balance");
+            decimal price = (decimal)(count * currency.Sale);
+            uint currentCount = Convert.ToUInt32(GetActualValue(currency.CharCode));
+
+            if (count > currentCount)
+            {
+                throw new Exception($"Недостаточное количество \'{currency.Name}\' для продажи!");
+            }
+            else
+            {
+                currentCount -= count;
+                balance += price;
+                Request.Send($"UPDATE user_wallet SET {currency.CharCode} = {currentCount}, " +
+                    $"Balance = {balance} WHERE userId = {UserId};");
+            }
+
             Log.Write($"{currentTime}: Пользователь \'{FirstName}\' продал валюту {currency.CharCode}" +
-                $" в количестве {count} ед. Сумма продажи составила {sellSum} руб.");
+                $" в количестве {0} ед. Сумма продажи составила {price} руб.");
         }
 
-        private decimal GetActualBalance()
+        private decimal GetActualValue(string field)
         {
-            string quary = $"SELECT balance FROM user_wallet WHERE userId = {UserId};";
+            string quary = $"SELECT {field} FROM user_wallet WHERE userId = {UserId};";
             DataTable table = Request.Send(quary).Tables[0];
             return decimal.Parse(table.Rows[0].ItemArray[0].ToString());
         }

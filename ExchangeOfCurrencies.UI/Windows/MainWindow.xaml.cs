@@ -20,6 +20,7 @@ using LiveCharts.Wpf;
 using ExchangeOfCurrencies.ClientModel;
 using ExchangeOfCurrencies.Currencies;
 using ExchangeOfCurrencies.DbClient;
+using ExchangeOfCurrencies.UI.Windows.MessageWindows;
 
 namespace ExchangeOfCurrencies.UI
 {
@@ -60,7 +61,9 @@ namespace ExchangeOfCurrencies.UI
 
         private void TopUpBalanceLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            TopUpBalance topUpBalanceWindow = new(currentUser);
+            topUpBalanceWindow.ShowDialog();
+            UpdateInfoAbouCurrentUser();
         }
 
         private void PurchaseLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -89,14 +92,14 @@ namespace ExchangeOfCurrencies.UI
             allCurrencies = new List<Currency>();
             GetAllCurrencies();
             FillListOfCurrencies();
-            FillInfoAbouCurrentUser();
+            UpdateInfoAbouCurrentUser();
         }
 
-        private void FillInfoAbouCurrentUser()
+        private void UpdateInfoAbouCurrentUser()
         {
             decimal balance = GetBalance();
             string[] userCurrencies = GetUserCurrencies();
-            BalanceInfo.Content = $"На Вашем счете: {balance:F2} руб.";
+            BalanceInfo.Content = $"На Вашем счёте: {balance:F2} руб.";
             PurchasedCurrencies.Text = "Купленные валюты:\n" + string.Join("\n", userCurrencies);
         }
 

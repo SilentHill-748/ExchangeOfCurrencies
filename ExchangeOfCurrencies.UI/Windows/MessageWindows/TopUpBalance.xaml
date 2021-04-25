@@ -1,0 +1,55 @@
+﻿<Window x:Class="ExchangeOfCurrencies.UI.Windows.MessageWindows.TopUpBalance"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExchangeOfCurrencies.UI.Windows.MessageWindows"
+        mc:Ignorable="d"
+        Title="TopUpBalance" Height="177" Width="402"
+        Style="{StaticResource DarkWindow}" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Rectangle x:Name="Header" Style="{StaticResource Header}" MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+        <Label Content="Пополнение баланса" Style="{StaticResource HeaderLabel}" MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+        <Image Style="{StaticResource Icon}" MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+        <Image x:Name="CloseBox" Style="{StaticResource CloseBox}" MouseLeftButtonDown="CloseBox_MouseLeftButtonDown"/>
+
+        <Grid Margin="0,26,0,0">
+            <Label 
+                Content="Укажите сумму пополнения" 
+                HorizontalAlignment="Center" 
+                Margin="0,20,0,0" Padding="0"
+                VerticalAlignment="Top" FontSize="16"/>
+
+            <Label 
+                x:Name="TopUpLabel" Content="Пополнить" 
+                Style="{StaticResource MouseEvents}"
+                HorizontalAlignment="Left" IsEnabled="False"
+                Margin="258,110,0,0" Padding="0" 
+                VerticalAlignment="Top" FontSize="18"
+                MouseLeftButtonDown="TopUpLabel_MouseLeftButtonDown"/>
+
+            <Label 
+                x:Name="CancelLabel" Content="Отмена" 
+                Style="{StaticResource MouseEvents}" 
+                HorizontalAlignment="Left" 
+                Margin="52,110,0,0" Padding="0" 
+                VerticalAlignment="Top" FontSize="18"
+                MouseLeftButtonDown="CloseBox_MouseLeftButtonDown"/>
+
+            <TextBox 
+                x:Name="SumText"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" Text="Введите сумму..."
+                Width="165" FontSize="16" Margin="0,0,0,20"
+                GotFocus="SumText_GotFocus"
+                LostFocus="SumText_LostFocus"
+                TextChanged="SumText_TextChanged"/>
+            
+            <Label 
+                x:Name="ErrorLabel"
+                HorizontalAlignment="Right" 
+                Margin="0,82,118,0" Padding="0" 
+                VerticalAlignment="Top" Foreground="#FFCF5252"/>
+        </Grid>
+    </Grid>
+</Window>

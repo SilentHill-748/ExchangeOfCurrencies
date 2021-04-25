@@ -5,6 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.Data;
 
 using ExchangeOfCurrencies.DbClient;
 using ExchangeOfCurrencies.Currencies;
@@ -13,8 +15,7 @@ namespace ExchangeOfCurrencies.ClientModel
 {
     public class User : Person
     {
-        private List<string> registrationData;
-        private Dictionary<Currency, decimal> wallet; // TODO: Допилить модель кошелька и покупки.
+        private readonly List<string> registrationData;
 
         public User() { }
 
@@ -24,21 +25,33 @@ namespace ExchangeOfCurrencies.ClientModel
             SetRegistrationPropertyValues();
         }
 
+        /// <summary>
+        /// Обновляет данные в БД в поле Balance на число sum пользователя.
+        /// </summary>
+        /// <param name="sum"></param>
+        public void TopUpBalance(decimal sum)
+        {
+            decimal balance = GetActualBalance();
+            CultureInfo culture = new("en-US");
+            string sumEngFormat = (balance + sum).ToString(culture);
+            Request.Send($"UPDATE user_wallet SET balance = {sumEngFormat:F2} WHERE userId = {UserId};");
+        }
+
         public void BuyCurrency(Currency currency, decimal count)
         {
-            if (wallet.ContainsKey(currency))
-                wallet[currency] += count;
-            else
-                wallet.Add(currency, count);
+            
         }
 
         public void SellCurrency(Currency currency, decimal count)
         {
-            if (wallet.ContainsKey(currency))
-                wallet[currency] -= wallet[currency] < count ?
-                    throw new InvalidOperationException("Недостаточно средств!") : count;
-            else
-                throw new InvalidOperationException("Данной валюта в кошельке отсутствует!");
+            throw new InvalidOperationException("Данной валюта в кошельке отсутствует!");
+        }
+
+        private decimal GetActualBalance()
+        {
+            string quary = $"SELECT balance FROM user_wallet WHERE userId = {UserId};";
+            DataTable table = Request.Send(quary).Tables[0];
+            return decimal.Parse(table.Rows[0].ItemArray[0].ToString());
         }
 
         private void SetRegistrationPropertyValues()

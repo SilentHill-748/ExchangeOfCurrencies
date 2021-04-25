@@ -21,6 +21,7 @@ using ExchangeOfCurrencies.ClientModel;
 using ExchangeOfCurrencies.Currencies;
 using ExchangeOfCurrencies.DbClient;
 using ExchangeOfCurrencies.UI.Windows.MessageWindows;
+using System.Net.Mail;
 
 namespace ExchangeOfCurrencies.UI
 {
@@ -79,7 +80,10 @@ namespace ExchangeOfCurrencies.UI
 
         private void GetReportLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            Message message = new("Отчёт отправлен на Ваш email.", "Внимание!");
+            message.ShowDialog();
 
+            
         }
         #endregion
 
@@ -158,6 +162,11 @@ namespace ExchangeOfCurrencies.UI
         {
             allCurrencies.Clear();
             await Task.Run(() => GetAllCurrencies());
+        }
+
+        private void SendMail()
+        {
+            
         }
 
         private void InitCartesianChartLine(Currency currency)

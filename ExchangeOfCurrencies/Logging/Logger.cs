@@ -21,19 +21,22 @@ namespace ExchangeOfCurrencies.Logging
         }
 
         /// <summary>
-        /// Записывает данные с потока в указанный файл. Если файл не существует, то создастся новый.
+        /// Записывает данные с потока по строчно в массив.
         /// </summary>
-        public void WriteToFile(string filename)
+        public string[] WriteAllLines()
         {
+            string[] allText = new string[lengthOfRecords.Count]; 
             int position = 0;
-            using StreamWriter stream = new(filename);
-            foreach (int size in lengthOfRecords)
+
+            for (int i = 0; i < lengthOfRecords.Count; i++)
             {
+                int size = lengthOfRecords[i];
                 byte[] logRecord = new byte[size];
                 memory.Read(logRecord, position, size);
-                stream.WriteLine(encoding.GetString(logRecord));
+                allText[i] = encoding.GetString(logRecord);
                 position += size;
             }
+            return allText;
         }
 
         /// <summary>

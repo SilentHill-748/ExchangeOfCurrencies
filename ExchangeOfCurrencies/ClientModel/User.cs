@@ -17,12 +17,13 @@ namespace ExchangeOfCurrencies.ClientModel
     public class User : Person
     {
         private readonly List<string> registrationData;
-        private readonly string currentTime = DateTime.Now.ToShortTimeString();
+        private readonly string currentTime = DateTime.Now.ToLongTimeString();
 
         public User()
         {
             Log = new Logger();
-            Log.Write($"Сессия начата в {currentTime}. Дата: {DateTime.Now.Date}.");
+            string currentDate = DateTime.Now.ToShortDateString();
+            Log.Write($"Сессия начата в {currentTime}. Дата: {currentDate}.");
         }
 
         public User(List<string> registrationPersonalData) : this()

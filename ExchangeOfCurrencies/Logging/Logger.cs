@@ -16,7 +16,7 @@ namespace ExchangeOfCurrencies.Logging
         public Logger()
         {
             memory = new MemoryStream();
-            encoding = Encoding.Unicode;
+            encoding = Encoding.UTF8;
             lengthOfRecords = new List<int>();
         }
 
@@ -27,7 +27,7 @@ namespace ExchangeOfCurrencies.Logging
         {
             string[] allText = new string[lengthOfRecords.Count]; 
             int position = 0;
-
+            memory.Seek(0, SeekOrigin.Begin);
             for (int i = 0; i < lengthOfRecords.Count; i++)
             {
                 int size = lengthOfRecords[i];

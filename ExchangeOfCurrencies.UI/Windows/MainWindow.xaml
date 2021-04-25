@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI"
         xmlns:c="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Height="401" 
+        Height="433" 
         Width="732"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource DarkWindow}">
@@ -57,11 +57,11 @@
             <GroupBox 
                 Header="Информация о выбранной валюте" 
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="10,220,0,0"
+                VerticalAlignment="Bottom"
+                Margin="10,0,0,10"
                 BorderBrush="#FF020202" 
                 Foreground="White"
-                FontSize="15" Width="298" Height="146">
+                FontSize="15" Width="298" Height="177">
 
                 <Grid>
                     <TextBlock
@@ -75,11 +75,11 @@
             <GroupBox 
                 Header="Операции" 
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="313,0,0,0"
+                VerticalAlignment="Bottom"
+                Margin="313,0,0,10"
                 Foreground="White"
                 FontSize="15"
-                BorderBrush="#FF020202" Width="409" Height="366">
+                BorderBrush="#FF020202" Width="409" Height="397">
 
                 <Grid>
                     <Label 
@@ -151,9 +151,9 @@
                         HorizontalAlignment="Left" 
                         Margin="10,73,0,0" Padding="0"
                         VerticalAlignment="Top" 
-                        Cursor="Hand"/>
+                        MouseLeftButtonDown="TopUpBalanceLabel_MouseLeftButtonDown"/>
 
-                    <c:CartesianChart x:Name="CurrencyChart" Margin="10,127,10,0" Foreground="Black" Visibility="Visible">
+                    <c:CartesianChart x:Name="CurrencyChart" Margin="2,127,2,2" Foreground="Black" Visibility="Hidden">
                         <c:CartesianChart.AxisX>
                             <c:Axis x:Name="xAxis">
                                 <c:Axis.Separator>

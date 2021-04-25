@@ -38,7 +38,10 @@ namespace ExchangeOfCurrencies.UI
         }
 
         #region Events
-        private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();
+        private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
 
         private void CloseBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -49,11 +52,15 @@ namespace ExchangeOfCurrencies.UI
         {
             if (ListOfCurrencies.SelectedIndex == -1) return;
 
-            InfoCurrentCurrency.Text = "";
             string currencyName = ListOfCurrencies.SelectedItem.ToString();
             Currency currency = allCurrencies.Find(m => m.Name.Equals(currencyName));
             LoadInfoAboutChosenCurrency(currency);
             InitCartesianChartLine(currency);
+        }
+
+        private void TopUpBalanceLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
 
         private void PurchaseLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -72,6 +79,7 @@ namespace ExchangeOfCurrencies.UI
         }
         #endregion
 
+        #region Private
         private void Init()
         {
             WelcomMessage.Content = $"Привет, {currentUser.FirstName}! :)";
@@ -131,6 +139,7 @@ namespace ExchangeOfCurrencies.UI
         // Вывод всей информации по выбранной валюте.
         private void LoadInfoAboutChosenCurrency(Currency currency)
         {
+            InfoCurrentCurrency.Text = "";
             string[] currencyFields = { "Код:", "Символьный код:", "Название:", "Курс:", "Продажа:", "Количество:" };
             int maxLength = currencyFields.Max(m => m.Length);
             for (int i = 0; i < currencyFields.Length; i++)
@@ -153,13 +162,14 @@ namespace ExchangeOfCurrencies.UI
             CurrencyChartLine line = new(currency, 7);
             var lineSeries = line.GetLine();
             CurrencyRateQuotes.Values = lineSeries.Values;
+            CurrencyRateQuotes.Title = currency.CharCode;
             xAxis.Labels = line.Labels;
             xAxis.MaxValue = line.Labels.Count - 1;
             yAxis.MinValue = line.MinValue;
             yAxis.MaxValue = line.MaxValue;
         }
+        #endregion
 
-        // todolist
         // TODO: Реализовать систему запросов в бд для покупки и продажи валют.
         // TODO: Реализовать систему логирования действий юзера и алгоритм составления отчета.
     }

@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
+using System.Net.Mail;
+using System.Net;
 using LiveCharts;
 using LiveCharts.Wpf;
 
@@ -21,8 +23,6 @@ using ExchangeOfCurrencies.ClientModel;
 using ExchangeOfCurrencies.Currencies;
 using ExchangeOfCurrencies.DbClient;
 using ExchangeOfCurrencies.UI.Windows.MessageWindows;
-using System.Net.Mail;
-using System.Net;
 
 namespace ExchangeOfCurrencies.UI
 {
@@ -30,8 +30,8 @@ namespace ExchangeOfCurrencies.UI
     {
         private readonly User currentUser;
         private List<Currency> allCurrencies;
-        private string selectBalance;
         private string selectInfoAboutCurrenciesOfUser;
+        private Currency selectedCurrency;
 
         public MainWindow(User currentUser)
         {
@@ -54,10 +54,9 @@ namespace ExchangeOfCurrencies.UI
 
         private void ListOfCurrencies_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ListOfCurrencies.SelectedIndex == -1) return;
-
             string currencyName = ListOfCurrencies.SelectedItem.ToString();
             Currency currency = allCurrencies.Find(m => m.Name.Equals(currencyName));
+            selectedCurrency = currency;
             LoadInfoAboutChosenCurrency(currency);
             InitCartesianChartLine(currency);
         }
@@ -71,12 +70,38 @@ namespace ExchangeOfCurrencies.UI
 
         private void PurchaseLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            UpdateListOfCurrencies();
+            try
+            {
+                if (!uint.TryParse(CountOfCurrencyText.Text, out uint count))
+                {
+                    throw new Exception("Не указано количество покупаемой валюты!");
+                }
+
+                currentUser.PurchaseCurrency(ref selectedCurrency, count);
+                UpdateAll();
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex.Message, "Упс..");
+            }
         }
 
         private void SaleLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            UpdateListOfCurrencies();
+            try
+            {
+                if (!uint.TryParse(CountOfCurrencyText.Text, out uint count))
+                {
+                    throw new Exception("Не указано количество продаваемой валюты!");
+                }
+
+                currentUser.SellCurrency(ref selectedCurrency, count);
+                UpdateAll();
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex.Message, "Упс..");
+            }
         }
 
         private void GetReportLabel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -91,7 +116,6 @@ namespace ExchangeOfCurrencies.UI
         private void Init()
         {
             WelcomMessage.Content = $"Привет, {currentUser.FirstName}! :)";
-            selectBalance = $"SELECT Balance FROM user_wallet WHERE userId = {currentUser.UserId};";
             selectInfoAboutCurrenciesOfUser = $"SELECT USD, EUR, CAD, CNY, BYN, DKK, SGD " +
                 $"FROM user_wallet WHERE userId = {currentUser.UserId};";
             allCurrencies = new List<Currency>();
@@ -102,18 +126,17 @@ namespace ExchangeOfCurrencies.UI
 
         private void UpdateInfoAbouCurrentUser()
         {
-            decimal balance = GetBalance();
+            decimal balance = currentUser.GetActualValue("Balance");
             string[] userCurrencies = GetUserCurrencies();
             BalanceInfo.Content = $"На Вашем счёте: {balance:F2} руб.";
             PurchasedCurrencies.Text = "Купленные валюты:\n" + string.Join("\n", userCurrencies);
         }
 
-        private decimal GetBalance()
+        private void UpdateAll()
         {
-            // По запросу гарантируется результат в виде всего 1 значения единственного поля Balance.
-            DataTable selectResult = Request.Send(selectBalance).Tables[0];
-            object balance = selectResult.Rows[0].ItemArray[0];
-            return Convert.ToDecimal(balance);
+            UpdateInfoAbouCurrentUser();
+            LoadInfoAboutChosenCurrency(selectedCurrency);
+            CountOfCurrencyText.Text = "";
         }
 
         private string[] GetUserCurrencies()
@@ -157,11 +180,14 @@ namespace ExchangeOfCurrencies.UI
             }
         }
 
-        // Асинхронное обновление списка доступных валют.
-        private async void UpdateListOfCurrencies()
+        private void UpdateCurrencies()
         {
-            allCurrencies.Clear();
-            await Task.Run(() => GetAllCurrencies());
+            DataTable table = Request.Send("SELECT * FROM currencies;").Tables[0];
+            for (int i = 0; i < allCurrencies.Count; i++)
+            {
+                Currency currency = new(table.Rows[i].ItemArray);
+                allCurrencies[i] = currency;
+            }
         }
 
         private void SendMail()
@@ -172,7 +198,7 @@ namespace ExchangeOfCurrencies.UI
                 MailAddress recipient = new(currentUser.Email);
                 MailMessage mail = new(sender, recipient);
                 mail.Subject = "Report";
-                mail.Body = string.Join("", currentUser.Log.WriteAllLines());
+                mail.Body = string.Join("\n", currentUser.Log.WriteAllLines());
                 SmtpClient smtp = new("smtp.gmail.com", 587);
                 smtp.Credentials = new NetworkCredential("exchangesup02", "support748");
                 smtp.EnableSsl = true;
@@ -188,7 +214,7 @@ namespace ExchangeOfCurrencies.UI
         private void InitCartesianChartLine(Currency currency)
         {
             CurrencyChart.Visibility = Visibility.Visible;
-            CurrencyChartLine line = new(currency, 7);
+            CurrencyChartLine line = new(currency, 10);
             var lineSeries = line.GetLine();
             CurrencyRateQuotes.Values = lineSeries.Values;
             CurrencyRateQuotes.Title = currency.CharCode;
@@ -197,9 +223,12 @@ namespace ExchangeOfCurrencies.UI
             yAxis.MinValue = line.MinValue;
             yAxis.MaxValue = line.MaxValue;
         }
-        #endregion
 
-        // TODO: Реализовать систему запросов в бд для покупки и продажи валют.
-        // TODO: Реализовать систему логирования действий юзера и алгоритм составления отчета.
+        private void ShowError(string message, string header)
+        {
+            Message mes = new(message, header);
+            mes.ShowDialog();
+        }
+        #endregion
     }
 }

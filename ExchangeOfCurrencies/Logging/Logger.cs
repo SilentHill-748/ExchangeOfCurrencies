@@ -26,27 +26,15 @@ namespace ExchangeOfCurrencies.Logging
         public string[] WriteAllLines()
         {
             string[] allText = new string[lengthOfRecords.Count]; 
-            int position = 0;
             memory.Seek(0, SeekOrigin.Begin);
             for (int i = 0; i < lengthOfRecords.Count; i++)
             {
                 int size = lengthOfRecords[i];
                 byte[] logRecord = new byte[size];
-                memory.Read(logRecord, position, size);
+                memory.Read(logRecord, 0, size);
                 allText[i] = encoding.GetString(logRecord);
-                position += size;
             }
             return allText;
-        }
-
-        /// <summary>
-        /// Записывает все данные с потока в строку.
-        /// </summary>
-        /// <returns></returns>
-        public string WriteAllText()
-        {
-            memory.Seek(0, SeekOrigin.Begin);
-            return encoding.GetString(memory.ToArray());
         }
 
         /// <summary>
@@ -57,7 +45,7 @@ namespace ExchangeOfCurrencies.Logging
         {
             byte[] bytesOfContent = encoding.GetBytes(content);
             lengthOfRecords.Add(bytesOfContent.Length);
-            memory.Write(bytesOfContent, (int)memory.Position, bytesOfContent.Length);
+            memory.Write(bytesOfContent, 0, bytesOfContent.Length);
         }
 
         public void Dispose()

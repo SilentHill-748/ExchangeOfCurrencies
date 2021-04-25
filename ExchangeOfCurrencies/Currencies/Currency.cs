@@ -1,20 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace ExchangeOfCurrencies.Currencies
 {
     public class Currency
     {
         private readonly object[] items;
-        public int NumCode => (int)items[0];
-        public string CharCode => (string)items[1];
-        public string Name => (string)items[2];
-        public double Course => (double)items[3];
-        public double Sale => (double)items[4];
-        public int Count => (int)items[5];
+        private PropertyInfo[] properties;
+
+        public Currency(object[] items)
+        {
+            this.items = items;
+            Init();
+        }
+
+        public int NumCode { get; set; }
+        public string CharCode { get; set; }
+        public string Name { get; set; }
+        public double Course { get; set; }
+        public double Sale { get; set; }
+        public uint Count { get; set; }
 
         public object this[int index]
         {
@@ -22,13 +27,32 @@ namespace ExchangeOfCurrencies.Currencies
             {
                 if (index >= items.Length || index < 0)
                     throw new Exception();
-                return items[index];
+                return properties[index].GetValue(this);
             }
         }
 
-        public Currency(object[] items)
+        private void Init()
         {
-            this.items = items;
+            properties = this.GetType().GetProperties();
+            for (int i = 0; i < properties.Length; i++)
+            {
+                Type propertyType = properties[i].PropertyType;
+                switch (propertyType.Name)
+                {
+                    case "Int32":
+                        properties[i].SetValue(this, Convert.ToInt32(items[i]));
+                        break;
+                    case "Double":
+                        properties[i].SetValue(this, Convert.ToDouble(items[i]));
+                        break;
+                    case "UInt32":
+                        properties[i].SetValue(this, Convert.ToUInt32(items[i]));
+                        break;
+                    case "String":
+                        properties[i].SetValue(this, items[i].ToString());
+                        break;
+                }
+            }
         }
     }
 }

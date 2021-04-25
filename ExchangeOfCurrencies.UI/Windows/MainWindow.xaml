@@ -111,6 +111,7 @@
                         VerticalAlignment="Top"/>
 
                     <TextBox 
+                        x:Name="CountOfCurrencyText"
                         HorizontalAlignment="Left" 
                         Margin="167,36,0,0" 
                         TextWrapping="Wrap" 

@@ -31,11 +31,13 @@ namespace ExchangeOfCurrencies.DbClient
         private User CreateCurrentUser(object[] personalData)
         {
             User currentUser = new ();
-            var properties = currentUser.GetType().GetProperties();
+            var properties = currentUser.GetType().GetProperties().Skip(1).ToArray();
             for (int i = 0; i < personalData.Length; i++)
             {
                 if (properties[i].Name == "UserId")
+                {
                     properties[i].SetValue(currentUser, Convert.ToInt32(personalData[i]));
+                }
                 else
                     properties[i].SetValue(currentUser, personalData[i]);
             }

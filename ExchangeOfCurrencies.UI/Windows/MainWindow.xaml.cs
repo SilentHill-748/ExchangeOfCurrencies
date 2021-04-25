@@ -22,6 +22,7 @@ using ExchangeOfCurrencies.Currencies;
 using ExchangeOfCurrencies.DbClient;
 using ExchangeOfCurrencies.UI.Windows.MessageWindows;
 using System.Net.Mail;
+using System.Net;
 
 namespace ExchangeOfCurrencies.UI
 {
@@ -82,8 +83,7 @@ namespace ExchangeOfCurrencies.UI
         {
             Message message = new("Отчёт отправлен на Ваш email.", "Внимание!");
             message.ShowDialog();
-
-            
+            SendMail();
         }
         #endregion
 
@@ -166,7 +166,23 @@ namespace ExchangeOfCurrencies.UI
 
         private void SendMail()
         {
-            
+            try
+            {
+                MailAddress sender = new("exchangesup02@gmail.com", "Support");
+                MailAddress recipient = new(currentUser.Email);
+                MailMessage mail = new(sender, recipient);
+                mail.Subject = "Report";
+                mail.Body = string.Join("", currentUser.Log.WriteAllLines());
+                SmtpClient smtp = new("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential("exchangesup02", "support748");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+            }
+            catch (Exception e)
+            {
+                Message mes = new(e.Message, "Упс..");
+                mes.ShowDialog();
+            }
         }
 
         private void InitCartesianChartLine(Currency currency)

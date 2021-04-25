@@ -19,14 +19,16 @@ namespace ExchangeOfCurrencies.ClientModel
         private readonly List<string> registrationData;
         private readonly string currentTime = DateTime.Now.ToShortTimeString();
 
-        public User() { }
+        public User()
+        {
+            Log = new Logger();
+            Log.Write($"Сессия начата в {currentTime}. Дата: {DateTime.Now.Date}.");
+        }
 
-        public User(List<string> registrationPersonalData)
+        public User(List<string> registrationPersonalData) : this()
         {
             registrationData = registrationPersonalData;
             SetRegistrationPropertyValues();
-            Log = new Logger();
-            Log.Write($"Сессия начата в {currentTime}. Дата: {DateTime.Now.Date}.");
         }
 
         /// <summary>
@@ -70,8 +72,9 @@ namespace ExchangeOfCurrencies.ClientModel
 
         private void SetRegistrationPropertyValues()
         {
-            var properties = this.GetType().GetProperties().
-                Where(p => p.Name != "UserId").ToArray();
+            var properties = (from property in this.GetType().GetProperties()
+                              where property.Name != "UserId" && property.Name != "Log"
+                              select property).ToArray();
             if (registrationData.Count != properties.Length)
                 throw new Exception("Указаны не все регистрационные данные!");
 

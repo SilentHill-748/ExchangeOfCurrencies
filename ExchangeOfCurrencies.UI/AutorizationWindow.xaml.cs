@@ -93,11 +93,11 @@ namespace ExchangeOfCurrencies.UI
             try
             {
                 HeaderLabel.Content += " | загрузка..";
-                Autorization autorization = new ("SilentHill", "k20pqr3256qsh1");
-                User currentUser = await Task.Run(() => autorization.BeginAutorization()); // Начал проверку данных по БД.
+                Autorization autorization = new (login, password);
+                User currentUser = await Task.Run(() => autorization.BeginAutorization());
 
                 mainWindow = new MainWindow(currentUser);
-                mainWindow.Show();                                                  // Если ошибок нет - открываю основное окно и закрываю текущее.
+                mainWindow.Show();                                                  
                 this.Close();
             }
             catch (Exception ex)

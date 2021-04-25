@@ -46,6 +46,7 @@ namespace ExchangeOfCurrencies.UI
 
         private void CloseBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            currentUser.Log.Dispose();
             Environment.Exit(Environment.ExitCode);
         }
 

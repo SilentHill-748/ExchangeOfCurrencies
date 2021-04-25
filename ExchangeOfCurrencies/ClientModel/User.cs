@@ -10,12 +10,14 @@ using System.Data;
 
 using ExchangeOfCurrencies.DbClient;
 using ExchangeOfCurrencies.Currencies;
+using ExchangeOfCurrencies.Logging;
 
 namespace ExchangeOfCurrencies.ClientModel
 {
     public class User : Person
     {
         private readonly List<string> registrationData;
+        private readonly string currentTime = DateTime.Now.ToShortTimeString();
 
         public User() { }
 
@@ -23,7 +25,14 @@ namespace ExchangeOfCurrencies.ClientModel
         {
             registrationData = registrationPersonalData;
             SetRegistrationPropertyValues();
+            Log = new Logger();
+            Log.Write($"Сессия начата в {currentTime}. Дата: {DateTime.Now.Date}.");
         }
+
+        /// <summary>
+        /// Представляет поток данных о всех действиях пользователя.
+        /// </summary>
+        public Logger Log { get; }
 
         /// <summary>
         /// Обновляет данные в БД в поле Balance на число sum пользователя.
@@ -35,16 +44,21 @@ namespace ExchangeOfCurrencies.ClientModel
             CultureInfo culture = new("en-US");
             string sumEngFormat = (balance + sum).ToString(culture);
             Request.Send($"UPDATE user_wallet SET balance = {sumEngFormat:F2} WHERE userId = {UserId};");
+            Log.Write($"{currentTime}: Пользователь \'{FirstName}\' пополнил баланс на {sum} руб.");
         }
 
-        public void BuyCurrency(Currency currency, decimal count)
+        public void BuyCurrency(Currency currency, uint count)
         {
-            
+            decimal purchaiseSum = 0;
+            Log.Write($"{currentTime}: Пользователь \'{FirstName}\' купил валюту {currency.CharCode}" +
+                $" в количестве {count} ед. Сумма покупки составила {purchaiseSum} руб.");
         }
 
-        public void SellCurrency(Currency currency, decimal count)
+        public void SellCurrency(Currency currency, uint count)
         {
-            throw new InvalidOperationException("Данной валюта в кошельке отсутствует!");
+            decimal sellSum = 0;
+            Log.Write($"{currentTime}: Пользователь \'{FirstName}\' продал валюту {currency.CharCode}" +
+                $" в количестве {count} ед. Сумма продажи составила {sellSum} руб.");
         }
 
         private decimal GetActualBalance()

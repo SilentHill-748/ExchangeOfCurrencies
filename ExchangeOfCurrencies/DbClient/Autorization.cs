@@ -49,7 +49,7 @@ namespace ExchangeOfCurrencies.DbClient
         private void GetSelectedRows()
         {
             DataSet data = Request.Send(selectByLoginAndPass);
-            if (data.Tables.Count == 0)
+            if (data.Tables[0].Rows.Count == 0)
             {
                 throw new Exception("Введен неверный логин или пароль!");
             }

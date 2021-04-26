@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -102,22 +103,34 @@ namespace ExchangeOfCurrencies.UI.Windows
 
         private string BuildQuaryString(List<string> personalData)
         {
-            string quary = "INSERT INTO users (firstname, secondname, lastname, phone, email, login, password) ";
-            var insertValues = personalData.Take(personalData.Count - 1).ToList();
-            string values = GetValuesFromProperties(insertValues);
+            string quary = "INSERT INTO users (id, firstname, secondname, lastname, phone, email, login, password) ";
+            string values = GetValuesFromProperties(personalData);
             return quary + $"VALUES ({values});";
         }
 
         // Приводит каждую строку данных к нужному формату и записывает всё в 1 строку.
         private string GetValuesFromProperties(List<string> insertValues)
         {
+            insertValues.RemoveAt(7);
+            insertValues = insertValues.Prepend((GetPreviousUserId() + 1).ToString()).ToList();
             var setFormat = insertValues.Select(value => $"\'{value}\'").ToArray();
             return string.Join(",", setFormat);
         }
 
+        private int GetPreviousUserId()
+        {
+            DataRow row = Request.Send("SELECT MAX(users.id) FROM users;").
+                Tables[0].Rows[0];
+            if (row.ItemArray[0] is DBNull)
+            {
+                return 0;
+            }
+            return Convert.ToInt32(row.ItemArray[0]);
+        }
+
         private void CloseWindow()
         {
-            AutorizationWindow autorization = new AutorizationWindow();
+            AutorizationWindow autorization = new();
             autorization.Show();
             Close();
         }

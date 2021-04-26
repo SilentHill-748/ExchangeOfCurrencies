@@ -12,7 +12,8 @@ namespace ExchangeOfCurrencies.ClientModel.Validation
         public override bool IsValid(object value)
         {
             string login = (string)value;
-            if (!login.Any(c => !char.IsLetter(c) && !char.IsDigit(c)))
+            if (!login.Any(c => !char.IsLetter(c) && 
+                                         !char.IsDigit(c)))
             {
                 string xmlResponse = LoadLogins();
                 if (CheckLoginToList(login, xmlResponse))
@@ -21,7 +22,9 @@ namespace ExchangeOfCurrencies.ClientModel.Validation
                     return false;
                 }
                 else
+                {
                     return true;
+                }
             }
             else
             {
@@ -40,8 +43,7 @@ namespace ExchangeOfCurrencies.ClientModel.Validation
         // Вытаскиваю логины из БД. Метод вернет xml-документ.
         private string LoadLogins()
         {
-            Request logins = new(loginsQuary);
-            return logins.DataSet.GetXml();
+            return Request.Send(loginsQuary).GetXml();
         }
     }
 }

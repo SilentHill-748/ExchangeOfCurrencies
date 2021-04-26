@@ -36,7 +36,9 @@ namespace ExchangeOfCurrencies.UI.Windows
         {
             object eventSource = e.Source;
             if (!inputFieldsOfPersonalData.Contains(eventSource))
+            {
                 inputFieldsOfPersonalData.Add(eventSource as Control);
+            }
         }
 
         private void RegL_MouseDown(object sender, MouseButtonEventArgs e)
@@ -62,7 +64,9 @@ namespace ExchangeOfCurrencies.UI.Windows
             try
             {
                 if (!validation.Validate())
+                {
                     throw new Exception();
+                }
                 return true;
             }
             catch (Exception)
@@ -85,9 +89,13 @@ namespace ExchangeOfCurrencies.UI.Windows
             foreach (Control control in inputFieldsOfPersonalData)
             {
                 if (control is TextBox tb)
+                {
                     result.Add(tb.Text);
+                }
                 else
+                {
                     result.Add((control as PasswordBox).Password);
+                }
             }
             return result;
         }

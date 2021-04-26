@@ -39,7 +39,9 @@ namespace ExchangeOfCurrencies.DbClient
                     properties[i].SetValue(currentUser, Convert.ToInt32(personalData[i]));
                 }
                 else
+                {
                     properties[i].SetValue(currentUser, personalData[i]);
+                }
             }
             return currentUser;
         }
@@ -48,7 +50,9 @@ namespace ExchangeOfCurrencies.DbClient
         {
             DataSet data = Request.Send(selectByLoginAndPass);
             if (data.Tables.Count == 0)
+            {
                 throw new Exception("Введен неверный логин или пароль!");
+            }
             selectedRow = data.Tables[0].Rows[0];
         }
     }

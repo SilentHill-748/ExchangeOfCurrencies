@@ -5,13 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI.Windows.MessageWindows"
         mc:Ignorable="d"
-        Title="TopUpBalance" Height="177" Width="402"
+        Height="177" Width="402"
         Style="{StaticResource DarkWindow}" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Rectangle x:Name="Header" Style="{StaticResource Header}" MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
-        <Label Content="Пополнение баланса" Style="{StaticResource HeaderLabel}" MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
-        <Image Style="{StaticResource Icon}" MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
-        <Image x:Name="CloseBox" Style="{StaticResource CloseBox}" MouseLeftButtonDown="CloseBox_MouseLeftButtonDown"/>
+        <Rectangle 
+            x:Name="Header" Style="{StaticResource Header}" 
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+        
+        <Label 
+            Content="Пополнение баланса" Style="{StaticResource HeaderLabel}"
+            MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+        
+        <Image 
+            Style="{StaticResource Icon}" MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
+        
+        <Image 
+            x:Name="CloseBox" Style="{StaticResource CloseBox}"
+            MouseLeftButtonDown="CloseBox_MouseLeftButtonDown"/>
 
         <Grid Margin="0,26,0,0">
             <Label 
@@ -37,17 +47,14 @@
                 MouseLeftButtonDown="CloseBox_MouseLeftButtonDown"/>
 
             <TextBox 
-                x:Name="SumText"
-                HorizontalAlignment="Center"
+                x:Name="SumText" HorizontalAlignment="Center"
                 VerticalAlignment="Center" Text="Введите сумму..."
                 Width="165" FontSize="16" Margin="0,0,0,20"
-                GotFocus="SumText_GotFocus"
-                LostFocus="SumText_LostFocus"
+                GotFocus="SumText_GotFocus" LostFocus="SumText_LostFocus"
                 TextChanged="SumText_TextChanged"/>
             
             <Label 
-                x:Name="ErrorLabel"
-                HorizontalAlignment="Right" 
+                x:Name="ErrorLabel" HorizontalAlignment="Right" 
                 Margin="0,82,118,0" Padding="0" 
                 VerticalAlignment="Top" Foreground="#FFCF5252"/>
         </Grid>

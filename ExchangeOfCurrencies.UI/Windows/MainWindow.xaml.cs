@@ -146,14 +146,18 @@ namespace ExchangeOfCurrencies.UI
         {
             DataTable tableOfCurrencies = Request.Send("SELECT * FROM currencies;").Tables[0];
             for (int i = 0; i < tableOfCurrencies.Rows.Count; i++)
+            {
                 allCurrencies.Add(new Currency(tableOfCurrencies.Rows[i].ItemArray));
+            }
         }
 
         // Заполнение списка доступных валют.
         private void FillListOfCurrencies()
         {
             foreach (Currency currency in allCurrencies)
+            {
                 ListOfCurrencies.Items.Add(currency.Name);
+            }
         }
 
         // Вывод всей информации по выбранной валюте.
@@ -166,16 +170,6 @@ namespace ExchangeOfCurrencies.UI
             {
                 string currentCurrencyInfo = currencyFields[i].PadRight(maxLength);
                 InfoCurrentCurrency.Text += $"{currentCurrencyInfo} {currency[i]}\n";
-            }
-        }
-
-        private void UpdateCurrencies()
-        {
-            DataTable table = Request.Send("SELECT * FROM currencies;").Tables[0];
-            for (int i = 0; i < allCurrencies.Count; i++)
-            {
-                Currency currency = new(table.Rows[i].ItemArray);
-                allCurrencies[i] = currency;
             }
         }
 
@@ -193,10 +187,9 @@ namespace ExchangeOfCurrencies.UI
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Message mes = new(e.Message, "Упс..");
-                mes.ShowDialog();
+                ShowError("Ошибка при отправке письма!", "Упс...");
             }
         }
 

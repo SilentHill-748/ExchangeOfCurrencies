@@ -84,7 +84,9 @@ namespace ExchangeOfCurrencies.Currencies
                          where node.Value == currentCurrency.CharCode
                          select valute.Attribute("ID").Value;
             if (!values.Any())
+            {
                 throw new Exception("Такой валюты не существует!");
+            }
             return values;
         }
 

@@ -21,13 +21,17 @@ namespace ExchangeOfCurrencies.UI
         {
             Color peekColor = (Color)ColorConverter.ConvertFromString("#EABA3E");
             if (sender is Label lab)
+            {
                 lab.Foreground = new SolidColorBrush(peekColor);
+            }
         }
 
         private void Label_MouseLeave(object sender, MouseEventArgs e)
         {
             if (sender is Label lab)
+            {
                 lab.Foreground = Brushes.White;
+            }
         }
     }
 }

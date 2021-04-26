@@ -5,20 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI.Windows.MessageWindows"
         mc:Ignorable="d"
-        Height="216"
-        Width="398"
+        Height="216" Width="398"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource DarkWindow}">
     <Grid>
         <Rectangle 
-            x:Name="Header" 
-            Style="{StaticResource Header}"
+            x:Name="Header" Style="{StaticResource Header}"
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Label 
             Style="{StaticResource HeaderLabel}"
-            x:Name="HeaderLabel" 
-            Content="Внимание!"
+            x:Name="HeaderLabel" Content="Внимание!"
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Image 
@@ -32,28 +29,19 @@
         <Grid Margin="0,26,0,0">
             <ScrollViewer Margin="10,10,0,54" >
                 <TextBlock 
-                    x:Name="MessageBlock"
-                    TextWrapping="Wrap"
-                    Height="Auto" Width="367"
-                    HorizontalAlignment="Left"
-                    Foreground="White"
-                    FontSize="15" 
-                    TextAlignment="Justify"
-                    FontFamily="Segoe UI" 
-                    FontStyle="Normal"
+                    x:Name="MessageBlock" TextWrapping="Wrap"
+                    Height="Auto" Width="367" HorizontalAlignment="Left"
+                    Foreground="White" FontSize="15" TextAlignment="Justify"
+                    FontFamily="Segoe UI" FontStyle="Normal"
                     Block.IsHyphenationEnabled="True"/>
             </ScrollViewer>
 
             <Label 
-                x:Name="OkLabel"
-                Content="Ок" 
+                x:Name="OkLabel" Content="Ок" 
                 Style="{StaticResource MouseEvents}"
-                FontSize="17"
-                HorizontalAlignment="Left"
-                Margin="297,141,0,0" 
-                VerticalAlignment="Top"
-                FontFamily="Segoe UI" 
-                FontStyle="Normal"
+                FontSize="17" HorizontalAlignment="Left"
+                Margin="297,141,0,0" VerticalAlignment="Top"
+                FontFamily="Segoe UI" FontStyle="Normal"
                 MouseLeftButtonDown="CloseBox_MouseLeftButtonDown"/>
         </Grid>
     </Grid>

@@ -67,6 +67,7 @@ namespace ExchangeOfCurrencies.Currencies
             MatchCollection matches = Regex.Matches(newRates, pattern);
 
             for (int i = 0; i < currencies.Count; i++)
+            {
                 for (int k = 0; k < matches.Count; k++)
                 {
                     if (matches[k].Groups[1].Value == currencies[i].CharCode)
@@ -75,6 +76,7 @@ namespace ExchangeOfCurrencies.Currencies
                         break;
                     }
                 }
+            }
             return rates;
         }
 

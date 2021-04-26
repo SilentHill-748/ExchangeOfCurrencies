@@ -38,7 +38,6 @@ namespace ExchangeOfCurrencies.ClientModel
         /// <summary>
         /// Обновляет данные в БД в поле Balance на число sum пользователя.
         /// </summary>
-        /// <param name="sum"></param>
         public void TopUpBalance(decimal sum)
         {
             decimal balance = GetActualValue("Balance");
@@ -118,10 +117,14 @@ namespace ExchangeOfCurrencies.ClientModel
                               where property.Name != "UserId" && property.Name != "Log"
                               select property).ToArray();
             if (registrationData.Count != properties.Length)
+            {
                 throw new Exception("Указаны не все регистрационные данные!");
+            }
 
             for (int i = 0; i < properties.Length; i++)
+            {
                 properties[i].SetValue(this, registrationData[i]);
+            }
         }
     }
 }

@@ -26,7 +26,9 @@ namespace ExchangeOfCurrencies.Currencies
             get
             {
                 if (index >= items.Length || index < 0)
+                {
                     throw new Exception();
+                }
                 return properties[index].GetValue(this);
             }
         }

@@ -5,19 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.UI"
         mc:Ignorable="d"
-        Height="185" 
-        Width="365"
+        Height="185" Width="365"
         WindowStartupLocation="CenterScreen" 
         Style="{StaticResource DarkWindow}">
     <Grid>
         <Rectangle 
-            x:Name="Header"
-            Style="{StaticResource Header}"
+            x:Name="Header" Style="{StaticResource Header}"
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Label 
-            x:Name="HeaderLabel"
-            Content="Авторизация" 
+            x:Name="HeaderLabel" Content="Авторизация" 
             Style="{StaticResource HeaderLabel}"
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
@@ -26,92 +23,67 @@
             MouseLeftButtonDown="Header_MouseLeftButtonDown"/>
 
         <Image 
-            x:Name="CloseBox"
-            Style="{StaticResource CloseBox}"
+            x:Name="CloseBox" Style="{StaticResource CloseBox}"
             MouseDown="CloseBox_MouseDown"/>
 
         <Grid 
             HorizontalAlignment="Left" 
-            Height="170" 
-            Margin="0,24,0,0" 
-            VerticalAlignment="Top" 
-            Width="365">
+            Height="170" Width="365"
+            Margin="0,24,0,0" VerticalAlignment="Top">
+            
             <Label 
                 Style="{StaticResource MouseEvents}"
-                x:Name="RegistrationL" 
-                Content="Регистрация"
+                x:Name="RegistrationL" Content="Регистрация"
                 HorizontalAlignment="Left" 
-                VerticalAlignment="Top" 
-                Margin="145,119,0,0"
+                VerticalAlignment="Top" Margin="145,119,0,0"
                 MouseDown="RegistrationL_MouseDown" 
                 FontSize="14" FontFamily="Segoe UI"/>
 
             <!--Лэйбл, который выполняет авторизацию по БД.-->
             <Label 
                 Style="{StaticResource MouseEvents}"
-                x:Name="AutorizationL"
-                Content="Авторизация" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top"
-                Margin="257,119,0,0" 
-                MouseDown="AutorizationL_MouseDown" 
+                x:Name="AutorizationL" Content="Авторизация" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="257,119,0,0" MouseDown="AutorizationL_MouseDown" 
                 FontSize="14" FontFamily="Segoe UI"/>
 
             <!--Лэйбл справки.-->
             <Label 
                 Style="{StaticResource MouseEvents}"
-                x:Name="ForgotPassL"
-                Content="Забыл пароль?" 
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="14,119,0,0"
-                MouseUp="ForgotPassL_MouseUp" 
+                x:Name="ForgotPassL" Content="Забыл пароль?" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="14,119,0,0" MouseUp="ForgotPassL_MouseUp" 
                 FontSize="14" FontFamily="Segoe UI"/>
 
             <!--Поле ввода пароля.-->
             <PasswordBox 
-                x:Name="PassBox" 
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" 
-                Margin="114,82,0,0" 
-                Width="157"
-                FontSize="16"
-                PasswordChar="•"
-                MaxLength="20"
-                KeyUp="PassBox_KeyUp"
+                x:Name="PassBox" HorizontalAlignment="Left"
+                VerticalAlignment="Top" Margin="114,82,0,0" Width="157"
+                FontSize="16" PasswordChar="•"
+                MaxLength="20" KeyUp="PassBox_KeyUp"
                 PasswordChanged="PassBox_PasswordChanged" FontFamily="Times New Roman"/>
 
             <!--Поле ввода логина-->
             <TextBox 
-                x:Name="LoginBox" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" 
-                Margin="114,56,0,0" 
-                Width="157" 
-                FontSize="16"
-                MaxLength="16"
+                x:Name="LoginBox" HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Margin="114,56,0,0" 
+                Width="157" FontSize="16" MaxLength="16"
                 TextChanged="LoginBox_TextChanged" FontFamily="Times New Roman"/>
 
             <!--Информативные лэйблы.-->
             <Label 
-                Content="Логин" 
-                HorizontalAlignment="Left"
-                Margin="62,53,0,0"
-                VerticalAlignment="Top" 
+                Content="Логин" HorizontalAlignment="Left"
+                Margin="62,53,0,0" VerticalAlignment="Top" 
                 FontSize="15" FontFamily="Segoe UI"/>
 
             <Label 
-                Content="Пароль" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top"
-                Margin="53,79,0,0" 
+                Content="Пароль" HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Margin="53,79,0,0" 
                 FontSize="15" FontFamily="Segoe UI"/>
 
             <Label 
-                Content="Добро пожаловать!" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Top"
-                Margin="0,3,0,0" 
+                Content="Добро пожаловать!" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" Margin="0,3,0,0" 
                 FontSize="26" FontFamily="Segoe UI"/>
         </Grid>
     </Grid>

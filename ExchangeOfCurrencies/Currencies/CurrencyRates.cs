@@ -14,7 +14,7 @@ namespace ExchangeOfCurrencies.Currencies
     /// </summary>
     public class CurrencyRates
     {
-        private string URL;
+        private readonly string URL;
         private readonly List<Currency> currencies;
 
         public CurrencyRates()

@@ -19,7 +19,7 @@ namespace ExchangeOfCurrencies.Currencies
     {
         private readonly Currency currentCurrency;
         private readonly int rangeOfDays;
-        private string pathToTempFile;
+        private readonly string pathToTempFile;
 
         public CurrencyChartLine(Currency currency, int rangeOfDays)
         {

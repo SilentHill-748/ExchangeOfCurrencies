@@ -16,16 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExchangeOfCurrencies\ExchangeOfCurrencies.csproj" />
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="LiveCharts">
-      <HintPath>C:\Users\SilentHill\source\repos\Live-Charts-master\WpfView\bin\Debug\LiveCharts.dll</HintPath>
-    </Reference>
-    <Reference Include="LiveCharts.Wpf">
-      <HintPath>C:\Users\SilentHill\source\repos\Live-Charts-master\WpfView\bin\Debug\LiveCharts.Wpf.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\ExchangeOfCurrencies\ExchangeOfCurrencies.csproj" />
   </ItemGroup>
 
   <ItemGroup>

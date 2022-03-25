@@ -13,5 +13,10 @@ namespace ExchangeOfCurrencies
     /// </summary>
     public partial class App : Application
     {
+        private void WindowBorder_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (sender is DependencyObject d)
+                Window.GetWindow(d).DragMove();
+        }
     }
 }

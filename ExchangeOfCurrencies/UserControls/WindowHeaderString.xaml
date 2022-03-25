@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="ExchangeOfCurrencies.UserControls.WindowHeaderString"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ExchangeOfCurrencies.UserControls"
+             mc:Ignorable="d"
+             Name="WindowHeader"
+             SizeChanged="WindowHeaderString_SizeChanged">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Path Grid.ColumnSpan="3"
+              Fill="{Binding ElementName=WindowHeader, Path=Fill}" 
+              Stroke="Transparent">
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure x:Name="HeaderString" IsClosed="True">
+                        <LineSegment Point="0 10"/>
+                        <ArcSegment Point="10 0" Size="10 10" SweepDirection="Clockwise"/>
+                        <LineSegment x:Name="Line1"/>
+                        <ArcSegment x:Name="Arc1" Size="10 10" SweepDirection="Clockwise"/>
+                        <LineSegment x:Name="Line2"/>
+                        <LineSegment x:Name="Line3"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+
+        <Image Grid.Column="0" 
+               Margin="10 5 0 5"
+               VerticalAlignment="Stretch"
+               HorizontalAlignment="Left"
+               Source="{Binding ElementName=WindowHeader, Path=ImageSource}"/>
+
+
+        <TextBlock Grid.Column="1" 
+                   Text="{Binding ElementName=WindowHeader, Path=Title}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+
+        <Button Grid.Column="3"
+                Margin="0 0 10 0"
+                x:Name="CloseBtn"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Right"
+                Style="{Binding ElementName=WindowHeader, Path=CloseButton.Style}"
+                Click="CloseBtn_Click"/>
+    </Grid>
+</UserControl>

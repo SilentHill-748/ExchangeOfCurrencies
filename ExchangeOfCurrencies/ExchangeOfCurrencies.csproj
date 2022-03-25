@@ -1,22 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="8.0.23" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="LiveCharts">
-      <HintPath>..\..\..\Проекты, библиотеки Добрых людей\Live-Charts-master\WpfView\bin\Debug\LiveCharts.dll</HintPath>
-    </Reference>
-    <Reference Include="LiveCharts.Wpf">
-      <HintPath>..\..\..\Проекты, библиотеки Добрых людей\Live-Charts-master\WpfView\bin\Debug\LiveCharts.Wpf.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 
 </Project>

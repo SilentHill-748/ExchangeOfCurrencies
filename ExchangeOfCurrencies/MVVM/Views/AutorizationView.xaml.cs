@@ -10,14 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ExchangeOfCurrencies
+namespace ExchangeOfCurrencies.MVVM.Views
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для AutorizationView.xaml
+    /// </summary>
+    public partial class AutorizationView : Window
     {
-        public MainWindow()
+        public AutorizationView()
         {
             InitializeComponent();
         }

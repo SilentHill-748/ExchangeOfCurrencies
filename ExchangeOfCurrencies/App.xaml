@@ -112,9 +112,48 @@
 
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Foreground" Value="{StaticResource MouseOverBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="LoginInputTextBoxStyle" TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="{StaticResource WindowBackgroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border x:Name="LoginBorder"
+                                    BorderThickness="0 0 0 2">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush x:Name="LoginBorderBrush" Color="{StaticResource WindowForegroundColor}"/>
+                                </Border.BorderBrush>
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonState">
+                                        <VisualState x:Name="MouseOver">
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="LoginBorderBrush"
+                                                                Storyboard.TargetProperty="Color"
+                                                                Duration="0:0:0.2"
+                                                                To="{DynamicResource MouseOverColor}"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Normal">
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="LoginBorderBrush"
+                                                                Storyboard.TargetProperty="Color"
+                                                                Duration="0:0:0.2"
+                                                                To="{DynamicResource WindowForegroundColor}"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Border>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

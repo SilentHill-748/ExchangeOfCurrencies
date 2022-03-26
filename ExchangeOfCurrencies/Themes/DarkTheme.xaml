@@ -14,14 +14,15 @@
     <!--#endregion-->
 
     <!--#region Brushes-->
-    <SolidColorBrush x:Key="WindowHeaderStringForegroundBrush" Color="{DynamicResource WindowForegroundColor}"/>
-    <SolidColorBrush x:Key="WindowHeaderStringBrush" Color="{DynamicResource WindowHeaderStringColor}"/>
-    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{DynamicResource WindowBackgroundColor}"/>
-    <SolidColorBrush x:Key="WindowForegroundBrush" Color="{DynamicResource WindowForegroundColor}"/>
+    <SolidColorBrush x:Key="WindowHeaderStringForegroundBrush" Color="{StaticResource WindowForegroundColor}"/>
+    <SolidColorBrush x:Key="WindowHeaderStringBrush" Color="{StaticResource WindowHeaderStringColor}"/>
+    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{StaticResource WindowBackgroundColor}"/>
+    <SolidColorBrush x:Key="WindowForegroundBrush" Color="{StaticResource WindowForegroundColor}"/>
     <!--<SolidColorBrush x:Key="HeaderSeparatorBrush" Color="{DynamicResource HeaderSeparatorColor}"/>-->
-    <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{DynamicResource ButtonBackgroundColor}"/>
-    <SolidColorBrush x:Key="SelectedButtonForegroundBrush" Color="{DynamicResource ButtonBackgroundSelectedColor}"/>
-    <SolidColorBrush x:Key="ButtonForegroundBrush" Color="{DynamicResource WindowForegroundColor}"/>
-    <SolidColorBrush x:Key="WindowBorderBrush" Color="{DynamicResource BorderWindowColor}"/>
+    <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{StaticResource ButtonBackgroundColor}"/>
+    <SolidColorBrush x:Key="SelectedButtonForegroundBrush" Color="{StaticResource ButtonBackgroundSelectedColor}"/>
+    <SolidColorBrush x:Key="ButtonForegroundBrush" Color="{StaticResource WindowForegroundColor}"/>
+    <SolidColorBrush x:Key="WindowBorderBrush" Color="{StaticResource BorderWindowColor}"/>
+    <SolidColorBrush x:Key="MouseOverBrush" Color="{StaticResource MouseOverColor}"/>
     <!--#endregion-->
 </ResourceDictionary>

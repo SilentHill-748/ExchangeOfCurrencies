@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ExchangeOfCurrencies"
              xmlns:uc="clr-namespace:ExchangeOfCurrencies.UserControls"
-             StartupUri="MVVM/Views/MainWindow.xaml">
+             StartupUri="MVVM/Views/AutorizationView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!--Merge theme colors and brushes-->
@@ -13,11 +13,12 @@
             
             <Style x:Key="WindowThemeStyle" TargetType="{x:Type Window}">
                 <Setter Property="FontSize" Value="18"/>
+                <Setter Property="MinWidth" Value="100"/>
                 <Setter Property="OverridesDefaultStyle" Value="True"/>
                 <Setter Property="AllowsTransparency" Value="True"/>
                 <Setter Property="WindowStyle" Value="None"/>
-                <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource WindowForegroundBrush}"/>
+                <Setter Property="Background" Value="{StaticResource WindowBackgroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
                 <Setter Property="WindowChrome.WindowChrome">
                     <Setter.Value>
                         <WindowChrome ResizeBorderThickness="8"
@@ -33,7 +34,7 @@
                                     CornerRadius="10"
                                     BorderThickness="1"
                                     Background="{TemplateBinding Background}"
-                                    BorderBrush="{DynamicResource WindowBorderBrush}"
+                                    BorderBrush="{StaticResource WindowBorderBrush}"
                                     MouseLeftButtonDown="WindowBorder_MouseLeftButtonDown">
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -44,8 +45,8 @@
                                     <uc:WindowHeaderString Grid.Row="0"
                                                            Title="{TemplateBinding Title}"
                                                            ImageSource="/Assets/icon.ico"
-                                                           Foreground="{DynamicResource WindowHeaderStringForegroundBrush}"
-                                                           Fill="{DynamicResource WindowHeaderStringBrush}">
+                                                           Foreground="{StaticResource WindowHeaderStringForegroundBrush}"
+                                                           Fill="{StaticResource WindowHeaderStringBrush}">
                                         <uc:WindowHeaderString.CloseButton>
                                             <Button Style="{DynamicResource CloseButtonStyle}"/>
                                         </uc:WindowHeaderString.CloseButton>
@@ -62,7 +63,7 @@
             </Style>
 
             <Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
-                <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ButtonForegroundBrush}"/>
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="Template">
@@ -76,28 +77,78 @@
                                       Data="M0,0 L10,10 M0, 10 L10,0"
                                       StrokeThickness="3"
                                       VerticalAlignment="Center"
-                                      HorizontalAlignment="Center">
-                                    <Path.Stroke>
-                                        <SolidColorBrush x:Name="CrossColor" Color="{DynamicResource WindowForegroundColor}"/>
-                                    </Path.Stroke>
+                                      HorizontalAlignment="Center"
+                                      Stroke="{TemplateBinding Foreground}">
                                 </Path>
+                            </Border>
+                            
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                <Setter Property="Foreground" Value="{StaticResource ButtonForegroundBrush}"/>
+                <Setter Property="Background" Value="{StaticResource WindowBackgroundBrush}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="ButtonBorder"
+                                    Background="{TemplateBinding Background}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalAlignment}">
+
+                                <Label Content="{TemplateBinding Content}"
+                                       Padding="{TemplateBinding Padding}"
+                                       Foreground="{TemplateBinding Foreground}"/>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="{StaticResource MouseOverBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="LoginInputTextBoxStyle" TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="{StaticResource WindowBackgroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border x:Name="LoginBorder"
+                                    BorderThickness="0 0 0 2">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush x:Name="LoginBorderBrush" Color="{DynamicResource WindowForegroundColor}"/>
+                                </Border.BorderBrush>
+                                <ScrollViewer x:Name="PART_ContentHost"/>
 
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonState">
                                         <VisualState x:Name="MouseOver">
                                             <Storyboard>
-                                                <ColorAnimation Storyboard.TargetName="CrossColor"
+                                                <ColorAnimation Storyboard.TargetName="LoginBorderBrush"
                                                                 Storyboard.TargetProperty="Color"
-                                                                Duration="0:0:0.1"
-                                                                To="{DynamicResource MouseOverColor}"/>
+                                                                Duration="0:0:0.2"
+                                                                To="{StaticResource MouseOverColor}"/>
                                             </Storyboard>
                                         </VisualState>
                                         <VisualState x:Name="Normal">
                                             <Storyboard>
-                                                <ColorAnimation Storyboard.TargetName="CrossColor"
+                                                <ColorAnimation Storyboard.TargetName="LoginBorderBrush"
                                                                 Storyboard.TargetProperty="Color"
-                                                                Duration="0:0:0.1"
-                                                                To="{DynamicResource WindowForegroundColor}"/>
+                                                                Duration="0:0:0.2"
+                                                                To="{StaticResource WindowForegroundColor}"/>
                                             </Storyboard>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -108,8 +159,44 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
-                
+            <Style x:Key="PasswordBoxStyle" TargetType="{x:Type PasswordBox}">
+                <Setter Property="Background" Value="{StaticResource WindowBackgroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type PasswordBox}">
+                            <Border x:Name="PasswordBoxBorder"
+                                    BorderThickness="0 0 0 2">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush x:Name="PasswordBoxBorderBrush" Color="{DynamicResource WindowForegroundColor}"/>
+                                </Border.BorderBrush>
+
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonState">
+                                        <VisualState x:Name="MouseOver">
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="PasswordBoxBorderBrush"
+                                                                Storyboard.TargetProperty="Color"
+                                                                Duration="0:0:0.2"
+                                                                To="{StaticResource MouseOverColor}"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Normal">
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="PasswordBoxBorderBrush"
+                                                                Storyboard.TargetProperty="Color"
+                                                                Duration="0:0:0.2"
+                                                                To="{StaticResource WindowForegroundColor}"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

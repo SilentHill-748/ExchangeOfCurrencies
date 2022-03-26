@@ -25,10 +25,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Column="3" Style="{StaticResource LoginInputTextBoxStyle}"/>
+        <TextBox Grid.Column="3" 
+                 Style="{StaticResource LoginInputTextBoxStyle}"/>
 
         <PasswordBox Grid.Row="2"
-                     Grid.Column="2"/>
+                     Grid.Column="2"
+                     Style="{StaticResource PasswordBoxStyle}"/>
 
         <TextBlock Grid.Column="0"
                    Text="Логин"/>
@@ -38,14 +40,18 @@
                    Text="Пароль"/>
 
         <WrapPanel Grid.Row="4"
-                   Grid.Column="3"
+                   Grid.ColumnSpan="3"
                    HorizontalAlignment="Right">
+            <Button Content="Забыл пароль"
+                    Padding="0 0 25 0"
+                    Style="{StaticResource ButtonStyle}"/>
+            
             <Button Content="Войти" 
                     Style="{StaticResource ButtonStyle}"
                     Padding="5 0"/>
 
             <Button Content="Регистрация"
-                    Padding="5 0 0 0"
+                    Padding="5 0 0 0 "
                     Style="{StaticResource ButtonStyle}"/>
         </WrapPanel>
     </Grid>

@@ -2,15 +2,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--#region Colors-->
     <Color x:Key="BorderWindowColor">#FF3D3B56</Color>
-    <!--<Color x:Key="HeaderCloseButtonColor">#FF211F35</Color>-->
     <Color x:Key="WindowHeaderStringColor">#303041</Color>
     <Color x:Key="ButtonBackgroundColor">#303041</Color>
     <Color x:Key="ButtonBackgroundSelectedColor">#313040</Color>
     <Color x:Key="MouseOverColor">White</Color>
-    <!--<Color x:Key="CloseButtonForegroundColor">Black</Color>-->
     <Color x:Key="WindowBackgroundColor">#23232E</Color>
     <Color x:Key="WindowForegroundColor">#AAA9BC</Color>
-    <!--<Color x:Key="HeaderSeparatorColor">#FF353848</Color>-->
+    <Color x:Key="TextBoxBackgroundColor">#363752</Color>
+    <Color x:Key="TextBoxBorderBrushColor">#514F6D</Color>
+    <Color x:Key="TextBoxMouseOverColor">#AAAABC</Color>
+    <Color x:Key="TextBoxIsFocusedColor">#33627E</Color>
     <!--#endregion-->
 
     <!--#region Brushes-->
@@ -18,11 +19,14 @@
     <SolidColorBrush x:Key="WindowHeaderStringBrush" Color="{StaticResource WindowHeaderStringColor}"/>
     <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{StaticResource WindowBackgroundColor}"/>
     <SolidColorBrush x:Key="WindowForegroundBrush" Color="{StaticResource WindowForegroundColor}"/>
-    <!--<SolidColorBrush x:Key="HeaderSeparatorBrush" Color="{DynamicResource HeaderSeparatorColor}"/>-->
     <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{StaticResource ButtonBackgroundColor}"/>
     <SolidColorBrush x:Key="SelectedButtonForegroundBrush" Color="{StaticResource ButtonBackgroundSelectedColor}"/>
     <SolidColorBrush x:Key="ButtonForegroundBrush" Color="{StaticResource WindowForegroundColor}"/>
     <SolidColorBrush x:Key="WindowBorderBrush" Color="{StaticResource BorderWindowColor}"/>
     <SolidColorBrush x:Key="MouseOverBrush" Color="{StaticResource MouseOverColor}"/>
+    <SolidColorBrush x:Key="TextBoxBackgroundBrush" Color="{StaticResource TextBoxBackgroundColor}"/>
+    <SolidColorBrush x:Key="TextBoxBorderBrushBrush" Color="{StaticResource TextBoxBorderBrushColor}"/>
+    <SolidColorBrush x:Key="TextBoxMouseOverBrush" Color="{StaticResource TextBoxMouseOverColor}"/>
+    <SolidColorBrush x:Key="TextBoxIsFocusedBrush" Color="{StaticResource TextBoxIsFocusedColor}"/>
     <!--#endregion-->
 </ResourceDictionary>

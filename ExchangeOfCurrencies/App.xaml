@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ExchangeOfCurrencies"
              xmlns:uc="clr-namespace:ExchangeOfCurrencies.UserControls"
-             StartupUri="MVVM/Views/AutorizationView.xaml">
+             StartupUri="MVVM/Views/RegistrationView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!--Merge theme colors and brushes-->
@@ -93,7 +93,6 @@
             </Style>
 
             <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
-                <Setter Property="OverridesDefaultStyle" Value="True"/>
                 <Setter Property="Foreground" Value="{StaticResource ButtonForegroundBrush}"/>
                 <Setter Property="Background" Value="{StaticResource WindowBackgroundBrush}"/>
                 <Setter Property="Cursor" Value="Hand"/>
@@ -107,12 +106,41 @@
 
                                 <Label Content="{TemplateBinding Content}"
                                        Padding="{TemplateBinding Padding}"
+                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                        Foreground="{TemplateBinding Foreground}"/>
                             </Border>
 
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Foreground" Value="{StaticResource MouseOverBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="{StaticResource TextBoxBackgroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource TextBoxBorderBrushBrush}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border x:Name="TextBoxBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="2">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                            
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderBrush" Value="{StaticResource TextBoxMouseOverBrush}"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="{StaticResource TextBoxIsFocusedBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -131,6 +159,7 @@
                                 <Border.BorderBrush>
                                     <SolidColorBrush x:Name="LoginBorderBrush" Color="{DynamicResource WindowForegroundColor}"/>
                                 </Border.BorderBrush>
+                                
                                 <ScrollViewer x:Name="PART_ContentHost"/>
 
                                 <VisualStateManager.VisualStateGroups>

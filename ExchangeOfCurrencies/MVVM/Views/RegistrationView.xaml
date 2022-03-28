@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen"
         Title="Укажите регистрационные данные"
         ResizeMode="NoResize"
-        Height="470"
+        Height="460"
         Width="520">
     <Grid Margin="10 20 10 0">
         <Grid.RowDefinitions>

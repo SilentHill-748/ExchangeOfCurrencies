@@ -11,7 +11,7 @@
         Title="Укажите регистрационные данные"
         ResizeMode="NoResize"
         Height="470"
-        Width="500">
+        Width="520">
     <Grid Margin="10 20 10 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -19,21 +19,20 @@
         </Grid.RowDefinitions>
 
         <StackPanel>
-            <uc:RegistrationFieldItem Text="Имя"/>
-            <uc:RegistrationFieldItem Text="Фамилия"/>
-            <uc:RegistrationFieldItem Text="Отчество"/>
-            <uc:RegistrationFieldItem Text="Номер телефона" Description="Например: +71234567890"/>
-            <uc:RegistrationFieldItem Text="Почта" Description="Например: example@yandex.ru"/>
+            <uc:RegistrationField Text="Имя"/>
+            <uc:RegistrationField Text="Фамилия"/>
+            <uc:RegistrationField Text="Отчество"/>
+            <uc:RegistrationField Text="Номер телефона" Description="Например: +71234567890"/>
+            <uc:RegistrationField Text="Почта" Description="Например: example@yandex.ru"/>
             <Rectangle Height="20"/>
-            <uc:RegistrationFieldItem Text="Логин"/>
-            <uc:RegistrationFieldItem Text="Пароль" IsPassword="True"/>
-            <uc:RegistrationFieldItem Text="Подтвердите пароль" IsPassword="True"/>
+            <uc:RegistrationField Text="Логин"/>
+            <uc:RegistrationPasswordField Text="Пароль"/>
+            <uc:RegistrationPasswordField Text="Подтвердите пароль"/>
         </StackPanel>
 
-        <Grid Grid.Row="1" Margin="30 10 30 0">
+        <Grid Grid.Row="1" Margin="10 10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="50"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -47,7 +46,7 @@
                     VerticalAlignment="Top" 
                     FontSize="24" 
                     Style="{StaticResource ButtonStyle}" 
-                    Content="Регистрация"/>
+                    Content="Подтвердить"/>
         </Grid>
     </Grid>
 </Window>

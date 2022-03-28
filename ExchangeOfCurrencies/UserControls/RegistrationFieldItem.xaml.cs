@@ -10,6 +10,9 @@ namespace ExchangeOfCurrencies.UserControls
         public static readonly DependencyProperty SeparatorWidthProperty;
         public static readonly DependencyProperty DescriptionProperty;
         public static readonly DependencyProperty DescriptionVisibilityProperty;
+        public static readonly DependencyProperty IsPasswordProperty;
+        public static readonly DependencyProperty PasswordVisibilityProperty;
+        public static readonly DependencyProperty TextBoxVisibilityProperty;
         #endregion
 
         #region Constructors
@@ -36,6 +39,24 @@ namespace ExchangeOfCurrencies.UserControls
                 typeof(Visibility),
                 typeof(RegistrationFieldItem),
                 new PropertyMetadata(Visibility.Collapsed));
+
+            IsPasswordProperty = DependencyProperty.Register(
+                "IsPassword",
+                typeof(bool),
+                typeof(RegistrationFieldItem),
+                new PropertyMetadata(false, OnIsPasswordChanged));
+
+            PasswordVisibilityProperty = DependencyProperty.Register(
+                "PasswordVisibility",
+                typeof(Visibility),
+                typeof(RegistrationFieldItem),
+                new PropertyMetadata(Visibility.Collapsed));
+
+            TextBoxVisibilityProperty = DependencyProperty.Register(
+                "TextBoxVisibility",
+                typeof(Visibility),
+                typeof(RegistrationFieldItem),
+                new PropertyMetadata(Visibility.Visible));
         }
 
         public RegistrationFieldItem()
@@ -68,6 +89,24 @@ namespace ExchangeOfCurrencies.UserControls
             get => (Visibility)GetValue(DescriptionVisibilityProperty);
             set => SetValue(DescriptionVisibilityProperty, value);
         }
+
+        public Visibility PasswordVisibility
+        {
+            get => (Visibility)GetValue(PasswordVisibilityProperty);
+            set => SetValue(PasswordVisibilityProperty, value);
+        }
+
+        public Visibility TextBoxVisibility
+        {
+            get => (Visibility)GetValue(TextBoxVisibilityProperty);
+            set => SetValue(TextBoxVisibilityProperty, value);
+        }
+
+        public bool IsPassword
+        {
+            get => (bool)GetValue(IsPasswordProperty);
+            set => SetValue(IsPasswordProperty, value);
+        }
         #endregion
 
         private static void OnDescriptionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -80,6 +119,20 @@ namespace ExchangeOfCurrencies.UserControls
             }
             else
                 d.SetValue(DescriptionVisibilityProperty, Visibility.Visible);
+        }
+
+        private static void OnIsPasswordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue)
+            {
+                d.SetValue(PasswordVisibilityProperty, Visibility.Visible);
+                d.SetValue(TextBoxVisibilityProperty, Visibility.Collapsed);
+            }
+            else
+            {
+                d.SetValue(PasswordVisibilityProperty, Visibility.Collapsed);
+                d.SetValue(TextBoxVisibilityProperty, Visibility.Visible);
+            }
         }
     }
 }

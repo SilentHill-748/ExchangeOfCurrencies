@@ -18,10 +18,15 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="{Binding ElementName=RegistrationField, Path=Text}"/>
-        
+
         <TextBox Grid.Column="2" 
+                 Visibility="{Binding ElementName=RegistrationField, Path=TextBoxVisibility}"
                  Style="{StaticResource TextBoxStyle}"/>
-        
+
+        <PasswordBox Grid.Column="2"
+                     Visibility="{Binding ElementName=RegistrationField, Path=PasswordVisibility}"
+                     Style="{StaticResource PasswordBoxStyle}"/>
+
         <TextBlock Grid.Row="2"
                    Grid.Column="2"
                    FontSize="14"

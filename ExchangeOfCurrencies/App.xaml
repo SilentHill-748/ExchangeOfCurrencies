@@ -92,7 +92,7 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Style TargetType="{x:Type Button}">
                 <Setter Property="Foreground" Value="{StaticResource ButtonForegroundBrush}"/>
                 <Setter Property="Background" Value="{StaticResource WindowBackgroundBrush}"/>
                 <Setter Property="Cursor" Value="Hand"/>

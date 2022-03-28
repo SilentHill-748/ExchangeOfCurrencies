@@ -38,15 +38,13 @@
 
             <Button Grid.Column="0" 
                     VerticalAlignment="Top" 
-                    FontSize="24" 
-                    Style="{StaticResource ButtonStyle}"
+                    FontSize="24"
                     Content="Отмена"/>
             
             <Button Grid.Column="2" 
                     VerticalAlignment="Top" 
-                    FontSize="24" 
-                    Style="{StaticResource ButtonStyle}" 
-                    Content="Подтвердить"/>
+                    FontSize="24"
+                    Content="Подтвердить" Cursor="Hand"/>
         </Grid>
     </Grid>
 </Window>

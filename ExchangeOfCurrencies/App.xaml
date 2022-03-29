@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ExchangeOfCurrencies"
              xmlns:uc="clr-namespace:ExchangeOfCurrencies.UserControls"
-             StartupUri="MVVM/Views/RegistrationView.xaml">
+             StartupUri="MVVM/Views/DebugView.xaml"
+             ShutdownMode="OnMainWindowClose">
+
     <Application.Resources>
         <ResourceDictionary>
             <!--Merge theme colors and brushes-->
@@ -21,17 +23,13 @@
                 <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
                 <Setter Property="WindowChrome.WindowChrome">
                     <Setter.Value>
-                        <WindowChrome ResizeBorderThickness="8"
-                                      GlassFrameThickness="200"
-                                      CornerRadius="0"
-                                      CaptionHeight="0"/>
+                        <WindowChrome ResizeBorderThickness="5" CaptionHeight="0"/>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Window}">
                             <Border x:Name="WindowBorder"
-                                    CornerRadius="10"
                                     BorderThickness="1"
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{StaticResource WindowBorderBrush}"
@@ -45,6 +43,8 @@
                                     <uc:WindowHeaderString Grid.Row="0"
                                                            Title="{TemplateBinding Title}"
                                                            ImageSource="/Assets/icon.ico"
+                                                           BorderThickness="0 0 0 1"
+                                                           BorderBrush="{StaticResource WindowBorderBrush}"
                                                            Foreground="{StaticResource WindowHeaderStringForegroundBrush}"
                                                            Fill="{StaticResource WindowHeaderStringBrush}">
                                         <uc:WindowHeaderString.CloseButton>
@@ -232,6 +232,53 @@
 
             <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource ControlStyle}"/>
 
+            <Style x:Key="MenuButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border CornerRadius="10">
+                                <Border.Background>
+                                    <SolidColorBrush x:Name="MenuButtonBorderBacground" Color="{StaticResource MenuButtonBackgroundColor}"/>
+                                </Border.Background>
+
+                                <Label Content="{TemplateBinding Content}" 
+                                       Foreground="{TemplateBinding Foreground}"
+                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       Padding="10"/>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonState">
+                                        <VisualState x:Name="MouseOver">
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="MenuButtonBorderBacground"
+                                                                Storyboard.TargetProperty="Color"
+                                                                Duration="0:0:0.13"
+                                                                To="{DynamicResource MenuButtonMouseOverColor}"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Normal">
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="MenuButtonBorderBacground"
+                                                                Storyboard.TargetProperty="Color"
+                                                                Duration="0:0:0.13"
+                                                                To="{DynamicResource MenuButtonBackgroundColor}"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="PageStyle" TargetType="{x:Type Page}">
+                <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

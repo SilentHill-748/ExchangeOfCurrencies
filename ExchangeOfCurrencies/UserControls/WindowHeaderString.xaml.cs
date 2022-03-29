@@ -59,14 +59,5 @@ namespace ExchangeOfCurrencies.UserControls
         {
             Window.GetWindow(this).Close();
         }
-
-        private void WindowHeaderString_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            HeaderString.StartPoint = new Point(0, ActualHeight);
-            Line1.Point = new Point(ActualWidth - 10, 0);
-            Arc1.Point = new Point(ActualWidth, 10);
-            Line2.Point = new Point(ActualWidth, ActualHeight);
-            Line3.Point = new Point(0, ActualHeight);
-        }
     }
 }

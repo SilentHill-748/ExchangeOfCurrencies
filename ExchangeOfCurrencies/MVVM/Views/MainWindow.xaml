@@ -4,13 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies"
+        xmlns:pages="clr-namespace:ExchangeOfCurrencies.Pages"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource WindowThemeStyle}"
-        Title="MainWindow"
+        Title="Студенческий проект - Биржа валют"
         Height="450"
         Width="800">
-    <Grid Margin="10">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
+        <Rectangle Grid.Column="0"
+                   Fill="{StaticResource MenuRectangleFillBrush}"/>
+
+        <StackPanel Grid.Column="0" 
+                    HorizontalAlignment="Center" 
+                    Background="Transparent">
+
+            <Button Content="Информация по счету" Style="{StaticResource MenuButtonStyle}" Margin="0 10"/>
+            <Button Content="Отчёт" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Купить/продать" Style="{StaticResource MenuButtonStyle}" Margin="0 10"/>
+            <Button Content="Пополнить" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Курсы валют" Style="{StaticResource MenuButtonStyle}" Margin="0 10"/>
+        </StackPanel>
+
+        <Frame Grid.Column="2" 
+               NavigationUIVisibility="Hidden" 
+               Name="PageContent">
+            <Frame.Content>
+                <pages:AccountInfo ShowsNavigationUI="False" Style="{StaticResource PageStyle}"/>
+            </Frame.Content>
+        </Frame>
     </Grid>
 </Window>

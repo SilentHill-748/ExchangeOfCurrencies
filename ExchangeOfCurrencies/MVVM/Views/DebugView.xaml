@@ -1,0 +1,23 @@
+﻿<Window x:Class="ExchangeOfCurrencies.MVVM.Views.DebugView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExchangeOfCurrencies.MVVM.Views"
+        mc:Ignorable="d"
+        Title="DebugView" Height="450" Width="800"
+        Style="{StaticResource WindowThemeStyle}"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <Button x:Name="ShowAutorizViewBtn" Content="Show AutorizationView" Click="ShowAutorizViewBtn_Click"/>
+            <Button x:Name="ShowRegViewBtn" Content="Show RegistrationView" Click="ShowRegViewBtn_Click"/>
+            <Button x:Name="ShowMainViewBtn" Content="Show MainView" Click="ShowMainViewBtn_Click" Cursor="Hand"/>
+        </StackPanel>
+    </Grid>
+</Window>

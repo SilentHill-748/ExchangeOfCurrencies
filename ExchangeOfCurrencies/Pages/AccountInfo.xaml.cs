@@ -13,15 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ExchangeOfCurrencies
+namespace ExchangeOfCurrencies.Pages
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для AccountInfo.xaml
+    /// </summary>
+    public partial class AccountInfo : Page
     {
-        public MainWindow()
+        public AccountInfo()
         {
             InitializeComponent();
-
-            Application.Current.MainWindow = this;
         }
     }
 }

@@ -1,17 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--#region Colors-->
-    <Color x:Key="BorderWindowColor">#FF3D3B56</Color>
-    <Color x:Key="WindowHeaderStringColor">#303041</Color>
+    <Color x:Key="BorderWindowColor">#5D5766</Color>
+    <Color x:Key="WindowHeaderStringColor">#3B354B</Color>
     <Color x:Key="ButtonBackgroundColor">#303041</Color>
     <Color x:Key="ButtonBackgroundSelectedColor">#313040</Color>
     <Color x:Key="MouseOverColor">White</Color>
-    <Color x:Key="WindowBackgroundColor">#23232E</Color>
-    <Color x:Key="WindowForegroundColor">#AAA9BC</Color>
+    <Color x:Key="WindowBackgroundColor">#2F2F3D</Color>
+    <Color x:Key="WindowForegroundColor">#BFBFCA</Color>
     <Color x:Key="TextBoxBackgroundColor">#363752</Color>
     <Color x:Key="TextBoxBorderBrushColor">#514F6D</Color>
     <Color x:Key="TextBoxMouseOverColor">#AAAABC</Color>
     <Color x:Key="TextBoxIsFocusedColor">#33627E</Color>
+    <Color x:Key="MenuButtonBackgroundColor">#464659</Color>
+    <Color x:Key="MenuButtonMouseOverColor">#4F4F5F</Color>
+    <Color x:Key="MenuRectangleFillColor">#363645</Color>
     <!--#endregion-->
 
     <!--#region Brushes-->
@@ -28,5 +31,8 @@
     <SolidColorBrush x:Key="TextBoxBorderBrushBrush" Color="{StaticResource TextBoxBorderBrushColor}"/>
     <SolidColorBrush x:Key="TextBoxMouseOverBrush" Color="{StaticResource TextBoxMouseOverColor}"/>
     <SolidColorBrush x:Key="TextBoxIsFocusedBrush" Color="{StaticResource TextBoxIsFocusedColor}"/>
+    <SolidColorBrush x:Key="MenuButtonBackgroundBrush" Color="{StaticResource MenuButtonBackgroundColor}"/>
+    <SolidColorBrush x:Key="MenuButtonMouseOverBrush" Color="{StaticResource MenuButtonMouseOverColor}"/>
+    <SolidColorBrush x:Key="MenuRectangleFillBrush" Color="{StaticResource MenuRectangleFillColor}"/>
     <!--#endregion-->
 </ResourceDictionary>

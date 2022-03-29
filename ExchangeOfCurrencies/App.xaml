@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ExchangeOfCurrencies"
              xmlns:uc="clr-namespace:ExchangeOfCurrencies.UserControls"
-             StartupUri="MVVM/Views/RegistrationView.xaml">
+             StartupUri="MVVM/Views/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!--Merge theme colors and brushes-->

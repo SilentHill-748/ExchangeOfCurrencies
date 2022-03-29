@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies"
+        xmlns:pages="clr-namespace:ExchangeOfCurrencies.Pages"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource WindowThemeStyle}"
-        Title="MainWindow"
+        Title="Студенческий проект - Биржа валют"
         Height="450"
         Width="800">
     <Grid>
@@ -33,6 +34,10 @@
 
         <Frame Grid.Column="2" 
                NavigationUIVisibility="Hidden" 
-               Name="PageContent"/>
+               Name="PageContent">
+            <Frame.Content>
+                <pages:AccountInfo ShowsNavigationUI="False" Style="{StaticResource PageStyle}"/>
+            </Frame.Content>
+        </Frame>
     </Grid>
 </Window>

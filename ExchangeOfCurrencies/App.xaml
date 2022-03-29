@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ExchangeOfCurrencies"
              xmlns:uc="clr-namespace:ExchangeOfCurrencies.UserControls"
-             StartupUri="MVVM/Views/DebugView.xaml">
+             StartupUri="MVVM/Views/DebugView.xaml"
+             ShutdownMode="OnMainWindowClose">
+
     <Application.Resources>
         <ResourceDictionary>
             <!--Merge theme colors and brushes-->
@@ -271,6 +273,11 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+
+            <Style x:Key="PageStyle" TargetType="{x:Type Page}">
+                <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
+                <Setter Property="FontSize" Value="18"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

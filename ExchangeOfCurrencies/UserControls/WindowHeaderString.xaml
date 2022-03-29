@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ExchangeOfCurrencies.UserControls"
              mc:Ignorable="d"
-             Name="WindowHeader"
-             SizeChanged="WindowHeaderString_SizeChanged">
+             Name="WindowHeader">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -17,22 +16,8 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Path Grid.ColumnSpan="5"
-              Fill="{Binding ElementName=WindowHeader, Path=Fill}" 
-              Stroke="Transparent">
-            <Path.Data>
-                <PathGeometry>
-                    <PathFigure x:Name="HeaderString" IsClosed="True">
-                        <LineSegment Point="0 10"/>
-                        <ArcSegment Point="10 0" Size="10 10" SweepDirection="Clockwise"/>
-                        <LineSegment x:Name="Line1"/>
-                        <ArcSegment x:Name="Arc1" Size="10 10" SweepDirection="Clockwise"/>
-                        <LineSegment x:Name="Line2"/>
-                        <LineSegment x:Name="Line3"/>
-                    </PathFigure>
-                </PathGeometry>
-            </Path.Data>
-        </Path>
+        <Rectangle Grid.ColumnSpan="5"
+                   Fill="{Binding ElementName=WindowHeader, Path=Fill}"/>
 
         <Image Grid.Column="0" 
                Margin="10 5 0 5"

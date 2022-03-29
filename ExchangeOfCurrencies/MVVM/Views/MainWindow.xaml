@@ -12,22 +12,23 @@
         Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*" MinWidth="200"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="2"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Grid.Column="1"
-                   Fill="Black"/>
+        <Rectangle Grid.Column="0"
+                   Fill="#363645"/>
 
-        <!--<Rectangle Grid.Column="0" Fill="#343243"/>-->
+        <StackPanel Grid.Column="0" 
+                    HorizontalAlignment="Center" 
+                    Background="Transparent">
 
-        <StackPanel Grid.Column="0" Background="#343243">
-            <Button Content="Информация по счету"/>
-            <Button Content="Отчёт"/>
-            <Button Content="Купить/продать"/>
-            <Button Content="Пополнить"/>
-            <Button Content="Курсы валют"/>
+            <Button Content="Информация по счету" Style="{StaticResource MenuButtonStyle}" Margin="0 10"/>
+            <Button Content="Отчёт" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Купить/продать" Style="{StaticResource MenuButtonStyle}" Margin="0 10"/>
+            <Button Content="Пополнить" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Курсы валют" Style="{StaticResource MenuButtonStyle}" Margin="0 10"/>
         </StackPanel>
 
         <Frame Grid.Column="2" 

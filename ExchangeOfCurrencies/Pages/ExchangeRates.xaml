@@ -1,4 +1,4 @@
-﻿<Page x:Class="ExchangeOfCurrencies.Pages.AccountInfo"
+﻿<Page x:Class="ExchangeOfCurrencies.Pages.ExchangeRates"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,11 +7,10 @@
       xmlns:vm="clr-namespace:ExchangeOfCurrencies.MVVM.ViewModels"
       mc:Ignorable="d">
     <Page.DataContext>
-        <vm:AccountInfoViewModel/>
+        <vm:ExchangeRatesViewModel/>
     </Page.DataContext>
     
-    <StackPanel Margin="5">
-        <TextBlock Text="На вашем балансе: 0 руб."/>
-        <TextBlock Text="Купленные валюты:"/>
-    </StackPanel>
+    <Grid>
+        
+    </Grid>
 </Page>

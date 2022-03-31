@@ -26,9 +26,7 @@
                     Background="Transparent">
 
             <Button Content="Информация по счету" Style="{StaticResource MenuButtonStyle}" Margin="0 10"/>
-            <Button Content="Отчёт" Style="{StaticResource MenuButtonStyle}"/>
-            <Button Content="Купить/продать" Style="{StaticResource MenuButtonStyle}" Margin="0 10"/>
-            <Button Content="Пополнить" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Биржа" Style="{StaticResource MenuButtonStyle}"/>
             <Button Content="Курсы валют" Style="{StaticResource MenuButtonStyle}" Margin="0 10"/>
         </StackPanel>
 

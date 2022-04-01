@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ExchangeOfCurrencies.Commands
+namespace ExchangeOfCurrencies.Core.Commands
 {
     internal class ParameterlessCommand : ICommand
     {

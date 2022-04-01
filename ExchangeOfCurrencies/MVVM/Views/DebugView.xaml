@@ -17,7 +17,8 @@
         <StackPanel>
             <Button x:Name="ShowAutorizViewBtn" Content="Show AutorizationView" Click="ShowAutorizViewBtn_Click"/>
             <Button x:Name="ShowRegViewBtn" Content="Show RegistrationView" Click="ShowRegViewBtn_Click"/>
-            <Button x:Name="ShowMainViewBtn" Content="Show MainView" Click="ShowMainViewBtn_Click" Cursor="Hand"/>
+            <Button x:Name="ShowMainViewBtn" Content="Show MainView" Click="ShowMainViewBtn_Click"/>
+            <Button x:Name="ShowMessegeView" Content="Show MessageView" Click="ShowMessegeView_Click"/>
         </StackPanel>
     </Grid>
 </Window>

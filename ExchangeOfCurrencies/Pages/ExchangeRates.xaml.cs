@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 namespace ExchangeOfCurrencies.Pages
 {
-    public partial class AccountInfo : Page
+    public partial class ExchangeRates : Page
     {
-        public AccountInfo()
+        public ExchangeRates()
         {
             InitializeComponent();
         }

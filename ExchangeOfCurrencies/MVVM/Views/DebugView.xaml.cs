@@ -23,5 +23,11 @@ namespace ExchangeOfCurrencies.MVVM.Views
         {
             new MainWindow().Show();
         }
+
+        private void ShowMessegeView_Click(object sender, RoutedEventArgs e)
+        {
+            string text = "Произошла какая-то ошибка";
+            new MessageView("Ошибка...", text, Core.MessageViewButtons.Cancel).ShowDialog();
+        }
     }
 }

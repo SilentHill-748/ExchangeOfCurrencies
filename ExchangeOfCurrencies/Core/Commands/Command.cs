@@ -9,7 +9,7 @@ internal class Command : ICommand
     private readonly Func<object?, bool>? _canExecute;
 
 
-    public Command(Action<object?> execute, Func<object?, bool>? canExecute)
+    public Command(Action<object?> execute, Func<object?, bool>? canExecute = null)
     {
         _execute = execute;
         _canExecute = canExecute;

@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using ExchangeOfCurrencies.MVVM.ViewModels;
+
 namespace ExchangeOfCurrencies
 {
     public partial class MainWindow : Window
@@ -20,6 +22,7 @@ namespace ExchangeOfCurrencies
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel();
 
             Application.Current.MainWindow = this;
         }

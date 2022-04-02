@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ExchangeOfCurrencies.Pages"
       xmlns:vm="clr-namespace:ExchangeOfCurrencies.MVVM.ViewModels"
-      mc:Ignorable="d">
+      mc:Ignorable="d"
+      Style="{StaticResource PageStyle}">
     <Page.DataContext>
         <vm:ExchangeViewModel/>
     </Page.DataContext>

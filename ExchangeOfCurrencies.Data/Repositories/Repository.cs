@@ -12,23 +12,15 @@ namespace ExchangeOfCurrencies.Data.Repositories
         where TEntity : class
     {
         private readonly DbSet<TEntity> _set;
-        private readonly DbContext _context;
 
 
         public Repository(DbContext dbContext)
         {
-            _context = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            ArgumentNullException.ThrowIfNull(dbContext);
+
             _set = dbContext.Set<TEntity>();
         }
 
-
-        public void ChangeTable(string table)
-        {
-            if (_context.Model.FindEntityType(typeof(TEntity)) is IConventionEntityType relational)
-            {
-                relational.SetTableName(table);
-            }
-        }
 
         public void Add(TEntity entity)
         {

@@ -19,12 +19,6 @@ namespace ExchangeOfCurrencies.Data.Entities.Configurations
                 .HasIndex(x => x.Phone)
                 .IsUnique(true);
             builder
-                .Property(x => x.Wallet)
-                .IsRequired();
-            builder
-                .Property(x => x.Credentials)
-                .IsRequired();
-            builder
                 .Property(x => x.FullName)
                 .IsRequired();
         }

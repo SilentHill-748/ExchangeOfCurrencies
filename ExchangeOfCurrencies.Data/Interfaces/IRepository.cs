@@ -7,8 +7,6 @@ namespace ExchangeOfCurrencies.Data.Interfaces
     public interface IRepository<TEntity>
         where TEntity : class
     {
-        void ChangeTable(string table);
-
         IEnumerable<TEntity> Select(
             Expression<Func<TEntity, bool>>? predicate = null,
             Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,

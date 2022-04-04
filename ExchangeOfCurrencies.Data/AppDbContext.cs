@@ -11,19 +11,15 @@ namespace ExchangeOfCurrencies.Data
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
-            Clients = Set<Client>();
-            Credentials = Set<Credentials>();
-            Wallets = Set<Wallet>();
-            Currencies = Set<Currency>();
-            CurrencyRates = Set<CurrencyRate>();
+
         }
 
 
-        public DbSet<Client> Clients { get; }
-        public DbSet<Wallet> Wallets { get; }
-        public DbSet<Credentials> Credentials { get; }
-        public DbSet<Currency> Currencies { get; }
-        public DbSet<CurrencyRate> CurrencyRates { get; }
+        public DbSet<Client> Clients => Set<Client>();
+        public DbSet<Wallet> Wallets => Set<Wallet>();
+        public DbSet<Credentials> Credentials => Set<Credentials>();
+        public DbSet<Currency> Currencies => Set<Currency>();
+        public DbSet<CurrencyRate> CurrencyRates => Set<CurrencyRate>();
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

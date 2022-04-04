@@ -2,15 +2,10 @@
 {
     public class Credentials
     {
-        public Credentials()
-        {
-            Login = string.Empty;
-            Password = string.Empty;
-        }
-
-
         public int CredentialsId { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public string Login { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        //public int ClientId { get; set; }
+        //public Client Client { get; set; }
     }
 }

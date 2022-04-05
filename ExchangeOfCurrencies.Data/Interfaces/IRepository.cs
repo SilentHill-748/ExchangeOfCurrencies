@@ -8,9 +8,9 @@ namespace ExchangeOfCurrencies.Data.Interfaces
         where TEntity : class
     {
         IEnumerable<TEntity> Select(
+            bool disableTracking = true,
             Expression<Func<TEntity, bool>>? predicate = null,
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
-            bool desableTracking = true);
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null);
 
         TEntity GetById(object pkValue);
 

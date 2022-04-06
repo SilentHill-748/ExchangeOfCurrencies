@@ -213,7 +213,7 @@ namespace ExchangeOfCurrencies.Test.DataLayerTests
             var expected = _unitOfWork.DbContext.Clients.Find(1)!;
 
             _unitOfWork.DbContext.ChangeTracker.Clear();
-            var actual = _clientRepository.Select(x => x.ClientId < 2).ToList();
+            var actual = _clientRepository.Select(predicate: x => x.ClientId < 2).ToList();
 
             Assert.AreEqual(1, actual.Count);
             Assert.AreEqual(expected, actual[0]);
@@ -228,6 +228,7 @@ namespace ExchangeOfCurrencies.Test.DataLayerTests
             _unitOfWork.DbContext.ChangeTracker.Clear();
             var actual = _clientRepository
                 .Select(
+                    true,
                     x => x.ClientId < 2, 
                     x => x.Include(x => x.Wallet))
                 .ToList();
@@ -246,10 +247,10 @@ namespace ExchangeOfCurrencies.Test.DataLayerTests
             _unitOfWork.DbContext.ChangeTracker.Clear();
             var actual = _clientRepository
                 .Select(
+                    false,
                     x => x.ClientId < 2,
                     x => x.Include(x => x.Wallet)
-                        .Include(x => x.Credentials),
-                    false)
+                        .Include(x => x.Credentials))
                 .ToList();
 
             Assert.AreEqual(1, actual.Count);
@@ -266,10 +267,10 @@ namespace ExchangeOfCurrencies.Test.DataLayerTests
             _unitOfWork.DbContext.ChangeTracker.Clear();
             var actual = _clientRepository
                 .Select(
+                    false,
                     x => x.ClientId < 2,
                     x => x.Include(x => x.Wallet)
-                        .Include(x => x.Credentials),
-                    true)
+                        .Include(x => x.Credentials))
                 .ToList();
 
             Assert.AreEqual(1, actual.Count);

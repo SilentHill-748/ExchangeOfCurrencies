@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExchangeOfCurrencies.Data\ExchangeOfCurrencies.Data.csproj" />
+    <ProjectReference Include="..\ExchangeOfCurrencies.Logic\ExchangeOfCurrencies.Logic.csproj" />
   </ItemGroup>
 
   <ItemGroup>

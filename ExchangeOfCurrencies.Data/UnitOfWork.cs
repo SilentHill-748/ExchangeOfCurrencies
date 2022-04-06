@@ -5,7 +5,7 @@ using System.Transactions;
 
 namespace ExchangeOfCurrencies.Data
 {
-    public class UnitOfWork<TContext> : IUnitOfWork<TContext>, IRepositoryFactory
+    public class UnitOfWork<TContext> : IUnitOfWork<TContext>
         where TContext : DbContext
     {
         private Dictionary<Type, object>? _repositories;

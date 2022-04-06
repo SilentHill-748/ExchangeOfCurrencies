@@ -3,7 +3,6 @@
 using ExchangeOfCurrencies.Data.Interfaces;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Query;
 
 namespace ExchangeOfCurrencies.Data.Repositories

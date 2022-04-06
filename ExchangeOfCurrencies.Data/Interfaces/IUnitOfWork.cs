@@ -1,6 +1,6 @@
 ﻿namespace ExchangeOfCurrencies.Data.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IRepositoryFactory, IDisposable
     {
         int Save();
 

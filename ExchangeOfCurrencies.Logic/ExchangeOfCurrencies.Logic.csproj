@@ -10,8 +10,4 @@
     <ProjectReference Include="..\ExchangeOfCurrencies.Data\ExchangeOfCurrencies.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
 </Project>

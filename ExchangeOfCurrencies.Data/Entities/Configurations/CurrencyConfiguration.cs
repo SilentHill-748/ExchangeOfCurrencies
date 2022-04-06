@@ -8,10 +8,10 @@ namespace ExchangeOfCurrencies.Data.Entities.Configurations
         public void Configure(EntityTypeBuilder<Currency> builder)
         {
             builder
-                .HasKey(x => x.CurrencyId);
+                .HasKey(x => x.ID);
             builder
                 .Property(x => x.CurrencyId)
-                .ValueGeneratedOnAdd();
+                .ValueGeneratedNever();
             builder
                 .Property(x => x.Name)
                 .IsRequired();

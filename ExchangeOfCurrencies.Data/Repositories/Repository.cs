@@ -3,7 +3,6 @@
 using ExchangeOfCurrencies.Data.Interfaces;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Query;
 
 namespace ExchangeOfCurrencies.Data.Repositories
@@ -53,9 +52,9 @@ namespace ExchangeOfCurrencies.Data.Repositories
         }
 
         public IEnumerable<TEntity> Select(
+            bool disableTracking = true,
             Expression<Func<TEntity, bool>>? predicate = null, 
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
-            bool disableTracking = true)
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
         {
             IQueryable<TEntity> query = _set;
 

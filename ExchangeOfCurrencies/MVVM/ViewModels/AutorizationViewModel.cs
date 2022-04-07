@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using AsyncAwaitBestPractices.MVVM;
 
@@ -7,7 +8,6 @@ using ExchangeOfCurrencies.Core.Commands;
 using ExchangeOfCurrencies.MVVM.Views;
 using ExchangeOfCurrencies.Logic.Services.Interfaces;
 using ExchangeOfCurrencies.Logic.Services;
-using System.Threading.Tasks;
 
 namespace ExchangeOfCurrencies.MVVM.ViewModels
 {

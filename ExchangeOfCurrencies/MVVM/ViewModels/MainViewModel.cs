@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 using ExchangeOfCurrencies.Pages;
 using ExchangeOfCurrencies.Services;
-using ExchangeOfCurrencies.Core;
 using ExchangeOfCurrencies.Core.Commands;
 
 namespace ExchangeOfCurrencies.MVVM.ViewModels
 {
-    internal class MainViewModel : ObservableObject
+    internal class MainViewModel : BaseViewModel
     {
         private readonly NavigationService _navigationService;
         private Page _page;

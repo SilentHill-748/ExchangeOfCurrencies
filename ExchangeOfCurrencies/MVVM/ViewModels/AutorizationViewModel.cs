@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ExchangeOfCurrencies.MVVM.ViewModels
 {
-    internal class AutorizationViewModel : ObservableObject
+    internal class AutorizationViewModel : DialogViewModel
     {
         #region Private fields
         private string _login;
@@ -101,12 +101,6 @@ namespace ExchangeOfCurrencies.MVVM.ViewModels
         private bool CanLogIn(object? parameter)
         {
             return Login.Length > 0 && Password.Length > 0;
-        }
-
-        //TODO:REFACTORING: Нужен базовый класс BaseViewModel. Писать в каждом VM метод Close - идиотизм.
-        private static void Close(ICloseable closeableView)
-        {
-            closeableView?.Close();
         }
         #endregion
     }

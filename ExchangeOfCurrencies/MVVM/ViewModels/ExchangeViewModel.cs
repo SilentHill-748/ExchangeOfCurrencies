@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExchangeOfCurrencies.MVVM.ViewModels
 {
-    internal class ExchangeViewModel
+    internal class ExchangeViewModel : BaseViewModel
     {
     }
 }

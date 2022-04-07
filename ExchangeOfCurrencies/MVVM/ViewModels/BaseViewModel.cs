@@ -1,14 +1,13 @@
 ﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
-namespace ExchangeOfCurrencies.Core
+namespace ExchangeOfCurrencies.MVVM.ViewModels
 {
-    internal class ObservableObject : INotifyPropertyChanged
+    internal class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
 
-        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        public void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

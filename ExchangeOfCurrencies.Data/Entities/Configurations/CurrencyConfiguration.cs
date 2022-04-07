@@ -10,7 +10,7 @@ namespace ExchangeOfCurrencies.Data.Entities.Configurations
             builder
                 .HasKey(x => x.ID);
             builder
-                .Property(x => x.CurrencyId)
+                .Property(x => x.ID)
                 .ValueGeneratedNever();
             builder
                 .Property(x => x.Name)

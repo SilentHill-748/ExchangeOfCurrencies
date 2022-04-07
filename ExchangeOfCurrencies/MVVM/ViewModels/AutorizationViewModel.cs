@@ -1,21 +1,26 @@
 ﻿using System;
 
+using AsyncAwaitBestPractices.MVVM;
+
 using ExchangeOfCurrencies.Core;
 using ExchangeOfCurrencies.Core.Commands;
 using ExchangeOfCurrencies.MVVM.Views;
 using ExchangeOfCurrencies.Logic.Services.Interfaces;
 using ExchangeOfCurrencies.Logic.Services;
+using System.Threading.Tasks;
 
 namespace ExchangeOfCurrencies.MVVM.ViewModels
 {
     internal class AutorizationViewModel : ObservableObject
     {
+        #region Private fields
         private string _login;
         private string _password;
 
         private readonly IAutorizationService _autorizationService;
+        #endregion
 
-
+        #region Constructors
         public AutorizationViewModel()
         {
             _login = string.Empty;
@@ -24,8 +29,9 @@ namespace ExchangeOfCurrencies.MVVM.ViewModels
             //TODO: Нужен единый объект, который может выдавать любой сервис (IServiceCollection, как пример)!
             _autorizationService = new AutorizationService(App.UnitOfWork);
         }
+        #endregion
 
-
+        #region Properties
         public string Login
         {
             get => _login;
@@ -45,16 +51,18 @@ namespace ExchangeOfCurrencies.MVVM.ViewModels
                 OnPropertyChanged(nameof(Password));
             }
         }
+        #endregion
 
-
-
-        public Command LogInCommand
-            => LogInCommand ?? new Command(LogIn, CanLogIn);
+        #region Commands
+        public AsyncCommand<object?> LogInCommand
+            => LogInCommand ?? new AsyncCommand<object?>(LogIn, CanLogIn);
 
         public ParameterlessCommand ForgetPasswordCommand
             => ForgetPasswordCommand ?? new ParameterlessCommand(ForgetPassword);
+        #endregion
 
-        private void LogIn(object? parameter)
+        #region Private methods
+        private async Task LogIn(object? parameter)
         {
             if (parameter is null) 
                 return;
@@ -63,11 +71,11 @@ namespace ExchangeOfCurrencies.MVVM.ViewModels
             
             try
             {
-                isAutorized = _autorizationService.Autorize(Login, Password);
+                isAutorized = await _autorizationService.AutorizeAsync(Login, Password);
             }
             catch (Exception ex)
             {
-                //TODO: Написать нормальный логгер и объект вызова окна с сообщением!
+                //TODO:WARNING: Написать нормальный логгер и объект вызова окна с сообщением!
                 MessageView messageView = new("Ошибка авторизации.", ex.Message, MessageViewButtons.Ok);
                 messageView.ShowDialog();
             }
@@ -95,9 +103,11 @@ namespace ExchangeOfCurrencies.MVVM.ViewModels
             return Login.Length > 0 && Password.Length > 0;
         }
 
+        //TODO:REFACTORING: Нужен базовый класс BaseViewModel. Писать в каждом VM метод Close - идиотизм.
         private static void Close(ICloseable closeableView)
         {
             closeableView?.Close();
         }
+        #endregion
     }
 }

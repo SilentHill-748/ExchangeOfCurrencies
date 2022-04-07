@@ -16,7 +16,12 @@ namespace ExchangeOfCurrencies.Logic.Services
         }
 
 
-        public bool Autorize(string login, string password)
+        public async Task<bool> AutorizeAsync(string login, string password)
+        {
+            return await Task.Run(() => Autorize(login, password));
+        }
+
+        private bool Autorize(string login, string password)
         {
             ClientRepository clientRepository = (ClientRepository)_unitOfWork.GetRepository<Client>();
 

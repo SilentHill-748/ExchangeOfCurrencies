@@ -2,6 +2,6 @@
 {
     public interface IAutorizationService
     {
-        bool Autorize(string login, string password);
+        Task<bool> AutorizeAsync(string login, string password);
     }
 }

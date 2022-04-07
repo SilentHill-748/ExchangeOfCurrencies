@@ -1,27 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
+using ExchangeOfCurrencies.Core;
+using ExchangeOfCurrencies.MVVM.ViewModels;
 
 namespace ExchangeOfCurrencies.MVVM.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для AutorizationView.xaml
-    /// </summary>
-    public partial class AutorizationView : Window
+    public partial class AutorizationView : Window, ICloseable
     {
+        private readonly AutorizationViewModel _viewModel;
+
+
         public AutorizationView()
         {
             InitializeComponent();
+
+            AutorizationViewModel vm = new();
+            _viewModel = vm;
+
+            this.DataContext = vm;
+        }
+
+        private void PasswordField_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            _viewModel.Password += ((PasswordBox)sender).Password;
+        }
+
+        private void ShowRegistrationWindowBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationView registration = new();
+            registration.ShowDialog();
         }
     }
 }

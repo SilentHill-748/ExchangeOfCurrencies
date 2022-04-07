@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExchangeOfCurrencies.MVVM.Views"
+        xmlns:vm="clr-namespace:ExchangeOfCurrencies.MVVM.ViewModels"
         mc:Ignorable="d"
+        x:Name="LoginWindow"
         Style="{StaticResource WindowThemeStyle}"
+        d:DataContext="{d:DesignInstance Type=vm:AutorizationViewModel}"
         Title="Авторизация"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -26,11 +29,14 @@
         </Grid.ColumnDefinitions>
 
         <TextBox Grid.Column="3" 
-                 Style="{StaticResource LoginInputTextBoxStyle}"/>
+                 Style="{StaticResource LoginInputTextBoxStyle}"
+                 Text="{Binding Login}"/>
 
-        <PasswordBox Grid.Row="2"
+        <PasswordBox x:Name="PasswordField"
+                     Grid.Row="2"
                      Grid.Column="2"
-                     Style="{StaticResource PasswordBoxStyle}"/>
+                     Style="{StaticResource PasswordBoxStyle}"
+                     PasswordChanged="PasswordField_PasswordChanged"/>
 
         <TextBlock Grid.Column="0"
                    Text="Логин"/>
@@ -43,13 +49,18 @@
                    Grid.ColumnSpan="3"
                    HorizontalAlignment="Right">
             <Button Content="Забыл пароль"
-                    Padding="0 0 25 0"/>
+                    Padding="0 0 25 0"
+                    Command="{Binding ForgetPasswordCommand}"/>
             
             <Button Content="Войти"
+                    Command="{Binding LogInCommand}"
+                    CommandParameter="{Binding ElementName=LoginWindow}"
                     Padding="5 0"/>
 
-            <Button Content="Регистрация"
-                    Padding="5 0 0 0 "/>
+            <Button x:Name="ShowRegistrationWindowBtn" 
+                    Content="Регистрация"
+                    Padding="5 0 0 0"
+                    Click="ShowRegistrationWindowBtn_Click"/>
         </WrapPanel>
     </Grid>
 </Window>

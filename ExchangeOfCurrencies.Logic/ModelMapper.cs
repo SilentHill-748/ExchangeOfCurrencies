@@ -30,10 +30,10 @@ namespace ExchangeOfCurrencies.Logic
 
         private static void RewritePropertyValues(object from, object to)
         {
-            foreach (PropertyInfo fromProperty in from.GetType().GetProperties())
-                foreach (PropertyInfo toProperty in to.GetType().GetProperties())
+            foreach (PropertyInfo toProperty in to.GetType().GetProperties())
+                foreach (PropertyInfo fromProperty in from.GetType().GetProperties())
                 {
-                    if (fromProperty.Name.Equals(toProperty.Name))
+                    if (toProperty.Name.Equals(fromProperty.Name))
                     {
                         toProperty.SetValue(to, fromProperty.GetValue(from));
                         break;

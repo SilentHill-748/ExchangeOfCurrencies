@@ -5,7 +5,7 @@ namespace ExchangeOfCurrencies.Test.LogicLayerTests.Model
 {
     public class TestCurrency
     {
-        [XmlElement("ParentCode")]
+        [XmlAttribute("ID")]
         public string ID { get; set; }
 
         [XmlElement("Name")]

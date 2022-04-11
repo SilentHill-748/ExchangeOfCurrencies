@@ -276,7 +276,7 @@ namespace ExchangeOfCurrencies.Test.DataLayerTests
             Assert.AreEqual(1, actual.Count);
             Assert.AreEqual(actual[0].Credentials.Login, "Test1");
             Assert.AreEqual(actual[0].Credentials.Password, "test1");
-            Assert.IsFalse(_unitOfWork.DbContext.ChangeTracker.Entries().Any()); //Tracking should be empty.
+            Assert.IsTrue(_unitOfWork.DbContext.ChangeTracker.Entries().Any()); //Tracking should be not empty.
         }
 
         private void DropDatabase()

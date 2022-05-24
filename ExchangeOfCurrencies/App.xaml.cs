@@ -27,7 +27,7 @@ namespace ExchangeOfCurrencies
         private void WindowBorder_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (sender is DependencyObject d)
-                Window.GetWindow(d).DragMove();
+                Window.GetWindow(d)?.DragMove();
         }
     }
 }

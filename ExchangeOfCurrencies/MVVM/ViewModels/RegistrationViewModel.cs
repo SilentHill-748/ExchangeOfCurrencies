@@ -1,4 +1,6 @@
-﻿using ExchangeOfCurrencies.MVVM.Models;
+﻿using ExchangeOfCurrencies.Logic;
+using ExchangeOfCurrencies.MVVM.Models;
+using ExchangeOfCurrencies.Services;
 
 namespace ExchangeOfCurrencies.MVVM.ViewModels
 {
@@ -17,7 +19,9 @@ namespace ExchangeOfCurrencies.MVVM.ViewModels
         {
             User newUser = CreateUser();
 
-            // mapping and send to Db
+            RegistrationService registrationService = new(new ModelMapper());
+
+            registrationService.RegistrationUser(newUser);
 
             // App.AuthorizedUser = newUser;
 
